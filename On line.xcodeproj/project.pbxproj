@@ -13,6 +13,7 @@
 		554F71E12641D4AC00E4F684 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71E02641D4AC00E4F684 /* Preview Assets.xcassets */; };
 		554F71EC2641D4AD00E4F684 /* On_lineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71EB2641D4AD00E4F684 /* On_lineTests.swift */; };
 		554F71F72641D4AD00E4F684 /* On_lineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71F62641D4AD00E4F684 /* On_lineUITests.swift */; };
+		F8D68FAA2644620D0044EEE9 /* LinePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D68FA92644620D0044EEE9 /* LinePlace.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		554F71F22641D4AD00E4F684 /* On lineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On lineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71F62641D4AD00E4F684 /* On_lineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineUITests.swift; sourceTree = "<group>"; };
 		554F71F82641D4AD00E4F684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8D68FA92644620D0044EEE9 /* LinePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePlace.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		55C0171A26445FF70091DAD8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F8D68FA92644620D0044EEE9 /* LinePlace.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
+				F8D68FAA2644620D0044EEE9 /* LinePlace.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
