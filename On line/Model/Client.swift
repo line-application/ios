@@ -11,7 +11,7 @@ struct Client {
     var email: String
     var name: String
     var phone: String
-    var linePlaces : [linePlace] = []
+    var linePlaces : [LinePlace] = []
     
     func addInLine(businessEmail:String, numberOfPeople:Int){
         

@@ -11,16 +11,16 @@ import SwiftUI
 struct LinePlace {
     
     let enter_line: Date
-    let exit_line: Date
-    let called: Date
-    let invoked: Bool
-    let sucess: Bool
+    var exit_line: Date?
+    var called: Date
+    var invoked: Bool
+    var sucess: Bool
     let peopleInLine: Int
     let businessEmail: String
-    let numberOfPeople: Int
     
+    func exitLine(){
+        
+    }
+
 }
 
-func exitLine(){
-    
-}
