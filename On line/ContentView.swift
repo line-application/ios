@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("This is a cool line app!")
+        VStack{
+            Text("This is a cool line app!")
             .padding()
+            EnterLineButton()
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

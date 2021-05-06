@@ -19,15 +19,15 @@ struct Business {
     var linePlaces: [LinePlace]
     
 // FUNCTIONS
-    func getName() -> String {}
-    func getEmail() -> String {}
-    func getWaitTime() -> Double {}
-    func getAddress() -> String {}
-    func getDescription() -> String {}
-    func getMaxTableCapacity() -> Int {}
-    func setData(name : String, email : String, phone: String, description: String, maxTableCapacity: Int, waitTime: Double) -> Bool {}
-    func getLinePlaces() -> [LinePlace] {}
-    func removeClientFromLine(clientEmail : String) -> Bool {}
-    func setBusinessOpen() {}
+//    func getName() -> String {}
+//    func getEmail() -> String {}
+//    func getWaitTime() -> Double {}
+//    func getAddress() -> String {}
+//    func getDescription() -> String {}
+//    func getMaxTableCapacity() -> Int {}
+//    func setData(name : String, email : String, phone: String, description: String, maxTableCapacity: Int, waitTime: Double) -> Bool {}
+//    func getLinePlaces() -> [LinePlace] {}
+//    func removeClientFromLine(clientEmail : String) -> Bool {}
+//    func setBusinessOpen() {}
     
 }
