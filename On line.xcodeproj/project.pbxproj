@@ -95,7 +95,7 @@
 		554F71D82641D4AC00E4F684 /* On line */ = {
 			isa = PBXGroup;
 			children = (
-				55C0171526445CCB0091DAD8 /* Model */,
+				55C0171A26445FF70091DAD8 /* Model */,
 				554F71D92641D4AC00E4F684 /* On_lineApp.swift */,
 				554F71DB2641D4AC00E4F684 /* ContentView.swift */,
 				554F71DD2641D4AC00E4F684 /* Assets.xcassets */,
@@ -131,7 +131,7 @@
 			path = "On lineUITests";
 			sourceTree = "<group>";
 		};
-		55C0171526445CCB0091DAD8 /* Model */ = {
+		55C0171A26445FF70091DAD8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
