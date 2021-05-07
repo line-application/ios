@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340B7B8D2644E05700BCA158 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B7B8A2644E05700BCA158 /* Client.swift */; };
+		340B7B8E2644E05700BCA158 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B7B8B2644E05700BCA158 /* Business.swift */; };
+		340B7B8F2644E05700BCA158 /* LinePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B7B8C2644E05700BCA158 /* LinePlace.swift */; };
 		341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BBCA82643559600A5AE69 /* AppDelegate.swift */; };
 		341BBCAF2643608500A5AE69 /* Cognito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BBCAE2643608500A5AE69 /* Cognito.swift */; };
 		349BE0E626445FEF00C9D89A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE0E526445FEF00C9D89A /* Api.swift */; };
@@ -43,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		340B7B8A2644E05700BCA158 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		340B7B8B2644E05700BCA158 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		340B7B8C2644E05700BCA158 /* LinePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinePlace.swift; sourceTree = "<group>"; };
 		341BBCA82643559600A5AE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		341BBCAE2643608500A5AE69 /* Cognito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cognito.swift; sourceTree = "<group>"; };
 		349BE0E526445FEF00C9D89A /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
@@ -95,6 +101,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		340B7B892644E02700BCA158 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				340B7B8B2644E05700BCA158 /* Business.swift */,
+				340B7B8A2644E05700BCA158 /* Client.swift */,
+				340B7B8C2644E05700BCA158 /* LinePlace.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		341BBCAD2643605F00A5AE69 /* services */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +190,7 @@
 		554F71D82641D4AC00E4F684 /* On line */ = {
 			isa = PBXGroup;
 			children = (
+				340B7B892644E02700BCA158 /* models */,
 				341BBCC32643615D00A5AE69 /* helpers */,
 				341BBCAD2643605F00A5AE69 /* services */,
 				554F71D92641D4AC00E4F684 /* On_lineApp.swift */,
@@ -406,8 +423,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340B7B8E2644E05700BCA158 /* Business.swift in Sources */,
+				340B7B8F2644E05700BCA158 /* LinePlace.swift in Sources */,
 				349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */,
 				341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */,
+				340B7B8D2644E05700BCA158 /* Client.swift in Sources */,
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
