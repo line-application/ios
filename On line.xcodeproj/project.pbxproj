@@ -3,16 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BBCA82643559600A5AE69 /* AppDelegate.swift */; };
+		341BBCAF2643608500A5AE69 /* Cognito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BBCAE2643608500A5AE69 /* Cognito.swift */; };
+		349BE0E626445FEF00C9D89A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE0E526445FEF00C9D89A /* Api.swift */; };
+		349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE13726447AE500C9D89A /* BusinessApi.swift */; };
+		349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE1412644C70D00C9D89A /* BusinessModel.swift */; };
+		349BE14A2644C93500C9D89A /* LinePlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE1492644C93500C9D89A /* LinePlaceModel.swift */; };
+		349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE14F2644CBF800C9D89A /* LinePlaceApi.swift */; };
+		349BE1582644CCE600C9D89A /* TimeEstimativeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */; };
+		349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE15D2644CF1500C9D89A /* TypeAliases.swift */; };
 		554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71D92641D4AC00E4F684 /* On_lineApp.swift */; };
 		554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71DB2641D4AC00E4F684 /* ContentView.swift */; };
 		554F71DE2641D4AC00E4F684 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71DD2641D4AC00E4F684 /* Assets.xcassets */; };
 		554F71E12641D4AC00E4F684 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71E02641D4AC00E4F684 /* Preview Assets.xcassets */; };
 		554F71EC2641D4AD00E4F684 /* On_lineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71EB2641D4AD00E4F684 /* On_lineTests.swift */; };
 		554F71F72641D4AD00E4F684 /* On_lineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71F62641D4AD00E4F684 /* On_lineUITests.swift */; };
+		BF2BEB0F8ED87226D38CA592 /* Pods_On_line.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		341BBCA82643559600A5AE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		341BBCAE2643608500A5AE69 /* Cognito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cognito.swift; sourceTree = "<group>"; };
+		349BE0E526445FEF00C9D89A /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		349BE13726447AE500C9D89A /* BusinessApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessApi.swift; sourceTree = "<group>"; };
+		349BE1412644C70D00C9D89A /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
+		349BE1492644C93500C9D89A /* LinePlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePlaceModel.swift; sourceTree = "<group>"; };
+		349BE14F2644CBF800C9D89A /* LinePlaceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePlaceApi.swift; sourceTree = "<group>"; };
+		349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEstimativeModel.swift; sourceTree = "<group>"; };
+		349BE15D2644CF1500C9D89A /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		554F71D62641D4AC00E4F684 /* On line.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On line.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71D92641D4AC00E4F684 /* On_lineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineApp.swift; sourceTree = "<group>"; };
 		554F71DB2641D4AC00E4F684 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +64,9 @@
 		554F71F22641D4AD00E4F684 /* On lineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On lineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71F62641D4AD00E4F684 /* On_lineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineUITests.swift; sourceTree = "<group>"; };
 		554F71F82641D4AD00E4F684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E0D8F23CE3FC40F86C1890C /* Pods-On line.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.release.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.release.xcconfig"; sourceTree = "<group>"; };
+		CA31AEAB87888F49125A496C /* Pods-On line.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.debug.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.debug.xcconfig"; sourceTree = "<group>"; };
+		D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_line.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2BEB0F8ED87226D38CA592 /* Pods_On_line.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +95,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		341BBCAD2643605F00A5AE69 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				349BE0E426445FCB00C9D89A /* api */,
+				341BBCB6264360E700A5AE69 /* authentication */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		341BBCB6264360E700A5AE69 /* authentication */ = {
+			isa = PBXGroup;
+			children = (
+				341BBCAE2643608500A5AE69 /* Cognito.swift */,
+			);
+			path = authentication;
+			sourceTree = "<group>";
+		};
+		341BBCC32643615D00A5AE69 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				349BE15D2644CF1500C9D89A /* TypeAliases.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		349BE0E426445FCB00C9D89A /* api */ = {
+			isa = PBXGroup;
+			children = (
+				349BE1402644C6FE00C9D89A /* models */,
+				349BE13F2644C6F900C9D89A /* clients */,
+				349BE0E526445FEF00C9D89A /* Api.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		349BE13F2644C6F900C9D89A /* clients */ = {
+			isa = PBXGroup;
+			children = (
+				349BE13726447AE500C9D89A /* BusinessApi.swift */,
+				349BE14F2644CBF800C9D89A /* LinePlaceApi.swift */,
+			);
+			path = clients;
+			sourceTree = "<group>";
+		};
+		349BE1402644C6FE00C9D89A /* models */ = {
+			isa = PBXGroup;
+			children = (
+				349BE1412644C70D00C9D89A /* BusinessModel.swift */,
+				349BE1492644C93500C9D89A /* LinePlaceModel.swift */,
+				349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		554F71CD2641D4AC00E4F684 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +156,8 @@
 				554F71EA2641D4AD00E4F684 /* On lineTests */,
 				554F71F52641D4AD00E4F684 /* On lineUITests */,
 				554F71D72641D4AC00E4F684 /* Products */,
+				89917ABC60929C5316C8C76F /* Pods */,
+				ABFC88060C034D0BC948129A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,11 +174,14 @@
 		554F71D82641D4AC00E4F684 /* On line */ = {
 			isa = PBXGroup;
 			children = (
+				341BBCC32643615D00A5AE69 /* helpers */,
+				341BBCAD2643605F00A5AE69 /* services */,
 				554F71D92641D4AC00E4F684 /* On_lineApp.swift */,
 				554F71DB2641D4AC00E4F684 /* ContentView.swift */,
 				554F71DD2641D4AC00E4F684 /* Assets.xcassets */,
 				554F71E22641D4AC00E4F684 /* Info.plist */,
 				554F71DF2641D4AC00E4F684 /* Preview Content */,
+				341BBCA82643559600A5AE69 /* AppDelegate.swift */,
 			);
 			path = "On line";
 			sourceTree = "<group>";
@@ -130,6 +212,23 @@
 			path = "On lineUITests";
 			sourceTree = "<group>";
 		};
+		89917ABC60929C5316C8C76F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA31AEAB87888F49125A496C /* Pods-On line.debug.xcconfig */,
+				8E0D8F23CE3FC40F86C1890C /* Pods-On line.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		ABFC88060C034D0BC948129A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,15 +236,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 554F71FB2641D4AD00E4F684 /* Build configuration list for PBXNativeTarget "On line" */;
 			buildPhases = (
+				1F44919DBF1D0D78751AEB2E /* [CP] Check Pods Manifest.lock */,
 				554F71D22641D4AC00E4F684 /* Sources */,
 				554F71D32641D4AC00E4F684 /* Frameworks */,
 				554F71D42641D4AC00E4F684 /* Resources */,
+				6B311278A8A2A7F96A988838 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "On line";
+			packageProductDependencies = (
+			);
 			productName = "On line";
 			productReference = 554F71D62641D4AC00E4F684 /* On line.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +320,8 @@
 				Base,
 			);
 			mainGroup = 554F71CD2641D4AC00E4F684;
+			packageReferences = (
+			);
 			productRefGroup = 554F71D72641D4AC00E4F684 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,13 +359,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F44919DBF1D0D78751AEB2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-On line-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B311278A8A2A7F96A988838 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-On line/Pods-On line-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-On line/Pods-On line-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-On line/Pods-On line-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		554F71D22641D4AC00E4F684 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */,
+				341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */,
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
+				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
+				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
+				349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
+				341BBCAF2643608500A5AE69 /* Cognito.swift in Sources */,
+				349BE0E626445FEF00C9D89A /* Api.swift in Sources */,
+				349BE1582644CCE600C9D89A /* TimeEstimativeModel.swift in Sources */,
+				349BE14A2644C93500C9D89A /* LinePlaceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,12 +570,13 @@
 		};
 		554F71FC2641D4AD00E4F684 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA31AEAB87888F49125A496C /* Pods-On line.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"On line/Preview Content\"";
-				DEVELOPMENT_TEAM = 4G77XBGN25;
+				DEVELOPMENT_TEAM = R5QH5STGGP;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "On line/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -436,12 +593,13 @@
 		};
 		554F71FD2641D4AD00E4F684 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E0D8F23CE3FC40F86C1890C /* Pods-On line.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"On line/Preview Content\"";
-				DEVELOPMENT_TEAM = 4G77XBGN25;
+				DEVELOPMENT_TEAM = R5QH5STGGP;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "On line/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

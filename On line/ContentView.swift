@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import UIKit
+import Amplify
+import AmplifyPlugins
 
 struct ContentView: View {
+    
     var body: some View {
         Text("This is a cool line app!")
             .padding()
