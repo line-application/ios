@@ -58,8 +58,14 @@ struct Api {
         }
     }
     
-    func patch<RequestPayload: Codable, ResponsePayload: Codable>(url:String, data:RequestPayload, handler: @escaping (ResponsePayload?) -> Void) {
-        let request: RESTRequest = RESTRequest(path: url, body: try? encoder.encode(data) )
+    func patch<RequestPayload: Codable, ResponsePayload: Codable>(url:String, data:RequestPayload, queryStrings:[String : String]? = nil,handler: @escaping (ResponsePayload?) -> Void) {
+        let request: RESTRequest = (queryStrings != nil)
+            ? RESTRequest(path: url, queryParameters: queryStrings, body: try? encoder.encode(data) )
+            : RESTRequest(path: url, body: try? encoder.encode(data) )
+        
+        print("request:")
+        print(data)
+        print("----")
         Amplify.API.patch(request: request) {result in
             switch result {
             case .success(let data):
