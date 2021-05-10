@@ -26,6 +26,8 @@
 		554F71EC2641D4AD00E4F684 /* On_lineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71EB2641D4AD00E4F684 /* On_lineTests.swift */; };
 		554F71F72641D4AD00E4F684 /* On_lineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71F62641D4AD00E4F684 /* On_lineUITests.swift */; };
 		BF2BEB0F8ED87226D38CA592 /* Pods_On_line.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */; };
+		F17E42192649BEDE00D5BBD1 /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17E42182649BEDE00D5BBD1 /* StepperView.swift */; };
+		F17E421B2649CF3500D5BBD1 /* SFCompactDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F17E421A2649CF3500D5BBD1 /* SFCompactDisplay-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		8E0D8F23CE3FC40F86C1890C /* Pods-On line.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.release.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.release.xcconfig"; sourceTree = "<group>"; };
 		CA31AEAB87888F49125A496C /* Pods-On line.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.debug.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.debug.xcconfig"; sourceTree = "<group>"; };
 		D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_line.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F17E42182649BEDE00D5BBD1 /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
+		F17E421A2649CF3500D5BBD1 /* SFCompactDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFCompactDisplay-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +262,8 @@
 		F85F6FEE2649B5E900EE68F0 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				F17E421A2649CF3500D5BBD1 /* SFCompactDisplay-Regular.otf */,
+				F17E42182649BEDE00D5BBD1 /* StepperView.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 			files = (
 				554F71E12641D4AC00E4F684 /* Preview Assets.xcassets in Resources */,
 				554F71DE2641D4AC00E4F684 /* Assets.xcassets in Resources */,
+				F17E421B2649CF3500D5BBD1 /* SFCompactDisplay-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +453,7 @@
 				340B7B8D2644E05700BCA158 /* Client.swift in Sources */,
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
+				F17E42192649BEDE00D5BBD1 /* StepperView.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
 				349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
