@@ -190,7 +190,6 @@
 		554F71D82641D4AC00E4F684 /* On line */ = {
 			isa = PBXGroup;
 			children = (
-				F85F6FEE2649B5E900EE68F0 /* common */,
 				F85F6FED2649B5D900EE68F0 /* views */,
 				340B7B892644E02700BCA158 /* models */,
 				341BBCC32643615D00A5AE69 /* helpers */,
@@ -251,6 +250,7 @@
 		F85F6FED2649B5D900EE68F0 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				F85F6FEE2649B5E900EE68F0 /* common */,
 			);
 			path = views;
 			sourceTree = "<group>";
