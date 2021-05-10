@@ -190,6 +190,8 @@
 		554F71D82641D4AC00E4F684 /* On line */ = {
 			isa = PBXGroup;
 			children = (
+				F85F6FEE2649B5E900EE68F0 /* common */,
+				F85F6FED2649B5D900EE68F0 /* views */,
 				340B7B892644E02700BCA158 /* models */,
 				341BBCC32643615D00A5AE69 /* helpers */,
 				341BBCAD2643605F00A5AE69 /* services */,
@@ -244,6 +246,20 @@
 				D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F85F6FED2649B5D900EE68F0 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		F85F6FEE2649B5E900EE68F0 /* common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
