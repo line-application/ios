@@ -16,27 +16,31 @@ struct LoginClientRegister: View {
     @State var passwordConfirmation: String = ""
     
     var body: some View {
-        VStack{
-            TextView(input: $name , label: "Nome", isSecure: false)
-            TextView(input: $phone , label: "Telefone", isSecure: false)
-            TextView(input: $email , label: "E-mail", isSecure: false)
-            TextView(input: $password , label: "Senha", isSecure: true)
-            TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
-            ButtonView(text: "CADASTRAR") {
-                self.mode.wrappedValue.dismiss()
+        //ZStack{
+//            NavigationBarView()
+            VStack{
+                TextView(input: $name , label: "Nome", isSecure: false)
+                TextView(input: $phone , label: "Telefone", isSecure: false)
+                TextView(input: $email , label: "E-mail", isSecure: false)
+                TextView(input: $password , label: "Senha", isSecure: true)
+                TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
+                ButtonView(text: "CADASTRAR") {
+                    self.mode.wrappedValue.dismiss()
+                }
             }
-            Spacer()
-                .padding() 
-                .navigationTitle(Text("CADASTRO"))
-                   .navigationBarTitleDisplayMode(.inline)
-                   .navigationBarBackButtonHidden(true)
-                               .navigationBarItems(leading: Button(action : {
-                                   self.mode.wrappedValue.dismiss()
-                               }){
-                                       Image(systemName: "chevron.backward")
-                                        .foregroundColor(Color("primary"))
-                               })
-        }
+            //.padding(.bottom, 170.0)
+                        Spacer()
+                            .padding()
+                            .navigationTitle(Text("CADASTRO"))
+                               .navigationBarTitleDisplayMode(.inline)
+                               .navigationBarBackButtonHidden(true)
+                                           .navigationBarItems(leading: Button(action : {
+                                               self.mode.wrappedValue.dismiss()
+                                           }){
+                                                   Image(systemName: "chevron.backward")
+                                                    .foregroundColor(Color("primary"))
+                                           })
+        //}
     }
 }
 
