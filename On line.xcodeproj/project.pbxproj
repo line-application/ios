@@ -19,14 +19,26 @@
 		349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE14F2644CBF800C9D89A /* LinePlaceApi.swift */; };
 		349BE1582644CCE600C9D89A /* TimeEstimativeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */; };
 		349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE15D2644CF1500C9D89A /* TypeAliases.swift */; };
-		34EA28382649E2410047E740 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28372649E2410047E740 /* ButtonView.swift */; };
+		34EA284E264A09CA0047E740 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA284D264A09CA0047E740 /* LoginView.swift */; };
+		34EA2859264A09FA0047E740 /* BusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA2858264A09FA0047E740 /* BusinessView.swift */; };
+		34EA285E264A0A020047E740 /* ClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA285D264A0A020047E740 /* ClientView.swift */; };
+		34EA288A264A0E920047E740 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA2889264A0E920047E740 /* ButtonView.swift */; };
+		34EA2890264A0EEC0047E740 /* ApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA288F264A0EEC0047E740 /* ApplicationView.swift */; };
+		34EA2895264A0FBD0047E740 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA2894264A0FBD0047E740 /* UserType.swift */; };
+		34EA289A264A11FF0047E740 /* BusinessProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA2899264A11FF0047E740 /* BusinessProfileTabView.swift */; };
+		34EA28A2264A12600047E740 /* BusinessDashboardTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28A1264A12600047E740 /* BusinessDashboardTab.swift */; };
+		34EA28A7264A129A0047E740 /* BusinessDashboardClientsInLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28A6264A129A0047E740 /* BusinessDashboardClientsInLine.swift */; };
+		34EA28AC264A13920047E740 /* ClientLineStatusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28AB264A13920047E740 /* ClientLineStatusTab.swift */; };
+		34EA28B1264A13C30047E740 /* ClientProfileTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28B0264A13C30047E740 /* ClientProfileTab.swift */; };
+		34EA28B6264A16400047E740 /* ClientBusinessListTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */; };
+		34EA28BB264A18150047E740 /* LoginClientRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BA264A18150047E740 /* LoginClientRegister.swift */; };
+		34EA28C0264A181E0047E740 /* LoginBusinessRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */; };
 		554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71D92641D4AC00E4F684 /* On_lineApp.swift */; };
 		554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71DB2641D4AC00E4F684 /* ContentView.swift */; };
 		554F71DE2641D4AC00E4F684 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71DD2641D4AC00E4F684 /* Assets.xcassets */; };
 		554F71E12641D4AC00E4F684 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71E02641D4AC00E4F684 /* Preview Assets.xcassets */; };
 		554F71EC2641D4AD00E4F684 /* On_lineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71EB2641D4AD00E4F684 /* On_lineTests.swift */; };
 		554F71F72641D4AD00E4F684 /* On_lineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71F62641D4AD00E4F684 /* On_lineUITests.swift */; };
-		55FC70EB2649BD3400B2A11C /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FC70EA2649BD3400B2A11C /* ButtonView.swift */; };
 		BF2BEB0F8ED87226D38CA592 /* Pods_On_line.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +72,20 @@
 		349BE14F2644CBF800C9D89A /* LinePlaceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePlaceApi.swift; sourceTree = "<group>"; };
 		349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEstimativeModel.swift; sourceTree = "<group>"; };
 		349BE15D2644CF1500C9D89A /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
-		34EA28372649E2410047E740 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		34EA284D264A09CA0047E740 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		34EA2858264A09FA0047E740 /* BusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessView.swift; sourceTree = "<group>"; };
+		34EA285D264A0A020047E740 /* ClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientView.swift; sourceTree = "<group>"; };
+		34EA2889264A0E920047E740 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		34EA288F264A0EEC0047E740 /* ApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationView.swift; sourceTree = "<group>"; };
+		34EA2894264A0FBD0047E740 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
+		34EA2899264A11FF0047E740 /* BusinessProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileTabView.swift; sourceTree = "<group>"; };
+		34EA28A1264A12600047E740 /* BusinessDashboardTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDashboardTab.swift; sourceTree = "<group>"; };
+		34EA28A6264A129A0047E740 /* BusinessDashboardClientsInLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDashboardClientsInLine.swift; sourceTree = "<group>"; };
+		34EA28AB264A13920047E740 /* ClientLineStatusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientLineStatusTab.swift; sourceTree = "<group>"; };
+		34EA28B0264A13C30047E740 /* ClientProfileTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileTab.swift; sourceTree = "<group>"; };
+		34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBusinessListTab.swift; sourceTree = "<group>"; };
+		34EA28BA264A18150047E740 /* LoginClientRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClientRegister.swift; sourceTree = "<group>"; };
+		34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBusinessRegister.swift; sourceTree = "<group>"; };
 		554F71D62641D4AC00E4F684 /* On line.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On line.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71D92641D4AC00E4F684 /* On_lineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineApp.swift; sourceTree = "<group>"; };
 		554F71DB2641D4AC00E4F684 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,7 +98,6 @@
 		554F71F22641D4AD00E4F684 /* On lineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On lineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71F62641D4AD00E4F684 /* On_lineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineUITests.swift; sourceTree = "<group>"; };
 		554F71F82641D4AD00E4F684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55FC70EA2649BD3400B2A11C /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		8E0D8F23CE3FC40F86C1890C /* Pods-On line.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.release.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.release.xcconfig"; sourceTree = "<group>"; };
 		CA31AEAB87888F49125A496C /* Pods-On line.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.debug.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.debug.xcconfig"; sourceTree = "<group>"; };
 		D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_line.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +135,7 @@
 				340B7B8B2644E05700BCA158 /* Business.swift */,
 				340B7B8A2644E05700BCA158 /* Client.swift */,
 				340B7B8C2644E05700BCA158 /* LinePlace.swift */,
+				34EA2894264A0FBD0047E740 /* UserType.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -169,27 +194,136 @@
 			path = models;
 			sourceTree = "<group>";
 		};
-		34EA28312649E1EE0047E740 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				55FC70EA2649BD3400B2A11C /* ButtonView.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		34EA28352649E2300047E740 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		34EA28362649E2410047E740 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				34EA28372649E2410047E740 /* ButtonView.swift */,
+				34EA2862264A0A0C0047E740 /* common */,
+				34EA283E2649F5110047E740 /* client */,
+				34EA283D2649F50B0047E740 /* business */,
+				34EA283C2649F5010047E740 /* login */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		34EA283C2649F5010047E740 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				34EA286D264A0B8E0047E740 /* login_client_register */,
+				34EA286C264A0B760047E740 /* login_business_register */,
+				34EA284D264A09CA0047E740 /* LoginView.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		34EA283D2649F50B0047E740 /* business */ = {
+			isa = PBXGroup;
+			children = (
+				34EA2868264A0A4C0047E740 /* business_profile_tab */,
+				34EA2867264A0A3F0047E740 /* business_dashboard_tab */,
+				34EA2866264A0A2A0047E740 /* business_clients_in_line_tab */,
+				34EA2858264A09FA0047E740 /* BusinessView.swift */,
+			);
+			path = business;
+			sourceTree = "<group>";
+		};
+		34EA283E2649F5110047E740 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				34EA286B264A0B3B0047E740 /* client_business_list_tab */,
+				34EA286A264A0AEA0047E740 /* client_profile_tab */,
+				34EA2869264A0A9A0047E740 /* client_line_status_tab */,
+				34EA285D264A0A020047E740 /* ClientView.swift */,
+			);
+			path = client;
+			sourceTree = "<group>";
+		};
+		34EA2862264A0A0C0047E740 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				34EA288E264A0EDC0047E740 /* application_view */,
+				34EA2888264A0E920047E740 /* button_view */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		34EA2866264A0A2A0047E740 /* business_clients_in_line_tab */ = {
+			isa = PBXGroup;
+			children = (
+				34EA28A6264A129A0047E740 /* BusinessDashboardClientsInLine.swift */,
+			);
+			path = business_clients_in_line_tab;
+			sourceTree = "<group>";
+		};
+		34EA2867264A0A3F0047E740 /* business_dashboard_tab */ = {
+			isa = PBXGroup;
+			children = (
+				34EA28A1264A12600047E740 /* BusinessDashboardTab.swift */,
+			);
+			path = business_dashboard_tab;
+			sourceTree = "<group>";
+		};
+		34EA2868264A0A4C0047E740 /* business_profile_tab */ = {
+			isa = PBXGroup;
+			children = (
+				34EA2899264A11FF0047E740 /* BusinessProfileTabView.swift */,
+			);
+			path = business_profile_tab;
+			sourceTree = "<group>";
+		};
+		34EA2869264A0A9A0047E740 /* client_line_status_tab */ = {
+			isa = PBXGroup;
+			children = (
+				34EA28AB264A13920047E740 /* ClientLineStatusTab.swift */,
+			);
+			path = client_line_status_tab;
+			sourceTree = "<group>";
+		};
+		34EA286A264A0AEA0047E740 /* client_profile_tab */ = {
+			isa = PBXGroup;
+			children = (
+				34EA28B0264A13C30047E740 /* ClientProfileTab.swift */,
+			);
+			path = client_profile_tab;
+			sourceTree = "<group>";
+		};
+		34EA286B264A0B3B0047E740 /* client_business_list_tab */ = {
+			isa = PBXGroup;
+			children = (
+				34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */,
+			);
+			path = client_business_list_tab;
+			sourceTree = "<group>";
+		};
+		34EA286C264A0B760047E740 /* login_business_register */ = {
+			isa = PBXGroup;
+			children = (
+				34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */,
+			);
+			path = login_business_register;
+			sourceTree = "<group>";
+		};
+		34EA286D264A0B8E0047E740 /* login_client_register */ = {
+			isa = PBXGroup;
+			children = (
+				34EA28BA264A18150047E740 /* LoginClientRegister.swift */,
+			);
+			path = login_client_register;
+			sourceTree = "<group>";
+		};
+		34EA2888264A0E920047E740 /* button_view */ = {
+			isa = PBXGroup;
+			children = (
+				34EA2889264A0E920047E740 /* ButtonView.swift */,
+			);
+			path = button_view;
+			sourceTree = "<group>";
+		};
+		34EA288E264A0EDC0047E740 /* application_view */ = {
+			isa = PBXGroup;
+			children = (
+				34EA288F264A0EEC0047E740 /* ApplicationView.swift */,
+			);
+			path = application_view;
 			sourceTree = "<group>";
 		};
 		554F71CD2641D4AC00E4F684 = {
@@ -201,7 +335,6 @@
 				554F71D72641D4AC00E4F684 /* Products */,
 				89917ABC60929C5316C8C76F /* Pods */,
 				ABFC88060C034D0BC948129A /* Frameworks */,
-				34EA28312649E1EE0047E740 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				34EA28362649E2410047E740 /* views */,
-				34EA28352649E2300047E740 /* New Group */,
 				340B7B892644E02700BCA158 /* models */,
 				341BBCC32643615D00A5AE69 /* helpers */,
 				341BBCAD2643605F00A5AE69 /* services */,
@@ -455,19 +587,31 @@
 			files = (
 				340B7B8E2644E05700BCA158 /* Business.swift in Sources */,
 				340B7B8F2644E05700BCA158 /* LinePlace.swift in Sources */,
-				34EA28382649E2410047E740 /* ButtonView.swift in Sources */,
-				55FC70EB2649BD3400B2A11C /* ButtonView.swift in Sources */,
 				349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */,
 				341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */,
 				340B7B8D2644E05700BCA158 /* Client.swift in Sources */,
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
+				34EA2895264A0FBD0047E740 /* UserType.swift in Sources */,
+				34EA28BB264A18150047E740 /* LoginClientRegister.swift in Sources */,
+				34EA28C0264A181E0047E740 /* LoginBusinessRegister.swift in Sources */,
+				34EA289A264A11FF0047E740 /* BusinessProfileTabView.swift in Sources */,
+				34EA28A7264A129A0047E740 /* BusinessDashboardClientsInLine.swift in Sources */,
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
+				34EA288A264A0E920047E740 /* ButtonView.swift in Sources */,
 				349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */,
+				34EA28A2264A12600047E740 /* BusinessDashboardTab.swift in Sources */,
+				34EA2890264A0EEC0047E740 /* ApplicationView.swift in Sources */,
+				34EA284E264A09CA0047E740 /* LoginView.swift in Sources */,
+				34EA28B1264A13C30047E740 /* ClientProfileTab.swift in Sources */,
+				34EA2859264A09FA0047E740 /* BusinessView.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
 				341BBCAF2643608500A5AE69 /* Cognito.swift in Sources */,
+				34EA285E264A0A020047E740 /* ClientView.swift in Sources */,
 				349BE0E626445FEF00C9D89A /* Api.swift in Sources */,
 				349BE1582644CCE600C9D89A /* TimeEstimativeModel.swift in Sources */,
+				34EA28AC264A13920047E740 /* ClientLineStatusTab.swift in Sources */,
+				34EA28B6264A16400047E740 /* ClientBusinessListTab.swift in Sources */,
 				349BE14A2644C93500C9D89A /* LinePlaceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
