@@ -15,10 +15,9 @@ struct TextViewWrapper: View {
     
     var body: some View {
         VStack{
-            textview(input: $email, label: "Email", isSecure: false)
-            textview(input: $senha, label: "Senha", isSecure: true)
+            TextView(input: $email, label: "Email", isSecure: false)
+            TextView(input: $senha, label: "Senha", isSecure: true)
         }
-        
     }
 }
 
