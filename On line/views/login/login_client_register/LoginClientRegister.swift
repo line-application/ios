@@ -8,8 +8,35 @@
 import SwiftUI
 
 struct LoginClientRegister: View {
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var name: String = ""
+    @State var phone: String = ""
+    @State var email: String = ""
+    @State var password: String = ""
+    @State var passwordConfirmation: String = ""
+    
     var body: some View {
-        Text("Login Client Register")
+        VStack{
+            TextView(input: $name , label: "Nome", isSecure: false)
+            TextView(input: $phone , label: "Telefone", isSecure: false)
+            TextView(input: $email , label: "E-mail", isSecure: false)
+            TextView(input: $password , label: "Senha", isSecure: true)
+            TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
+            ButtonView(text: "CADASTRAR") {
+                self.mode.wrappedValue.dismiss()
+            }
+            Spacer()
+                .padding() 
+                .navigationTitle(Text("CADASTRO"))
+                   .navigationBarTitleDisplayMode(.inline)
+                   .navigationBarBackButtonHidden(true)
+                               .navigationBarItems(leading: Button(action : {
+                                   self.mode.wrappedValue.dismiss()
+                               }){
+                                       Image(systemName: "chevron.backward")
+                                        .foregroundColor(Color("primary"))
+                               })
+        }
     }
 }
 

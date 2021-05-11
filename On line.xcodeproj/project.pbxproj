@@ -42,6 +42,7 @@
 		554F71E12641D4AC00E4F684 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71E02641D4AC00E4F684 /* Preview Assets.xcassets */; };
 		554F71EC2641D4AD00E4F684 /* On_lineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71EB2641D4AD00E4F684 /* On_lineTests.swift */; };
 		554F71F72641D4AD00E4F684 /* On_lineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71F62641D4AD00E4F684 /* On_lineUITests.swift */; };
+		55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835DC264B0665002C4EF7 /* ColoredTextView.swift */; };
 		BF2BEB0F8ED87226D38CA592 /* Pods_On_line.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		554F71F22641D4AD00E4F684 /* On lineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On lineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71F62641D4AD00E4F684 /* On_lineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineUITests.swift; sourceTree = "<group>"; };
 		554F71F82641D4AD00E4F684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55D835DC264B0665002C4EF7 /* ColoredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredTextView.swift; sourceTree = "<group>"; };
 		8E0D8F23CE3FC40F86C1890C /* Pods-On line.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.release.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.release.xcconfig"; sourceTree = "<group>"; };
 		CA31AEAB87888F49125A496C /* Pods-On line.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.debug.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.debug.xcconfig"; sourceTree = "<group>"; };
 		D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_line.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +265,7 @@
 		34EA2862264A0A0C0047E740 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				55D835DB264B0615002C4EF7 /* colored_text_view */,
 				34E02AFD264AF6200096BBDE /* input_view */,
 				34E02AF1264AF23A0096BBDE /* stepper_view */,
 				34EA288E264A0EDC0047E740 /* application_view */,
@@ -414,6 +417,14 @@
 				554F71F82641D4AD00E4F684 /* Info.plist */,
 			);
 			path = "On lineUITests";
+			sourceTree = "<group>";
+		};
+		55D835DB264B0615002C4EF7 /* colored_text_view */ = {
+			isa = PBXGroup;
+			children = (
+				55D835DC264B0665002C4EF7 /* ColoredTextView.swift */,
+			);
+			path = colored_text_view;
 			sourceTree = "<group>";
 		};
 		89917ABC60929C5316C8C76F /* Pods */ = {
@@ -634,6 +645,7 @@
 				34EA28B1264A13C30047E740 /* ClientProfileTab.swift in Sources */,
 				34EA2859264A09FA0047E740 /* BusinessView.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
+				55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */,
 				341BBCAF2643608500A5AE69 /* Cognito.swift in Sources */,
 				34EA285E264A0A020047E740 /* ClientView.swift in Sources */,
 				349BE0E626445FEF00C9D89A /* Api.swift in Sources */,
