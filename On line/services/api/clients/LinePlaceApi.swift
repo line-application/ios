@@ -22,19 +22,20 @@ struct LinePlaceApi {
     //client, business
     func remove(type: LinePlaceRemoveType, email: String, handler: @escaping (LinePlaceModel?) -> Void) {
         //clientEmail and businessEmail should be sent trought the header auth token.
-        var url: String {
+        var queryStrings: [String : String]? {
             switch type {
             case .AsBusiness :
-                return "/line-place/business?action=remove"
+                return ["action":"remove","entity":"business"]
             case .AsClient :
-                return "/line-place/client"
+                return ["action":"remove","entity":"client"]
             }
         }
+        
         
         struct RemoveLinePlaceRequest: Codable {
             let email: Email
         }
-        api.patch(url: url, data: RemoveLinePlaceRequest(email: email), handler: handler)
+        api.patch(url: "/line-place", data: RemoveLinePlaceRequest(email: email), queryStrings: queryStrings, handler: handler)
     }
     
     //business
@@ -42,6 +43,6 @@ struct LinePlaceApi {
         struct ConfirmLinePlaceRequest: Codable {
             let clientEmail: Email
         }
-        api.patch(url: "/line-place/business?action=confirm", data: ConfirmLinePlaceRequest(clientEmail: clientEmail), handler: handler)
+        api.patch(url: "/line-place", data: ConfirmLinePlaceRequest(clientEmail: clientEmail), queryStrings:  ["action":"confirm","entity":"business"], handler: handler)
     }
 }
