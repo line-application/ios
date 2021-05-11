@@ -16,7 +16,7 @@ extension View {
     }
 }
 
-struct textview: View {
+struct TextView: View {
     @Binding var input: String
     var label: String
     var isSecure: Bool = false
@@ -26,8 +26,8 @@ struct textview: View {
         VStack(alignment: .leading) {
             
             Text(label)
-                .foregroundColor(Color("Primary"))
-                .frame(width: 225, height: 29, alignment: .leading)
+                .foregroundColor(Color("primary"))
+                .frame(width: 245, height: 29, alignment: .leading)
                 .padding(.horizontal, 5)
                 .padding(.bottom, -5)
                 .padding(.top, -10)

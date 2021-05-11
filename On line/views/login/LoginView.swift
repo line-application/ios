@@ -17,7 +17,7 @@ struct LoginView: View {
                         Text("Login Client Register")
                     })
                 NavigationLink(
-                    destination: LoginBusinessRegister(),
+                    destination: LoginBusinessRegister(businessEmail: "", businessPassword: "", businessName: "", businessNumber: "", businessAddress: "", businessDescription: ""),
                     label: {
                         Text("Login Business Register")
                     })

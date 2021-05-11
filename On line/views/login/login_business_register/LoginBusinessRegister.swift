@@ -8,13 +8,76 @@
 import SwiftUI
 
 struct LoginBusinessRegister: View {
+    @State var businessEmail : String
+    @State var businessPassword : String
+    @State var businessName : String
+    @State var businessNumber : String
+    @State var businessAddress : String
+    @State var businessDescription : String
+    @State var peoplePerTable = 1
+    
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    
+    
     var body: some View {
-        Text("Login Business Register")
+        ScrollView {
+            VStack {
+                TextView(input: $businessEmail, label: "Email", isSecure: false)
+                TextView(input: $businessPassword, label: "Senha", isSecure: true)
+                TextView(input: $businessName, label: "Nome do estabelecimento", isSecure: false)
+                TextView(input: $businessNumber, label: "Telefone", isSecure: false)
+                TextView(input: $businessAddress, label: "Endereço", isSecure: false)
+                Text("Capacidade máx. de pessoas por mesa")
+                    .foregroundColor(Color("primary"))
+                    .multilineTextAlignment(.center)
+                    .frame(width: 300, height: 29, alignment: .leading)
+                    .padding(.horizontal, 5)
+                    .padding(.bottom, -1)
+                    .padding(.top, 10)
+                    .padding(.leading, -15)
+                StepperView(peoplePerTable: $peoplePerTable)
+                Text("Descrição do estabelecimento")
+                    .foregroundColor(Color("primary"))
+                    .frame(width: 245, height: 29, alignment: .leading)
+                    .padding(.horizontal, 5)
+                    .padding(.bottom, 1)
+                    .padding(.top, 10)
+                    .padding(.leading, -75)
+                ZStack {
+                    TextEditor(text: $businessDescription)
+                        .frame(maxWidth: 320, maxHeight: .infinity)
+                        .border(Color("primary"))
+                    Text(businessDescription).opacity(0).padding(.all, 8)
+                }
+                .padding(.bottom)
+                NavigationLink(
+                    destination: BusinessView(),
+                    label: {
+                        ButtonView(text: "CADASTRAR", action: {})
+                            .padding(.leading, 15.0)
+                    })
+            }
+            .padding()
+            Spacer()
+                .padding()
+                .navigationTitle(Text("Cadastro"))
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: Button(action : {
+                    self.mode.wrappedValue.dismiss()
+                }){
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(Color("primary"))
+                })
+        }
+        
     }
+    
 }
 
 struct LoginBusinessRegister_Previews: PreviewProvider {
     static var previews: some View {
-        LoginBusinessRegister()
+        LoginBusinessRegister(businessEmail: "business@business.com", businessPassword: "business", businessName: "FryFood", businessNumber: "5133764356", businessAddress: "Avenida João Wallig 857 - Bairro x - Porto Alegre/RS", businessDescription: "Esta é a descrição do meu estabelecimento!")
     }
 }
