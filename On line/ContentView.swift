@@ -11,7 +11,7 @@ import Amplify
 import AmplifyPlugins
 
 struct ContentView: View {
-    var isAuthenticated:Bool = false
+    var isAuthenticated:Bool = true
     var body: some View {
         if isAuthenticated {
             ApplicationView()

@@ -8,11 +8,12 @@
 import Foundation
 
 struct BusinessModel: Codable {
-    let email: Email?
-    let name: String?
-    let description: String?
-    let phone: String?
-    let waitTime: Double?
-    let address: String?
-    let maxTableCapacity: String?
+    let email: Email
+    let name: String
+    let description: String
+    let phone: String
+    let waitTime: Double
+    let address: String
+    let maxTableCapacity: Int
+    let image: String
 }
