@@ -10,26 +10,57 @@ import SwiftUI
 struct ClientBusinessListTab: View {
     @State var list:[BusinessModel] = []
     
-    init(){
-        self.fetchBusiness()
-    }
-    
     func fetchHandler(_ businessesResponse: [BusinessModel]?) {
+        //print(businessesResponse)
         if let businesses = businessesResponse {
             list = businesses
+            print(businesses)
         }
     }
     
     func fetchBusiness(){
         let businessApi = BusinessApi()
-        businessApi.list{businesses in print(businesses)}
+        businessApi.list{businesses in fetchHandler(businesses)}
     }
     
     var body: some View {
-        VStack {
-            Text("Client Business List Tab")
-        }
-        
+        //NavigationView {
+            VStack {
+                Image("Logo")
+                Divider()
+                VStack {
+                    ScrollView {
+                        HStack {
+                            Text("Olá ...")
+                                .foregroundColor(Color("primary"))
+                                .font(.system(size: CGFloat(29)))
+                            Spacer()
+                        }
+                        .padding(.leading)
+                        HStack {
+                            Text("Onde você quer comer hoje?")
+                                .foregroundColor(Color("primary"))
+                            Spacer()
+                        }
+                        .padding(.leading)
+                        Text("")
+                        HStack {
+                            Text("Restaurantes com fila")
+                                .foregroundColor(Color("primary"))
+                                .font(.system(size: CGFloat(25)))
+                                .bold()
+                            Spacer()
+                        }
+                        .padding(.leading)
+                        ForEach(list) { business in
+                            ClientCardView(bussinesModel: business)
+                        }
+                    }.padding(.bottom,83)
+                }
+            }
+            .onAppear(){
+                fetchBusiness()
+            }
     }
 }
 

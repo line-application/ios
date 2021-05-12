@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct BusinessModel: Codable {
+
+struct BusinessModel: Codable, Identifiable {
+    var id: String
     let email: Email
     let name: String
     let description: String
@@ -17,3 +19,4 @@ struct BusinessModel: Codable {
     let maxTableCapacity: Int
     let image: String
 }
+
