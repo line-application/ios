@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct LoginBusinessRegister: View {
-    @State var businessEmail : String
-    @State var businessPassword : String
-    @State var businessName : String
-    @State var businessNumber : String
-    @State var businessAddress : String
-    @State var businessDescription : String
+    @State var businessEmail : String = ""
+    @State var businessPassword : String = ""
+    @State var businessName : String = ""
+    @State var businessNumber : String = ""
+    @State var businessAddress : String = ""
+    @State var businessDescription : String = ""
     @State var peoplePerTable = 1
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
-    
+
     
     var body: some View {
         ScrollView {
