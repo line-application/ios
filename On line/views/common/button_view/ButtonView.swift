@@ -18,6 +18,7 @@ struct ButtonView: View {
                     .foregroundColor(Color("primary"))
                 Text(text)
                     .foregroundColor(Color.white)
+                    .bold()
             }
         })
         

@@ -15,21 +15,22 @@ struct LoginView: View {
     @State var senha: String = ""
     
     var body: some View {
-        //NavigationView{
+        NavigationView{
             VStack{
                 VStack {
                     ZStack {
                         ZStack{
                             HStack{
                                 Text("Cliente")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(currentTab == "Cliente" ? .white : Color("primary"))
                                     .padding(.vertical, 12)
-                                    .padding(.horizontal, 25)
+                                    .padding(.leading, 40)
+                                    .padding(.trailing, 40)
                                     .background(
                                         ZStack{
                                             if currentTab == "Cliente"{
                                                 Color("primary")
-                                                    .cornerRadius(18)
+                                                    .cornerRadius(30)
                                                     .matchedGeometryEffect(id: "TAB", in: animation)
                                             }
                                         }
@@ -40,15 +41,17 @@ struct LoginView: View {
                                             currentTab = "Cliente"
                                         }
                                     }
+                                
                                 Text("Estabelecimento")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(currentTab == "Estabelecimento" ? .white : Color("primary"))
                                     .padding(.vertical, 12)
-                                    .padding(.horizontal, 25)
+                                    .padding(.leading, 20)
+                                    .padding(.trailing, 14)
                                     .background(
                                         ZStack{
                                             if currentTab == "Estabelecimento"{
                                                 Color("primary")
-                                                    .cornerRadius(18)
+                                                    .cornerRadius(35)
                                                     .matchedGeometryEffect(id: "TAB", in: animation)
                                             }
                                         }
@@ -60,15 +63,13 @@ struct LoginView: View {
                                         }
                                     }
                             }
-                            .padding(.vertical, 1)
-                            .padding(.horizontal, 2)
                             .background(Color.white)
-                            .cornerRadius(18)
+                            .cornerRadius(30)
                         }
                         .padding(.vertical, 3)
                         .padding(.horizontal, 3)
                         .background(Color("primary"))
-                        .cornerRadius(18)
+                        .cornerRadius(30)
                     }
 
                     
@@ -95,11 +96,21 @@ struct LoginView: View {
                     HStack{
                         Text("Ainda não tem cadastro?")
                             .font(.system(size: 14))
-                        Text("Cadastre-se")
-                            .font(.system(size: 14))
-                            .foregroundColor(.blue)
-                            .onTapGesture {
-                            }
+                        if currentTab == "Estabelecimento" {
+                            NavigationLink(destination: LoginBusinessRegister(),
+                                           label: {
+                                            Text("Cadastre-se")
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.blue)})
+                        }
+                        
+                        else {
+                            NavigationLink(destination: LoginClientRegister(),
+                                           label: {
+                                            Text("Cadastre-se")
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.blue)})
+                        }
                     }
                     .padding(3)
                     Button("Sign in with Apple"){
@@ -129,23 +140,13 @@ struct LoginView: View {
                 }
 
             }
-//                NavigationLink(
-//                    destination: LoginClientRegister(),
-//                    label: {
-//                        Text("Login Client Register")
-//                    })
-//                NavigationLink(
-//                    destination: LoginBusinessRegister(),
-//                    label: {
-//                        Text("Login Business Register")
-//                    })
-//
-
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
             }
-            
+        
         }
         
-//   }
+   }
 
 struct LoginVIew_Previews: PreviewProvider {
     static var previews: some View {
