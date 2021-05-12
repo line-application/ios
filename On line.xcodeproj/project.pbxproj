@@ -36,6 +36,7 @@
 		34EA28B6264A16400047E740 /* ClientBusinessListTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */; };
 		34EA28BB264A18150047E740 /* LoginClientRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BA264A18150047E740 /* LoginClientRegister.swift */; };
 		34EA28C0264A181E0047E740 /* LoginBusinessRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */; };
+		55409262264C4850004E6D9B /* ClientCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55409261264C4850004E6D9B /* ClientCardView.swift */; };
 		554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71D92641D4AC00E4F684 /* On_lineApp.swift */; };
 		554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71DB2641D4AC00E4F684 /* ContentView.swift */; };
 		554F71DE2641D4AC00E4F684 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71DD2641D4AC00E4F684 /* Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBusinessListTab.swift; sourceTree = "<group>"; };
 		34EA28BA264A18150047E740 /* LoginClientRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClientRegister.swift; sourceTree = "<group>"; };
 		34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBusinessRegister.swift; sourceTree = "<group>"; };
+		55409261264C4850004E6D9B /* ClientCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCardView.swift; sourceTree = "<group>"; };
 		554F71D62641D4AC00E4F684 /* On line.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On line.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71D92641D4AC00E4F684 /* On_lineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineApp.swift; sourceTree = "<group>"; };
 		554F71DB2641D4AC00E4F684 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */,
+				55409261264C4850004E6D9B /* ClientCardView.swift */,
 			);
 			path = client_business_list_tab;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				34E02AF3264AF23A0096BBDE /* StepperView.swift in Sources */,
 				34E02B01264AF6200096BBDE /* TextViewWrapper.swift in Sources */,
 				341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */,
+				55409262264C4850004E6D9B /* ClientCardView.swift in Sources */,
 				340B7B8D2644E05700BCA158 /* Client.swift in Sources */,
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
 				34EA2895264A0FBD0047E740 /* UserType.swift in Sources */,
