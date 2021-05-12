@@ -22,9 +22,10 @@ struct LoginView: View {
                         ZStack{
                             HStack{
                                 Text("Cliente")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(currentTab == "Cliente" ? .white : Color("primary"))
                                     .padding(.vertical, 12)
-                                    .padding(.horizontal, 25)
+                                    .padding(.leading, 40)
+                                    .padding(.trailing, 40)
                                     .background(
                                         ZStack{
                                             if currentTab == "Cliente"{
@@ -40,10 +41,12 @@ struct LoginView: View {
                                             currentTab = "Cliente"
                                         }
                                     }
+                                
                                 Text("Estabelecimento")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(currentTab == "Estabelecimento" ? .white : Color("primary"))
                                     .padding(.vertical, 12)
-                                    .padding(.horizontal, 25)
+                                    .padding(.leading, 20)
+                                    .padding(.trailing, 14)
                                     .background(
                                         ZStack{
                                             if currentTab == "Estabelecimento"{
