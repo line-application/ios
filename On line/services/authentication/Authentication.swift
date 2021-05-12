@@ -1,4 +1,4 @@
-//
+
 //  Authentication.swift
 //  On line
 //
@@ -8,41 +8,62 @@
 import Foundation
 import Amplify
 import AmplifyPlugins
-import Combine
-
 
 struct Authentication {
-    
-    func fetchCurrentAuthSession() -> AnyCancellable {
-        Amplify.Auth.fetchAuthSession().resultPublisher
-            .sink {
-                if case let .failure(authError) = $0 {
-                    print("Fetch session failed with error \(authError)")
-                }
+    static func signIn(username: String, password: String) {
+        
+        Amplify.Auth.signIn(username: username, password: password) { result in
+            switch result {
+            case .success(let data):
+                print("Sign in succeeded \(data)")
+            case .failure(let error):
+                print("Sign in failed \(error)")
             }
-            receiveValue: { session in
-                print("Is user signed in - \(session.isSignedIn)")
-            }
+        }
+        
     }
     
-    func signUp(username: String, password: String, email: String) -> AnyCancellable {
+    static func signUp(password: String, email: String) {
         let userAttributes = [AuthUserAttribute(.email, value: email)]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
-        let sink = Amplify.Auth.signUp(username: username, password: password, options: options)
-            .resultPublisher
-            .sink {
-                if case let .failure(authError) = $0 {
-                    print("An error occurred while registering a user \(authError)")
-                }
-            }
-            receiveValue: { signUpResult in
+        Amplify.Auth.signUp(username: email, password: password, options: options) { result in
+            switch result {
+            case .success(let signUpResult):
                 if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
                     print("Delivery details \(String(describing: deliveryDetails))")
                 } else {
                     print("SignUp Complete")
                 }
-
+            case .failure(let error):
+                print("An error occurred while registering a user \(error)")
             }
-        return sink
+        }
+    }
+    
+    func signOutLocally() {
+        Amplify.Auth.signOut() { result in
+            switch result {
+            case .success:
+                print("Successfully signed out")
+            case .failure(let error):
+                print("Sign out failed with error \(error)")
+            }
+        }
+    }
+    
+    static func fetchAttributes() {
+        /**
+         TODO
+         - format incoming data.
+         - return data.
+         */
+        Amplify.Auth.fetchUserAttributes() { result in
+            switch result {
+            case .success(let attributes):
+                print("User attributes - \(attributes)")
+            case .failure(let error):
+                print("Fetching user attributes failed with error \(error)")
+            }
+        }
     }
 }
