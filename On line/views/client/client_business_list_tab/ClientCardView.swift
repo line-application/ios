@@ -55,7 +55,7 @@ struct ClientCardView: View {
 
 struct ClientCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ClientCardView(bussinesModel: BusinessModel(email: "abc@gmail.com", name: "Teste", description: "teste", phone: "123456789", waitTime: 30.0, address: "teste", maxTableCapacity: 5, image: "Restaurante Azul"))
+        ClientCardView(bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "teste", phone: "123456789", waitTime: 30.0, address: "teste", maxTableCapacity: 5, image: "Restaurante Azul"))
         //ClientCardView()
     }
 }
