@@ -18,7 +18,6 @@ struct TextViewWrapper: View {
             TextView(input: $email, label: "Email", isSecure: false)
             TextView(input: $senha, label: "Senha", isSecure: true)
         }
-        
     }
 }
 
