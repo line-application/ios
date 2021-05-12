@@ -5,11 +5,11 @@ struct BusinessStatus: Codable {
     let isOpen: Bool
 }
 
-struct BusinessApi<T> {
+struct BusinessApi {
     let api = Api()
     
     //client
-    func list(handler: @escaping (BusinessModel?) -> Void) {
+    func list(handler: @escaping ([BusinessModel]?) -> Void) {
         api.get(url: "/business") {
             business in handler(business)
         }

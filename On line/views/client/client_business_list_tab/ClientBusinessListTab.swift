@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct ClientBusinessListTab: View {
+    @State var list:[BusinessModel] = []
+    
+    init(){
+        self.fetchBusiness()
+    }
+    
+    func fetchHandler(_ businessesResponse: [BusinessModel]?) {
+        if let businesses = businessesResponse {
+            list = businesses
+        }
+    }
+    
+    func fetchBusiness(){
+        let businessApi = BusinessApi()
+        businessApi.list{businesses in print(businesses)}
+    }
+    
     var body: some View {
-        Text("Client Business List Tab")
+        VStack {
+            Text("Client Business List Tab")
+        }
+        
     }
 }
 
