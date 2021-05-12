@@ -25,9 +25,15 @@ struct ClientBusinessListTab: View {
         businessApi.list{businesses in print(businesses)}
     }
     
-    var body: some View {
-        VStack {
-            Text("Client Business List Tab")
+    var body: some View {   
+        NavigationView {
+            VStack {
+                ScrollView {
+                    ForEach(list) { business in
+                        ClientCardView(bussinesModel: business)
+                    }
+                }.padding(.bottom,83)
+            }
         }
         
     }
