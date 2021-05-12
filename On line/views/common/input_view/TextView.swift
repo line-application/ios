@@ -27,7 +27,7 @@ struct TextView: View {
             
             Text(label)
                 .foregroundColor(Color("primary"))
-                .frame(width: 245, height: 29, alignment: .leading)
+                .frame(width: 225, height: 29, alignment: .leading)
                 .padding(.horizontal, 5)
                 .padding(.bottom, -5)
                 .padding(.top, -10)
