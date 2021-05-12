@@ -14,11 +14,11 @@ struct ClientCardView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(.white)
-                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
                 .frame(width: UIScreen.main.bounds.width*0.9, height: 107, alignment: .leading)
             HStack {
                 RoundedRectangle(cornerRadius: 20)
-                    .frame(width: 107, height: 107, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: 107, height: 107, alignment: .center)
                     .overlay(
                         Image(bussinesModel.image)
                             .resizable()
@@ -36,8 +36,14 @@ struct ClientCardView: View {
                     Spacer()
                     Text("Estimativa de espera")
                     Spacer()
-                    Text("\(Int(bussinesModel.waitTime)) min")
-                        .foregroundColor(Color("primary"))
+                    HStack {
+                        Image("clock")
+                            .resizable()
+                            .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                            .frame(width: 16, height: 17, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        Text("\(Int(bussinesModel.waitTime)) min")
+                            .foregroundColor(Color("primary"))
+                    }
                     Spacer()
                 }
                 .padding(.leading,5)
@@ -49,7 +55,7 @@ struct ClientCardView: View {
 
 struct ClientCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ClientCardView(bussinesModel: BusinessModel(email: "abc@gmail.com", name: "teste", description: "teste", phone: "123456789", waitTime: 30.0, address: "teste", maxTableCapacity: 5, image: "Restaurante Azul"))
+        ClientCardView(bussinesModel: BusinessModel(email: "abc@gmail.com", name: "Teste", description: "teste", phone: "123456789", waitTime: 30.0, address: "teste", maxTableCapacity: 5, image: "Restaurante Azul"))
         //ClientCardView()
     }
 }
