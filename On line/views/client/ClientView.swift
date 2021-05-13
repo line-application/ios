@@ -7,24 +7,45 @@
 
 import SwiftUI
 
+enum Tabs {
+    case home
+    case list
+    case profile
+}
+
 struct ClientView: View {
+    
+    @State var selectedTab:Tabs = .home
+    
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+        UITabBar.appearance().barTintColor = UIColor(named: "primary")
+    }
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
            
             ClientBusinessListTab()
                 .tabItem {
-                    Label("Restaurants", systemImage: "list.dash")
+                    Image(selectedTab == Tabs.home ? "Icone_Home_bold" : "RelogioBranco")
+                    Text(" Zaitty")
                 }
+                .tag(Tabs.home)
             ClientLineStatusTab()
                 .tabItem {
-                    Label("Status", systemImage: "list.dash")
+                    Image(selectedTab == Tabs.list ? "Icone_Lista_bold" : "ListaBranca")
+                    Text("Status da fila")
                 }
+                .tag(Tabs.list)
             ClientProfileTab()
                 .tabItem {
-                    Label("Profile", systemImage: "list.dash")
+                    Image(selectedTab == Tabs.profile ? "Icone_Perfil_bold" : "PerfilBranco")
+                    Text("Perfil")
                 }
+                .tag(Tabs.profile)
         }
-        
+        .accentColor(Color.white)
+
     }
 }
 
