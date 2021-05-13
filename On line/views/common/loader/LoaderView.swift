@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct LoaderView: View {
-    @Binding var isLoading:Bool
+    @EnvironmentObject var settings: SettingsState
     
     var body: some View {
-        if(isLoading) { ProgressView() }
+        if(settings.isLoading) {
+            VStack{
+                Spacer()
+                ProgressView()
+                Spacer()
+            }
+        }
     }
 }
 
@@ -19,7 +25,7 @@ struct Loader_Previews: PreviewProvider {
     struct LoaderWrapper: View {
         @State var isLoading:Bool = true
         var body: some View {
-            LoaderView(isLoading: $isLoading)
+            LoaderView()
         }
     }
     static var previews: some View {

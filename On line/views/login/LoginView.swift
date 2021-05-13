@@ -8,21 +8,31 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var isLoading = false
     @Namespace var animation
     @State var email: String = ""
     @State var password: String = ""
     @EnvironmentObject var settings: SettingsState
-
+    
     
     func handleSignIn() {
-        Authentication.signIn(username: email, password: password,handler: {success in print("logged: \(success)")})
+        settings.isLoading = true
+        Authentication.signIn(username: email, password: password,handler: {success in print("logged: \(success)")
+            DispatchQueue.main.async {
+                if(success) {
+                    settings.isAuthenticated = true
+                } else {
+                    //throw warning
+                }
+                settings.isLoading = false
+            }
+        })
+        
     }
     
     var body: some View {
         NavigationView{
-            VStack{
-                LoaderView(isLoading: $isLoading)
+            ZStack{
+                LoaderView()
                 VStack {
                     ZStack {
                         ZStack{
@@ -91,7 +101,8 @@ struct LoginView: View {
                     TextView(input: $password, label: "Senha", isSecure: true)
                         .padding(.bottom, 15)
                     
-                    ButtonView(text: "ENTRAR", action: {})
+                    
+                    ButtonView(text: "ENTRAR", action: handleSignIn)
                         .padding(.bottom, 22)
                     
                     Text("Esqueci a senha")
@@ -149,7 +160,7 @@ struct LoginView: View {
                                 .resizable()
                                 .frame(maxWidth: 25, maxHeight: 25)
                                 .padding(.trailing, 205.0)
-                                
+                            
                         }
                     })
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
@@ -162,19 +173,20 @@ struct LoginView: View {
                                 .background(Color.white)
                                 .padding(5)
                                 //.border(Color.black, width: 1)
-                               // .cornerRadius(18)
+                                // .cornerRadius(18)
                                 
                                 .overlay(
-                                                RoundedRectangle(cornerRadius: 18)
-                                                .stroke(Color.black, lineWidth: 1)
-                                        )
-                                
+                                    RoundedRectangle(cornerRadius: 18)
+                                        .stroke(Color.black, lineWidth: 1)
+                                )
+                            
                             Image("Google Logo")
+                                
                                 .padding(.trailing, 205.0)
                             //.frame(width: 10, height: 10)
                         }
-                       // .background(Color.black)
-                      //  .cornerRadius(50)
+                        // .background(Color.black)
+                        //  .cornerRadius(50)
                     })
                 }
                 

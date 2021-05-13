@@ -8,6 +8,7 @@
 import Foundation
 
 class SettingsState: ObservableObject {
-    @Published var isAuthenticated = false
-    @Published var userType:UserType = UserType.CLIENT
+    @Published var isAuthenticated: Bool = false
+    @Published var userType: UserType = UserType.CLIENT
+    @Published var isLoading: Bool = false
 }

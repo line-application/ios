@@ -14,32 +14,37 @@ struct LoginClientRegister: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var passwordConfirmation: String = ""
-    
+    func handleSingUp() {
+        Authentication.signUp(name: name,password: password, email: email, userType: .CLIENT)
+    }
     var body: some View {
+        
+        
         ScrollView {
             VStack{
                 TextView(input: $name , label: "Nome", isSecure: false)
                 TextView(input: $phone , label: "Telefone", isSecure: false)
                 TextView(input: $email , label: "E-mail", isSecure: false)
-                TextView(input: $password , label: "Senha", isSecure: true)
+                TextView(input: $password , label: "Senha", isSecure: false)
                 TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
                 ButtonView(text: "CADASTRAR") {
                     self.mode.wrappedValue.dismiss()
+                    handleSingUp()
                 }
             }
-                            .padding()
-                            .navigationTitle(Text("Cadastro"))
-                               .navigationBarTitleDisplayMode(.inline)
-                               .navigationBarBackButtonHidden(true)
+            .padding()
+            .navigationTitle(Text("Cadastro"))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
         }
         .navigationBarColor(UIColor(named: "primary"))
         .navigationBarItems(leading:
-        Button(action : {
-            self.mode.wrappedValue.dismiss()
-        }){
-            Image(systemName: "chevron.backward")
-                .foregroundColor(.white)
-        })
+                                Button(action : {
+                                    self.mode.wrappedValue.dismiss()
+                                }){
+                                    Image(systemName: "chevron.backward")
+                                        .foregroundColor(.white)
+                                })
     }
 }
 

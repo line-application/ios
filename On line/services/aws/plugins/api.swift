@@ -12,7 +12,7 @@ let apiConfiguration = APICategoryConfiguration(plugins: [
     "awsAPIPlugin":[
         "on-line-api":[
             "endpointType": "REST",
-            "endpoint": "https://5ytbmkvvdd.execute-api.us-east-1.amazonaws.com/DEVELOPMENT",
+            "endpoint": "https://mt3bpqe173.execute-api.us-east-1.amazonaws.com/DEVELOPMENT",
             "region": "us-east-1",
             "authorizationType": "API_KEY",
             "apiKey": "YOUR_API_KEY"

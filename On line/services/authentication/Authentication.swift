@@ -26,8 +26,14 @@ struct Authentication {
         
     }
     
-    static func signUp(password: String, email: String) {
-        let userAttributes = [AuthUserAttribute(.email, value: email)]
+    static func signUp(name: String, password: String, email: String, userType: UserType) {
+        print(userType.stringForm)
+        
+        let userAttributes = [
+            AuthUserAttribute(.name, value: name),
+            AuthUserAttribute(.email, value: email),
+            AuthUserAttribute(.custom("userType"), value: userType.stringForm)
+        ]
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
         Amplify.Auth.signUp(username: email, password: password, options: options) { result in
             switch result {
@@ -43,11 +49,24 @@ struct Authentication {
         }
     }
     
-    func signOutLocally() {
+    static func signOutLocally() {
         Amplify.Auth.signOut() { result in
             switch result {
             case .success:
                 print("Successfully signed out")
+                
+            case .failure(let error):
+                print("Sign out failed with error \(error)")
+            }
+        }
+    }
+    
+    static func signOutGlobally(handler:@escaping (Bool)->Void) {
+        Amplify.Auth.signOut(options: .init(globalSignOut: true)) { result in
+            switch result {
+            case .success:
+                print("Successfully signed out")
+                handler(true)
             case .failure(let error):
                 print("Sign out failed with error \(error)")
             }

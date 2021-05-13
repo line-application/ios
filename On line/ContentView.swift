@@ -11,9 +11,16 @@ import Amplify
 import AmplifyPlugins
 
 struct ContentView: View {
+    
     @StateObject var settings = SettingsState()
     var body: some View {
-        ApplicationView().environmentObject(settings)
+        ApplicationView().environmentObject(settings).onAppear(perform: {
+            if(Amplify.Auth.getCurrentUser() != nil) {
+                settings.isAuthenticated = true
+              
+            }
+            
+        })
     }
 }
 
