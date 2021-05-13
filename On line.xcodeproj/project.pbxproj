@@ -20,6 +20,7 @@
 		349BE1582644CCE600C9D89A /* TimeEstimativeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */; };
 		349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE15D2644CF1500C9D89A /* TypeAliases.swift */; };
 		34A3B619264C5BAD00D2D51D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A3B618264C5BAD00D2D51D /* LoaderView.swift */; };
+		34CD7BCB264DA379005B2048 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BCA264DA379005B2048 /* SettingsState.swift */; };
 		34E02AF3264AF23A0096BBDE /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AF2264AF23A0096BBDE /* StepperView.swift */; };
 		34E02B00264AF6200096BBDE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AFE264AF6200096BBDE /* TextView.swift */; };
 		34E02B01264AF6200096BBDE /* TextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AFF264AF6200096BBDE /* TextViewWrapper.swift */; };
@@ -40,6 +41,7 @@
 		34EA28B6264A16400047E740 /* ClientBusinessListTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */; };
 		34EA28BB264A18150047E740 /* LoginClientRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BA264A18150047E740 /* LoginClientRegister.swift */; };
 		34EA28C0264A181E0047E740 /* LoginBusinessRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */; };
+		55409262264C4850004E6D9B /* ClientCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55409261264C4850004E6D9B /* ClientCardView.swift */; };
 		554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71D92641D4AC00E4F684 /* On_lineApp.swift */; };
 		554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71DB2641D4AC00E4F684 /* ContentView.swift */; };
 		554F71DE2641D4AC00E4F684 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71DD2641D4AC00E4F684 /* Assets.xcassets */; };
@@ -83,6 +85,7 @@
 		349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEstimativeModel.swift; sourceTree = "<group>"; };
 		349BE15D2644CF1500C9D89A /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		34A3B618264C5BAD00D2D51D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		34CD7BCA264DA379005B2048 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		34E02AF2264AF23A0096BBDE /* StepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		34E02AFE264AF6200096BBDE /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		34E02AFF264AF6200096BBDE /* TextViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWrapper.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBusinessListTab.swift; sourceTree = "<group>"; };
 		34EA28BA264A18150047E740 /* LoginClientRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClientRegister.swift; sourceTree = "<group>"; };
 		34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBusinessRegister.swift; sourceTree = "<group>"; };
+		55409261264C4850004E6D9B /* ClientCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCardView.swift; sourceTree = "<group>"; };
 		554F71D62641D4AC00E4F684 /* On line.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On line.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71D92641D4AC00E4F684 /* On_lineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineApp.swift; sourceTree = "<group>"; };
 		554F71DB2641D4AC00E4F684 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -221,6 +225,14 @@
 				34A3B618264C5BAD00D2D51D /* LoaderView.swift */,
 			);
 			path = loader;
+			sourceTree = "<group>";
+		};
+		34CD7BC9264DA379005B2048 /* states */ = {
+			isa = PBXGroup;
+			children = (
+				34CD7BCA264DA379005B2048 /* SettingsState.swift */,
+			);
+			path = states;
 			sourceTree = "<group>";
 		};
 		34E02AF1264AF23A0096BBDE /* stepper_view */ = {
@@ -360,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */,
+				55409261264C4850004E6D9B /* ClientCardView.swift */,
 			);
 			path = client_business_list_tab;
 			sourceTree = "<group>";
@@ -421,6 +434,7 @@
 		554F71D82641D4AC00E4F684 /* On line */ = {
 			isa = PBXGroup;
 			children = (
+				34CD7BC9264DA379005B2048 /* states */,
 				34EA28362649E2410047E740 /* views */,
 				340B7B892644E02700BCA158 /* models */,
 				341BBCC32643615D00A5AE69 /* helpers */,
@@ -686,6 +700,8 @@
 				34E02AF3264AF23A0096BBDE /* StepperView.swift in Sources */,
 				34E02B01264AF6200096BBDE /* TextViewWrapper.swift in Sources */,
 				341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */,
+				34CD7BCB264DA379005B2048 /* SettingsState.swift in Sources */,
+				55409262264C4850004E6D9B /* ClientCardView.swift in Sources */,
 				340B7B8D2644E05700BCA158 /* Client.swift in Sources */,
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
 				34EA2895264A0FBD0047E740 /* UserType.swift in Sources */,

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ApplicationView: View {
-    @State var isAuthenticated:Bool = false
+    @State var isAuthenticated:Bool = true
     var userType:UserType = UserType.CLIENT
     
     var body: some View {
