@@ -11,17 +11,9 @@ import Amplify
 import AmplifyPlugins
 
 struct ContentView: View {
-    @State var isAuthenticated:Bool = false
+    @StateObject var settings = SettingsState()
     var body: some View {
-        ZStack {
-            if isAuthenticated {
-                ApplicationView()
-            } else {
-                LoginView()
-            }
-        }
-        
-        
+        ApplicationView().environmentObject(settings)
     }
 }
 

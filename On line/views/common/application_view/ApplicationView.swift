@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ApplicationView: View {
+    @State var isAuthenticated:Bool = false
     var userType:UserType = UserType.CLIENT
+    
     var body: some View {
-        switch userType {
-        case UserType.BUSINESS:
-            BusinessView()
-        case UserType.CLIENT:
-            ClientView()
+        if isAuthenticated {
+            switch userType {
+            case UserType.BUSINESS:
+                BusinessView()
+            case UserType.CLIENT:
+                ClientView()
+            }
+        } else {
+            LoginView()
         }
+        
     }
 }
 

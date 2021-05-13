@@ -9,10 +9,11 @@ import SwiftUI
 
 struct LoginView: View {
     @State var isLoading = false
-    @State var currentTab:UserType = UserType.CLIENT
     @Namespace var animation
     @State var email: String = ""
     @State var password: String = ""
+    @EnvironmentObject var settings: SettingsState
+
     
     func handleSignIn() {
         Authentication.signIn(username: email, password: password,handler: {success in print("logged: \(success)")})
@@ -28,44 +29,44 @@ struct LoginView: View {
                             HStack{
                                 
                                 Text("Cliente")
-                                    .foregroundColor(currentTab == UserType.CLIENT ? .white : Color("primary"))
+                                    .foregroundColor(settings.userType == UserType.CLIENT ? .white : Color("primary"))
                                     .padding(.vertical, 12)
                                     .padding(.leading, 40)
                                     .padding(.trailing, 40)
                                     .background(
                                         ZStack{
-                                            if currentTab == UserType.CLIENT{
+                                            if settings.userType == UserType.CLIENT{
                                                 Color("primary")
                                                     .cornerRadius(30)
                                                     .matchedGeometryEffect(id: "TAB", in: animation)
                                             }
                                         }
                                     )
-                                    .foregroundColor(currentTab == UserType.CLIENT ? .black : .white)
+                                    .foregroundColor(settings.userType == UserType.CLIENT ? .black : .white)
                                     .onTapGesture {
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.6)){
-                                            currentTab = UserType.CLIENT
+                                            settings.userType = UserType.CLIENT
                                         }
                                     }
                                 
                                 Text("Estabelecimento")
-                                    .foregroundColor(currentTab == UserType.BUSINESS ? .white : Color("primary"))
+                                    .foregroundColor(settings.userType == UserType.BUSINESS ? .white : Color("primary"))
                                     .padding(.vertical, 12)
                                     .padding(.leading, 20)
                                     .padding(.trailing, 14)
                                     .background(
                                         ZStack{
-                                            if currentTab == UserType.BUSINESS{
+                                            if settings.userType == UserType.BUSINESS{
                                                 Color("primary")
                                                     .cornerRadius(35)
                                                     .matchedGeometryEffect(id: "TAB", in: animation)
                                             }
                                         }
                                     )
-                                    .foregroundColor(currentTab == UserType.BUSINESS ? .black : .white)
+                                    .foregroundColor(settings.userType == UserType.BUSINESS ? .black : .white)
                                     .onTapGesture {
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.6)){
-                                            currentTab = UserType.BUSINESS
+                                            settings.userType = UserType.BUSINESS
                                         }
                                     }
                             }
@@ -77,7 +78,7 @@ struct LoginView: View {
                         .background(Color("primary"))
                         .cornerRadius(30)
                     }
-
+                    
                     
                     Image("Logo")
                         .resizable()
@@ -85,7 +86,7 @@ struct LoginView: View {
                         .frame(width: 173, height: 51, alignment: .center)
                         .padding(.top, 35)
                         .padding(.bottom, 38)
-
+                    
                     TextView(input: $email, label: "Email", isSecure: false)
                     TextView(input: $password, label: "Senha", isSecure: true)
                         .padding(.bottom, 15)
@@ -102,7 +103,7 @@ struct LoginView: View {
                     HStack{
                         Text("Ainda não tem cadastro?")
                             .font(.system(size: 14))
-                        if currentTab == UserType.BUSINESS {
+                        if settings.userType == UserType.BUSINESS {
                             NavigationLink(destination: LoginBusinessRegister(),
                                            label: {
                                             Text("Cadastre-se")
@@ -127,7 +128,7 @@ struct LoginView: View {
                     .background(Color.black)
                     .cornerRadius(16)
                     .padding(5)
-                    Button(" Sign in with Facebook"){
+                    Button("Sign in with Facebook"){
                     }
                     .font(.system(size: 17))
                     .foregroundColor(.white)
@@ -144,15 +145,15 @@ struct LoginView: View {
                     .cornerRadius(16)
                     .padding(5)
                 }
-
+                
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
-            }
-        
         }
         
-   }
+    }
+    
+}
 
 struct LoginVIew_Previews: PreviewProvider {
     static var previews: some View {

@@ -11,10 +11,10 @@ import Amplify
 import AmplifyPlugins
 
 struct AWS {
-    static func configure(auth: AuthCategoryConfiguration){
+    static func configure(){
         do {
-            let amplifyConfiguration = AmplifyConfiguration(api:apiConfiguration, auth: auth)
-            Amplify.Logging.logLevel = .verbose
+            let amplifyConfiguration = AmplifyConfiguration(api:apiConfiguration, auth: authConfiguration)
+            // Amplify.Logging.logLevel = .verbose
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.add(plugin: AWSAPIPlugin())
             try Amplify.configure(amplifyConfiguration)
@@ -25,12 +25,5 @@ struct AWS {
         }
     }
     
-    static func configureClientPool(){
-        configure(auth: authClientConfiguration)
-    }
-    
-    static func configureBusinessPool(){
-        configure(auth: authBusinessConfiguration)
-    }
     
 }
