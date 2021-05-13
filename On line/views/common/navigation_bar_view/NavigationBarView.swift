@@ -6,35 +6,48 @@
 //
 
 import SwiftUI
+import UIKit
 
-struct NavigationBarView: View {
-    var body: some View {
-        ZStack{
-            Rectangle()
-                .size(CGSize(width: 1000.0, height: 80.0))
-                .foregroundColor(Color("primary"))
-            HStack{
-                ImageButtonView {
-                    
-                }
-                Spacer()
-                Text("CADASTRO")
-                    .foregroundColor(Color.white)
-                Spacer()
-        }
-            .padding(.horizontal, 10.0)
-            .padding(.top, -370.0)
-            
-        
-    }
-        .ignoresSafeArea()
-}
-}
-
-struct NavigationBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationBarView()
-    }
-}
+extension View {
  
+    func navigationBarColor(_ backgroundColor: UIColor?) -> some View {
+        self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
+    }
+
+}
+
+struct NavigationBarModifier: ViewModifier {
+        
+    var backgroundColor: UIColor?
+    
+    init( backgroundColor: UIColor?) {
+        self.backgroundColor = backgroundColor
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithTransparentBackground()
+        coloredAppearance.backgroundColor = .clear
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize:19, weight: .bold)]
+      //  coloredAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize:19, weight: .bold)]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().compactAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        UINavigationBar.appearance().tintColor = .white
+
+    }
+    
+    func body(content: Content) -> some View {
+        ZStack{
+            content
+            VStack {
+                GeometryReader { geometry in
+                    Color(self.backgroundColor ?? .clear)
+                        .frame(height: geometry.safeAreaInsets.top)
+                        .edgesIgnoringSafeArea(.top)
+                    Spacer()
+                }
+            }
+        }
+    }
+}
  

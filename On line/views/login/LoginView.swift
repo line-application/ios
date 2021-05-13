@@ -80,7 +80,7 @@ struct LoginView: View {
                         .padding(.top, 35)
                         .padding(.bottom, 38)
                     
-                    TextView(input: $email, label: "Email", isSecure: false)
+                    TextView(input: $email, label: "E-mail", isSecure: false)
                     TextView(input: $senha, label: "Senha", isSecure: true)
                         .padding(.bottom, 15)
                     
