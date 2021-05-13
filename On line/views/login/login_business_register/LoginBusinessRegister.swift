@@ -21,6 +21,8 @@ struct LoginBusinessRegister: View {
     
     var body: some View {
         ScrollView {
+            Divider()
+                .padding(.top, 10.0)
             VStack {
                 TextView(input: $businessEmail, label: "E-mail", isSecure: false)
                 TextView(input: $businessPassword, label: "Senha", isSecure: true)
@@ -64,19 +66,16 @@ struct LoginBusinessRegister: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
         }
-        .navigationBarColor(UIColor(named: "primary")) // This is how you will use it
+        .navigationBarColor(UIColor.white)
         .navigationBarItems(leading:
         Button(action : {
             self.mode.wrappedValue.dismiss()
         }){
             Image(systemName: "chevron.backward")
-                .foregroundColor(.white)
+                .foregroundColor(Color("primary"))
         })
     }
-   
-    
 }
-
 
 struct LoginBusinessRegister_Previews: PreviewProvider {
     static var previews: some View {
