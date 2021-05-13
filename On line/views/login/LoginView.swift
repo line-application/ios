@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @State var isLoading = false
-    @State var currentTab = "Cliente"
+    @State var currentTab:UserType = UserType.CLIENT
     @Namespace var animation
     @State var email: String = ""
     @State var password: String = ""
@@ -28,44 +28,44 @@ struct LoginView: View {
                             HStack{
                                 
                                 Text("Cliente")
-                                    .foregroundColor(currentTab == "Cliente" ? .white : Color("primary"))
+                                    .foregroundColor(currentTab == UserType.CLIENT ? .white : Color("primary"))
                                     .padding(.vertical, 12)
                                     .padding(.leading, 40)
                                     .padding(.trailing, 40)
                                     .background(
                                         ZStack{
-                                            if currentTab == "Cliente"{
+                                            if currentTab == UserType.CLIENT{
                                                 Color("primary")
                                                     .cornerRadius(30)
                                                     .matchedGeometryEffect(id: "TAB", in: animation)
                                             }
                                         }
                                     )
-                                    .foregroundColor(currentTab == "Cliente" ? .black : .white)
+                                    .foregroundColor(currentTab == UserType.CLIENT ? .black : .white)
                                     .onTapGesture {
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.6)){
-                                            currentTab = "Cliente"
+                                            currentTab = UserType.CLIENT
                                         }
                                     }
                                 
                                 Text("Estabelecimento")
-                                    .foregroundColor(currentTab == "Estabelecimento" ? .white : Color("primary"))
+                                    .foregroundColor(currentTab == UserType.BUSINESS ? .white : Color("primary"))
                                     .padding(.vertical, 12)
                                     .padding(.leading, 20)
                                     .padding(.trailing, 14)
                                     .background(
                                         ZStack{
-                                            if currentTab == "Estabelecimento"{
+                                            if currentTab == UserType.BUSINESS{
                                                 Color("primary")
                                                     .cornerRadius(35)
                                                     .matchedGeometryEffect(id: "TAB", in: animation)
                                             }
                                         }
                                     )
-                                    .foregroundColor(currentTab == "Estabelecimento" ? .black : .white)
+                                    .foregroundColor(currentTab == UserType.BUSINESS ? .black : .white)
                                     .onTapGesture {
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.6)){
-                                            currentTab = "Estabelecimento"
+                                            currentTab = UserType.BUSINESS
                                         }
                                     }
                             }
@@ -102,7 +102,7 @@ struct LoginView: View {
                     HStack{
                         Text("Ainda não tem cadastro?")
                             .font(.system(size: 14))
-                        if currentTab == "Estabelecimento" {
+                        if currentTab == UserType.BUSINESS {
                             NavigationLink(destination: LoginBusinessRegister(),
                                            label: {
                                             Text("Cadastre-se")
