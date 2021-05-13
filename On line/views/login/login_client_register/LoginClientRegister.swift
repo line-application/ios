@@ -21,6 +21,7 @@ struct LoginClientRegister: View {
         
         
         ScrollView {
+            
             VStack{
                 TextView(input: $name , label: "Nome", isSecure: false)
                 TextView(input: $phone , label: "Telefone", isSecure: false)
