@@ -16,8 +16,7 @@ struct LoginClientRegister: View {
     @State var passwordConfirmation: String = ""
     
     var body: some View {
-        //ZStack{
-//            NavigationBarView()
+        ScrollView {
             VStack{
                 TextView(input: $name , label: "Nome", isSecure: false)
                 TextView(input: $phone , label: "Telefone", isSecure: false)
@@ -28,19 +27,19 @@ struct LoginClientRegister: View {
                     self.mode.wrappedValue.dismiss()
                 }
             }
-            //.padding(.bottom, 170.0)
-                        Spacer()
                             .padding()
-                            .navigationTitle(Text("CADASTRO"))
+                            .navigationTitle(Text("Cadastro"))
                                .navigationBarTitleDisplayMode(.inline)
                                .navigationBarBackButtonHidden(true)
-                                           .navigationBarItems(leading: Button(action : {
-                                               self.mode.wrappedValue.dismiss()
-                                           }){
-                                                   Image(systemName: "chevron.backward")
-                                                    .foregroundColor(Color("primary"))
-                                           })
-        //}
+        }
+        .navigationBarColor(UIColor(named: "primary"))
+        .navigationBarItems(leading:
+        Button(action : {
+            self.mode.wrappedValue.dismiss()
+        }){
+            Image(systemName: "chevron.backward")
+                .foregroundColor(.white)
+        })
     }
 }
 

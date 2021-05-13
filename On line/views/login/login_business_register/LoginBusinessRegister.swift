@@ -15,14 +15,14 @@ struct LoginBusinessRegister: View {
     @State var businessAddress : String = ""
     @State var businessDescription : String = ""
     @State var peoplePerTable = 1
-    
+ 
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     
     var body: some View {
         ScrollView {
             VStack {
-                TextView(input: $businessEmail, label: "Email", isSecure: false)
+                TextView(input: $businessEmail, label: "E-mail", isSecure: false)
                 TextView(input: $businessPassword, label: "Senha", isSecure: true)
                 TextView(input: $businessName, label: "Nome do estabelecimento", isSecure: false)
                 TextView(input: $businessNumber, label: "Telefone", isSecure: false)
@@ -63,17 +63,20 @@ struct LoginBusinessRegister: View {
                 .navigationTitle(Text("Cadastro"))
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
-                .navigationBarItems(leading: Button(action : {
-                    self.mode.wrappedValue.dismiss()
-                }){
-                    Image(systemName: "chevron.backward")
-                        .foregroundColor(Color("primary"))
-                })
         }
-        
+        .navigationBarColor(UIColor(named: "primary")) // This is how you will use it
+        .navigationBarItems(leading:
+        Button(action : {
+            self.mode.wrappedValue.dismiss()
+        }){
+            Image(systemName: "chevron.backward")
+                .foregroundColor(.white)
+        })
     }
+   
     
 }
+
 
 struct LoginBusinessRegister_Previews: PreviewProvider {
     static var previews: some View {
