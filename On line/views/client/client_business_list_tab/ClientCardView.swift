@@ -35,6 +35,7 @@ struct ClientCardView: View {
                         .font(.title2)
                     Spacer()
                     Text("Estimativa de espera")
+                        .foregroundColor(.black)
                     Spacer()
                     HStack {
                         Image("clock")
