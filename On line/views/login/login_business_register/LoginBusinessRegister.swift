@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginBusinessRegister: View {
+    @EnvironmentObject var settings: SettingsState
     @State var businessEmail : String = ""
     @State var businessPassword : String = ""
     @State var businessName : String = ""
@@ -15,9 +16,30 @@ struct LoginBusinessRegister: View {
     @State var businessAddress : String = ""
     @State var businessDescription : String = ""
     @State var peoplePerTable = 1
- 
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-
+    
+    func handleSingUp() {
+        settings.isLoading = true
+        Authentication.signUp(name: businessName,password: businessPassword, email: businessEmail, userType: .BUSINESS) {
+            business in
+            DispatchQueue.main.async {
+                switch(business) {
+                case .CONFIRM_ACCOUNT:
+                    print("confirm your account")
+                    self.mode.wrappedValue.dismiss()
+                case .SUCCESS:
+                    print("success")
+                case .ERROR:
+                    print("failed")
+                    settings.showAlert = true
+                }
+                DispatchQueue.main.async {
+                    settings.isLoading = false
+                }
+            }
+        }
+    }
     
     var body: some View {
         ScrollView {
@@ -53,7 +75,7 @@ struct LoginBusinessRegister: View {
                 NavigationLink(
                     destination: BusinessView(),
                     label: {
-                        ButtonView(text: "CADASTRAR", action: {})
+                        ButtonView(text: "CADASTRAR", action: handleSingUp)
                             .padding(.leading, 15.0)
                     })
             }
@@ -66,14 +88,19 @@ struct LoginBusinessRegister: View {
         }
         .navigationBarColor(UIColor(named: "primary")) // This is how you will use it
         .navigationBarItems(leading:
-        Button(action : {
-            self.mode.wrappedValue.dismiss()
-        }){
-            Image(systemName: "chevron.backward")
-                .foregroundColor(.white)
-        })
+                                Button(action : {
+                                    self.mode.wrappedValue.dismiss()
+                                }){
+                                    Image(systemName: "chevron.backward")
+                                        .foregroundColor(.white)
+                                }).alert(isPresented: $settings.showAlert) {
+                                    Alert(
+                                        title: Text("Erro"),
+                                        message: Text("Houve um problema ao registrar sua conta, tente novamente.")
+                                    )
+                                }
     }
-   
+    
     
 }
 

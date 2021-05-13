@@ -21,7 +21,7 @@ struct LoginView: View {
                 if(success) {
                     settings.isAuthenticated = true
                 } else {
-                    //throw warning
+                    settings.showAlert = true
                 }
                 settings.isLoading = false
             }
@@ -138,6 +138,11 @@ struct LoginView: View {
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+        }.alert(isPresented: $settings.showAlert) {
+            Alert(
+                title: Text("Erro"),
+                message: Text("Usuário ou senha inválidos.")
+            )
         }
         
     }

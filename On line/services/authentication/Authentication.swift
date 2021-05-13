@@ -9,6 +9,10 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
+enum SignUpResponseTypes {
+    case ERROR, SUCCESS, CONFIRM_ACCOUNT
+}
+
 struct Authentication {
     static func signIn(username: String, password: String, handler:@escaping (Bool)->Void) {
         print("username: \(username)")
@@ -26,7 +30,9 @@ struct Authentication {
         
     }
     
-    static func signUp(name: String, password: String, email: String, userType: UserType) {
+    
+    
+    static func signUp(name: String, password: String, email: String, userType: UserType, handler:@escaping (SignUpResponseTypes)->Void) {
         print(userType.stringForm)
         
         let userAttributes = [
@@ -40,11 +46,15 @@ struct Authentication {
             case .success(let signUpResult):
                 if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
                     print("Delivery details \(String(describing: deliveryDetails))")
+                    handler(SignUpResponseTypes.CONFIRM_ACCOUNT)
                 } else {
                     print("SignUp Complete")
+                    handler(SignUpResponseTypes.SUCCESS)
+                    
                 }
             case .failure(let error):
                 print("An error occurred while registering a user \(error)")
+                handler(SignUpResponseTypes.ERROR)
             }
         }
     }
