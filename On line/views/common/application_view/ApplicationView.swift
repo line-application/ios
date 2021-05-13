@@ -23,7 +23,6 @@ struct ApplicationView: View {
         } else {
             LoginView().allowsHitTesting(!settings.isLoading)
         }
-        
     }
 }
 

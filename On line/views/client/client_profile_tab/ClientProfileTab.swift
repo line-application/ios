@@ -9,16 +9,15 @@ import SwiftUI
 
 struct ClientProfileTab: View {
     @EnvironmentObject var settings: SettingsState
-//    @State var isLoading: Bool = false
+    
     func handleSignOut() {
         settings.isLoading = true
         Authentication.signOutGlobally{ success in
             DispatchQueue.main.async {
                 if(success) {
                     settings.isAuthenticated = false
-                    
                 } else {
-                    //throw warning
+                    settings.showAlert = true
                 }
                 settings.isLoading = false
             }
@@ -32,6 +31,11 @@ struct ClientProfileTab: View {
                 Button(action: handleSignOut, label: {
                     Text("Sign Out").accentColor(.blue)
                 })
+            }.alert(isPresented: $settings.showAlert) {
+                Alert(
+                    title: Text("Erro"),
+                    message: Text("Houve um problema ao deslogar, por favor, tente novamente")
+                )
             }
         }
     }
