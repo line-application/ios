@@ -11,13 +11,16 @@ import Amplify
 import AmplifyPlugins
 
 struct ContentView: View {
-    var isAuthenticated:Bool = true
+    @State var isAuthenticated:Bool = false
     var body: some View {
-        if isAuthenticated {
-            ApplicationView()
-        } else {
-            LoginView()
+        ZStack {
+            if isAuthenticated {
+                ApplicationView()
+            } else {
+                LoginView()
+            }
         }
+        
         
     }
 }

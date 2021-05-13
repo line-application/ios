@@ -8,19 +8,25 @@
 import SwiftUI
 
 struct LoginView: View {
-    
+    @State var isLoading = false
     @State var currentTab = "Cliente"
     @Namespace var animation
     @State var email: String = ""
-    @State var senha: String = ""
+    @State var password: String = ""
+    
+    func handleSignIn() {
+        Authentication.signIn(username: email, password: password,handler: {success in print("logged: \(success)")})
+    }
     
     var body: some View {
         NavigationView{
             VStack{
+                LoaderView(isLoading: $isLoading)
                 VStack {
                     ZStack {
                         ZStack{
                             HStack{
+                                
                                 Text("Cliente")
                                     .foregroundColor(currentTab == "Cliente" ? .white : Color("primary"))
                                     .padding(.vertical, 12)
@@ -81,7 +87,7 @@ struct LoginView: View {
                         .padding(.bottom, 38)
 
                     TextView(input: $email, label: "Email", isSecure: false)
-                    TextView(input: $senha, label: "Senha", isSecure: true)
+                    TextView(input: $password, label: "Senha", isSecure: true)
                         .padding(.bottom, 15)
                     
                     ButtonView(text: "ENTRAR", action: {})

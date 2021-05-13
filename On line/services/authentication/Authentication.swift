@@ -10,14 +10,17 @@ import Amplify
 import AmplifyPlugins
 
 struct Authentication {
-    static func signIn(username: String, password: String) {
+    static func signIn(username: String, password: String, handler:@escaping (Bool)->Void) {
+        print("username: \(username)")
+        print("password: \(password)")
         
         Amplify.Auth.signIn(username: username, password: password) { result in
             switch result {
-            case .success(let data):
-                print("Sign in succeeded \(data)")
+            case .success:
+                handler(true)
             case .failure(let error):
-                print("Sign in failed \(error)")
+                print(error)
+                handler(false)
             }
         }
         
