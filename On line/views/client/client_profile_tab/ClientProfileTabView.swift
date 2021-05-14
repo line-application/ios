@@ -9,11 +9,27 @@ import SwiftUI
 
 struct ClientProfileTabView: View {
     //@Binding var client:ClientModel
+    @EnvironmentObject var settings: SettingsState
     @State var currentView: Bool = false
     @State var name:String = "Teste"
     @State var password:String = ""
     @State var phone: String = ""
     @State var passwordConfirmation: String = ""
+    
+    func handleSignOut() {
+        settings.isLoading = true
+        Authentication.signOutGlobally{ success in
+            DispatchQueue.main.async {
+                if(success) {
+                    settings.isAuthenticated = false
+                } else {
+                    settings.showAlert = true
+                }
+                settings.isLoading = false
+            }
+        }
+    }
+    
     var body: some View {
         if(currentView == true){
             ClientProfileTab(currentView: $currentView )
@@ -49,14 +65,17 @@ struct ClientProfileTabView: View {
                             currentView = true
                         }
                         Text("\n")
-                        Button(action: {
-                                
-                        }, label: {
+                        Button(action: handleSignOut, label: {
                             Text("SAIR")
                                 .foregroundColor(.blue)
                         })
                     }
                         .padding(.top, -323)
+                }.alert(isPresented: $settings.showAlert) {
+                    Alert(
+                        title: Text("Erro"),
+                        message: Text("Houve um problema ao deslogar, por favor, tente novamente")
+                    )
                 }
                 Spacer()
             }

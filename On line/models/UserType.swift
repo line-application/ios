@@ -1,4 +1,4 @@
-//
+
 //  UserType.swift
 //  On line
 //
@@ -10,4 +10,13 @@ import Foundation
 enum UserType {
     case BUSINESS
     case CLIENT
+    
+    var stringForm:String {
+        switch self.self {
+        case UserType.BUSINESS:
+            return "business"
+        case  UserType.CLIENT:
+            return "client"
+        }
+    }
 }

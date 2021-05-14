@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginClientRegister: View {
+    @EnvironmentObject var settings: SettingsState
+    @State var showAlert:Bool = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var name: String = ""
     @State var phone: String = ""
@@ -15,33 +17,67 @@ struct LoginClientRegister: View {
     @State var password: String = ""
     @State var passwordConfirmation: String = ""
     
-    var body: some View {
-        ScrollView {
-            Divider()
-                .padding(.top, 10.0)
-            VStack{
-                TextView(input: $name , label: "Nome", isSecure: false)
-                TextView(input: $phone , label: "Telefone", isSecure: false)
-                TextView(input: $email , label: "E-mail", isSecure: false)
-                TextView(input: $password , label: "Senha", isSecure: true)
-                TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
-                ButtonView(text: "CADASTRAR") {
+    func handleSingUp() {
+        settings.isLoading = true
+        Authentication.signUp(name: name,password: password, email: email, phoneNumber: phone, userType: .CLIENT) {
+            business in
+            DispatchQueue.main.async {
+                switch(business) {
+                case .CONFIRM_ACCOUNT:
+                    print("confirm your account")
                     self.mode.wrappedValue.dismiss()
+                case .SUCCESS:
+                    print("success")
+                case .ERROR:
+                    print("failed")
+                    showAlert = true
+                }
+                DispatchQueue.main.async {
+                    settings.isLoading = false
                 }
             }
-                            .padding()
-                            .navigationTitle(Text("Cadastro"))
-                               .navigationBarTitleDisplayMode(.inline)
-                               .navigationBarBackButtonHidden(true)
         }
-        .navigationBarColor(UIColor.white)
-        .navigationBarItems(leading:
-        Button(action : {
-            self.mode.wrappedValue.dismiss()
-        }){
-            Image(systemName: "chevron.backward")
-                .foregroundColor(Color("primary"))
-        })
+    }
+    
+    var body: some View {
+        ZStack{
+            LoaderView()
+            VStack{
+                Divider() .padding(.top, 10.0)
+                ScrollView {
+                    
+                    VStack{
+                        TextView(input: $name , label: "Nome", isSecure: false)
+                        TextView(input: $phone , label: "Telefone", isSecure: false)
+                        TextView(input: $email , label: "E-mail", isSecure: false)
+                        TextView(input: $password , label: "Senha", isSecure: false)
+                        TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
+                        ButtonView(text: "CADASTRAR") {
+                            handleSingUp()
+                        }
+                    }
+                    .padding()
+                    .navigationTitle(Text("Cadastro"))
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                }
+                .navigationBarColor(UIColor(.white))
+                .navigationBarItems(leading:
+                                        Button(action : {
+                                            self.mode.wrappedValue.dismiss()
+                                        }){
+                                            Image(systemName: "chevron.backward")
+                                                .foregroundColor(Color("primary"))
+                                        }).alert(isPresented: $showAlert) {
+                                            Alert(
+                                                title: Text("Erro"),
+                                                message: Text("Houve um problema ao registrar sua conta, tente novamente.")
+                                            )
+                                        }
+            }
+            
+        }
+        
     }
 }
 

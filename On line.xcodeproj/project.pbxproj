@@ -11,7 +11,7 @@
 		340B7B8E2644E05700BCA158 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B7B8B2644E05700BCA158 /* Business.swift */; };
 		340B7B8F2644E05700BCA158 /* LinePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340B7B8C2644E05700BCA158 /* LinePlace.swift */; };
 		341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BBCA82643559600A5AE69 /* AppDelegate.swift */; };
-		341BBCAF2643608500A5AE69 /* Cognito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BBCAE2643608500A5AE69 /* Cognito.swift */; };
+		341BBCAF2643608500A5AE69 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341BBCAE2643608500A5AE69 /* Authentication.swift */; };
 		349BE0E626445FEF00C9D89A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE0E526445FEF00C9D89A /* Api.swift */; };
 		349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE13726447AE500C9D89A /* BusinessApi.swift */; };
 		349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE1412644C70D00C9D89A /* BusinessModel.swift */; };
@@ -19,9 +19,16 @@
 		349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE14F2644CBF800C9D89A /* LinePlaceApi.swift */; };
 		349BE1582644CCE600C9D89A /* TimeEstimativeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */; };
 		349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE15D2644CF1500C9D89A /* TypeAliases.swift */; };
+		34A3B619264C5BAD00D2D51D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A3B618264C5BAD00D2D51D /* LoaderView.swift */; };
+		34CD7BCB264DA379005B2048 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BCA264DA379005B2048 /* SettingsState.swift */; };
+		34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */; };
+		34CD7BD9264DE092005B2048 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BD8264DE092005B2048 /* RegisterView.swift */; };
 		34E02AF3264AF23A0096BBDE /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AF2264AF23A0096BBDE /* StepperView.swift */; };
 		34E02B00264AF6200096BBDE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AFE264AF6200096BBDE /* TextView.swift */; };
 		34E02B01264AF6200096BBDE /* TextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AFF264AF6200096BBDE /* TextViewWrapper.swift */; };
+		34E02B0D264B0A420096BBDE /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02B0C264B0A420096BBDE /* api.swift */; };
+		34E02B1B264B0A700096BBDE /* auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02B1A264B0A700096BBDE /* auth.swift */; };
+		34E02B21264B0BA10096BBDE /* AWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02B20264B0BA10096BBDE /* AWS.swift */; };
 		34EA284E264A09CA0047E740 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA284D264A09CA0047E740 /* LoginView.swift */; };
 		34EA2859264A09FA0047E740 /* BusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA2858264A09FA0047E740 /* BusinessView.swift */; };
 		34EA285E264A0A020047E740 /* ClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA285D264A0A020047E740 /* ClientView.swift */; };
@@ -74,7 +81,7 @@
 		340B7B8B2644E05700BCA158 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		340B7B8C2644E05700BCA158 /* LinePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinePlace.swift; sourceTree = "<group>"; };
 		341BBCA82643559600A5AE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		341BBCAE2643608500A5AE69 /* Cognito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cognito.swift; sourceTree = "<group>"; };
+		341BBCAE2643608500A5AE69 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		349BE0E526445FEF00C9D89A /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		349BE13726447AE500C9D89A /* BusinessApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessApi.swift; sourceTree = "<group>"; };
 		349BE1412644C70D00C9D89A /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
@@ -82,9 +89,16 @@
 		349BE14F2644CBF800C9D89A /* LinePlaceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePlaceApi.swift; sourceTree = "<group>"; };
 		349BE1572644CCE600C9D89A /* TimeEstimativeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEstimativeModel.swift; sourceTree = "<group>"; };
 		349BE15D2644CF1500C9D89A /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
+		34A3B618264C5BAD00D2D51D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		34CD7BCA264DA379005B2048 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
+		34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSegmentedControllView.swift; sourceTree = "<group>"; };
+		34CD7BD8264DE092005B2048 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		34E02AF2264AF23A0096BBDE /* StepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		34E02AFE264AF6200096BBDE /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		34E02AFF264AF6200096BBDE /* TextViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWrapper.swift; sourceTree = "<group>"; };
+		34E02B0C264B0A420096BBDE /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
+		34E02B1A264B0A700096BBDE /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
+		34E02B20264B0BA10096BBDE /* AWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWS.swift; sourceTree = "<group>"; };
 		34EA284D264A09CA0047E740 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		34EA2858264A09FA0047E740 /* BusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessView.swift; sourceTree = "<group>"; };
 		34EA285D264A0A020047E740 /* ClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientView.swift; sourceTree = "<group>"; };
@@ -163,6 +177,7 @@
 		341BBCAD2643605F00A5AE69 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				34E02B05264B09FC0096BBDE /* aws */,
 				349BE0E426445FCB00C9D89A /* api */,
 				341BBCB6264360E700A5AE69 /* authentication */,
 			);
@@ -172,7 +187,7 @@
 		341BBCB6264360E700A5AE69 /* authentication */ = {
 			isa = PBXGroup;
 			children = (
-				341BBCAE2643608500A5AE69 /* Cognito.swift */,
+				341BBCAE2643608500A5AE69 /* Authentication.swift */,
 			);
 			path = authentication;
 			sourceTree = "<group>";
@@ -214,6 +229,38 @@
 			path = models;
 			sourceTree = "<group>";
 		};
+		34A3B60F264C5B5C00D2D51D /* loader */ = {
+			isa = PBXGroup;
+			children = (
+				34A3B618264C5BAD00D2D51D /* LoaderView.swift */,
+			);
+			path = loader;
+			sourceTree = "<group>";
+		};
+		34CD7BC9264DA379005B2048 /* states */ = {
+			isa = PBXGroup;
+			children = (
+				34CD7BCA264DA379005B2048 /* SettingsState.swift */,
+			);
+			path = states;
+			sourceTree = "<group>";
+		};
+		34CD7BCF264DDED4005B2048 /* user_type_segmented_controll_view */ = {
+			isa = PBXGroup;
+			children = (
+				34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */,
+			);
+			path = user_type_segmented_controll_view;
+			sourceTree = "<group>";
+		};
+		34CD7BD7264DE085005B2048 /* register_view */ = {
+			isa = PBXGroup;
+			children = (
+				34CD7BD8264DE092005B2048 /* RegisterView.swift */,
+			);
+			path = register_view;
+			sourceTree = "<group>";
+		};
 		34E02AF1264AF23A0096BBDE /* stepper_view */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +278,24 @@
 			path = input_view;
 			sourceTree = "<group>";
 		};
+		34E02B05264B09FC0096BBDE /* aws */ = {
+			isa = PBXGroup;
+			children = (
+				34E02B06264B0A030096BBDE /* plugins */,
+				34E02B20264B0BA10096BBDE /* AWS.swift */,
+			);
+			path = aws;
+			sourceTree = "<group>";
+		};
+		34E02B06264B0A030096BBDE /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				34E02B0C264B0A420096BBDE /* api.swift */,
+				34E02B1A264B0A700096BBDE /* auth.swift */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
 		34EA28362649E2410047E740 /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +310,7 @@
 		34EA283C2649F5010047E740 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				34CD7BD7264DE085005B2048 /* register_view */,
 				34EA286D264A0B8E0047E740 /* login_client_register */,
 				34EA286C264A0B760047E740 /* login_business_register */,
 				34EA284D264A09CA0047E740 /* LoginView.swift */,
@@ -277,6 +343,8 @@
 		34EA2862264A0A0C0047E740 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				34CD7BCF264DDED4005B2048 /* user_type_segmented_controll_view */,
+				34A3B60F264C5B5C00D2D51D /* loader */,
 				55D835E1264B16F7002C4EF7 /* image_button */,
 				55D835DE264B165E002C4EF7 /* navigation_bar_view */,
 				55D835DB264B0615002C4EF7 /* colored_text_view */,
@@ -397,6 +465,7 @@
 		554F71D82641D4AC00E4F684 /* On line */ = {
 			isa = PBXGroup;
 			children = (
+				34CD7BC9264DA379005B2048 /* states */,
 				34EA28362649E2410047E740 /* views */,
 				340B7B892644E02700BCA158 /* models */,
 				341BBCC32643615D00A5AE69 /* helpers */,
@@ -655,6 +724,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34CD7BD9264DE092005B2048 /* RegisterView.swift in Sources */,
 				340B7B8E2644E05700BCA158 /* Business.swift in Sources */,
 				340B7B8F2644E05700BCA158 /* LinePlace.swift in Sources */,
 				55D835E0264B167E002C4EF7 /* NavigationBarView.swift in Sources */,
@@ -664,6 +734,7 @@
 				F85F7007264DB92800EE68F0 /* ButtonView2.swift in Sources */,
 				34E02B01264AF6200096BBDE /* TextViewWrapper.swift in Sources */,
 				341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */,
+				34CD7BCB264DA379005B2048 /* SettingsState.swift in Sources */,
 				55409262264C4850004E6D9B /* ClientCardView.swift in Sources */,
 				340B7B8D2644E05700BCA158 /* Client.swift in Sources */,
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
@@ -677,19 +748,25 @@
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
 				34EA288A264A0E920047E740 /* ButtonView.swift in Sources */,
+				34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControllView.swift in Sources */,
+				34E02B0D264B0A420096BBDE /* api.swift in Sources */,
 				349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */,
+				34E02B21264B0BA10096BBDE /* AWS.swift in Sources */,
 				34EA28A2264A12600047E740 /* BusinessDashboardTab.swift in Sources */,
 				34EA2890264A0EEC0047E740 /* ApplicationView.swift in Sources */,
 				34EA284E264A09CA0047E740 /* LoginView.swift in Sources */,
+				34E02B1B264B0A700096BBDE /* auth.swift in Sources */,
 				34EA28B1264A13C30047E740 /* ClientProfileTab.swift in Sources */,
 				34EA2859264A09FA0047E740 /* BusinessView.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
 				553F7BE0264EB95D00053383 /* ClientProfileTabView.swift in Sources */,
 				55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */,
-				341BBCAF2643608500A5AE69 /* Cognito.swift in Sources */,
+				341BBCAF2643608500A5AE69 /* Authentication.swift in Sources */,
+				341BBCAF2643608500A5AE69 /* Authentication.swift in Sources */,
 				34EA285E264A0A020047E740 /* ClientView.swift in Sources */,
 				349BE0E626445FEF00C9D89A /* Api.swift in Sources */,
 				349BE1582644CCE600C9D89A /* TimeEstimativeModel.swift in Sources */,
+				34A3B619264C5BAD00D2D51D /* LoaderView.swift in Sources */,
 				34EA28AC264A13920047E740 /* ClientLineStatusTab.swift in Sources */,
 				34EA28B6264A16400047E740 /* ClientBusinessListTab.swift in Sources */,
 				349BE14A2644C93500C9D89A /* LinePlaceModel.swift in Sources */,
@@ -852,7 +929,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"On line/Preview Content\"";
-				DEVELOPMENT_TEAM = TA9GQL43ZA;
+				DEVELOPMENT_TEAM = R5QH5STGGP;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "On line/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -875,7 +952,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"On line/Preview Content\"";
-				DEVELOPMENT_TEAM = TA9GQL43ZA;
+				DEVELOPMENT_TEAM = R5QH5STGGP;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "On line/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

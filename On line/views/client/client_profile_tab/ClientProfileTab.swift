@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct ClientProfileTab: View {
+    @EnvironmentObject var settings: SettingsState
+    
     @Binding var currentView: Bool
     @State var name:String = ""
     @State var password:String = ""
     @State var phone: String = ""
     @State var passwordConfirmation: String = ""
+
+
+
     var body: some View {
         VStack{
             //NavigationBarView
@@ -28,7 +33,6 @@ struct ClientProfileTab: View {
                 Divider()
                     .padding(.top, -115)
             }
-
                 VStack {
                     ScrollView {
                         Text("")

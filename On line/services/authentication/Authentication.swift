@@ -1,4 +1,4 @@
-//
+
 //  Authentication.swift
 //  On line
 //
@@ -8,41 +8,99 @@
 import Foundation
 import Amplify
 import AmplifyPlugins
-import Combine
 
+enum SignUpResponseTypes {
+    case ERROR, SUCCESS, CONFIRM_ACCOUNT
+}
 
 struct Authentication {
-    
-    func fetchCurrentAuthSession() -> AnyCancellable {
-        Amplify.Auth.fetchAuthSession().resultPublisher
-            .sink {
-                if case let .failure(authError) = $0 {
-                    print("Fetch session failed with error \(authError)")
-                }
+    static func signIn(username: String, password: String, handler:@escaping (Bool)->Void) {
+        print("username: \(username)")
+        print("password: \(password)")
+        
+        Amplify.Auth.signIn(username: username, password: password) { result in
+            switch result {
+            case .success:
+                handler(true)
+            case .failure(let error):
+                print(error)
+                handler(false)
             }
-            receiveValue: { session in
-                print("Is user signed in - \(session.isSignedIn)")
-            }
+        }
+        
     }
     
-    func signUp(username: String, password: String, email: String) -> AnyCancellable {
-        let userAttributes = [AuthUserAttribute(.email, value: email)]
+    
+    
+    static func signUp(name: String, password: String, email: String, phoneNumber: String? = nil, userType: UserType, highestTableCapacity:Int? = nil, description:String? = nil,handler:@escaping (SignUpResponseTypes)->Void) {
+        print(userType.stringForm)
+        
+        var userAttributes = [
+            AuthUserAttribute(.name, value: name),
+            AuthUserAttribute(.email, value: email),
+            AuthUserAttribute(.custom("userType"), value: userType.stringForm)
+                
+        ]
+        if(phoneNumber != nil){ userAttributes.append(AuthUserAttribute(.phoneNumber, value: phoneNumber ?? "")) }
+        if(highestTableCapacity != nil){ userAttributes.append(AuthUserAttribute(.custom("highestTableCapacity"), value: String(highestTableCapacity ?? 1))) }
+        if(description != nil){ userAttributes.append(AuthUserAttribute(.custom("description"), value: userType.stringForm)) }
+        
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
-        let sink = Amplify.Auth.signUp(username: username, password: password, options: options)
-            .resultPublisher
-            .sink {
-                if case let .failure(authError) = $0 {
-                    print("An error occurred while registering a user \(authError)")
-                }
-            }
-            receiveValue: { signUpResult in
+        Amplify.Auth.signUp(username: email, password: password, options: options) { result in
+            switch result {
+            case .success(let signUpResult):
                 if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
                     print("Delivery details \(String(describing: deliveryDetails))")
+                    handler(SignUpResponseTypes.CONFIRM_ACCOUNT)
                 } else {
                     print("SignUp Complete")
+                    handler(SignUpResponseTypes.SUCCESS)
+                    
                 }
-
+            case .failure(let error):
+                print("An error occurred while registering a user \(error)")
+                handler(SignUpResponseTypes.ERROR)
             }
-        return sink
+        }
+    }
+    
+    static func signOutLocally() {
+        Amplify.Auth.signOut() { result in
+            switch result {
+            case .success:
+                print("Successfully signed out")
+                
+            case .failure(let error):
+                print("Sign out failed with error \(error)")
+            }
+        }
+    }
+    
+    static func signOutGlobally(handler:@escaping (Bool)->Void) {
+        Amplify.Auth.signOut(options: .init(globalSignOut: true)) { result in
+            switch result {
+            case .success:
+                print("Successfully signed out")
+                handler(true)
+            case .failure(let error):
+                print("Sign out failed with error \(error)")
+            }
+        }
+    }
+    
+    static func fetchAttributes() {
+        /**
+         TODO
+         - format incoming data.
+         - return data.
+         */
+        Amplify.Auth.fetchUserAttributes() { result in
+            switch result {
+            case .success(let attributes):
+                print("User attributes - \(attributes)")
+            case .failure(let error):
+                print("Fetching user attributes failed with error \(error)")
+            }
+        }
     }
 }

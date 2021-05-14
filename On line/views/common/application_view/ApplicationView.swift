@@ -6,15 +6,22 @@
 //
 
 import SwiftUI
+import Amplify
 
 struct ApplicationView: View {
+    @EnvironmentObject var settings: SettingsState
     var userType:UserType = UserType.CLIENT
+    
     var body: some View {
-        switch userType {
-        case UserType.BUSINESS:
-            BusinessView()
-        case UserType.CLIENT:
-            ClientView()
+        if settings.isAuthenticated {
+            switch userType {
+            case UserType.BUSINESS:
+                BusinessView().allowsHitTesting(!settings.isLoading)
+            case UserType.CLIENT:
+                ClientView().allowsHitTesting(!settings.isLoading)
+            }
+        } else {
+            LoginView().allowsHitTesting(!settings.isLoading)
         }
     }
 }
