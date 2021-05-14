@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ClientBusinessListTab: View {
     @State var list:[BusinessModel] = []
+    @State var currentView: Bool = false
     
     func fetchHandler(_ businessesResponse: [BusinessModel]?) {
         //print(businessesResponse)
@@ -24,7 +25,10 @@ struct ClientBusinessListTab: View {
     }
     
     var body: some View {
-        //NavigationView {
+        if(currentView){
+            LoginView()
+        }
+        else {
             VStack {
                 Image("Logo")
                 Divider()
@@ -53,14 +57,19 @@ struct ClientBusinessListTab: View {
                         }
                         .padding(.leading)
                         ForEach(list) { business in
-                            ClientCardView(bussinesModel: business)
+                            Button(action: {
+                                currentView = true
+                            }, label: {
+                                ClientCardView(bussinesModel: business)
+                            })
                         }
-                    }.padding(.bottom,83)
+                    }//.padding(.bottom,83)
                 }
             }
             .onAppear(){
                 fetchBusiness()
             }
+        }
     }
 }
 
