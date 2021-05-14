@@ -14,6 +14,7 @@ struct BusinessDashboardTab: View {
     var businessName: String = ""
     var peopleInLine: Int = 0
     var body: some View {
+        ZStack {
         VStack {
             Image("Logo")
                 .resizable()
@@ -134,9 +135,19 @@ struct BusinessDashboardTab: View {
             .disabled(peopleInLine == 0 ? true : false)
             .padding()
             
+            
             Spacer()
+            
+            
         }
         .padding(.top)
+        
+//            SlideOverCard {
+//                VStack {
+//                Text("Testeeeeeeeeeeeeeeeeeeeeeeeeeee")
+//                }
+//            }
+        }
     }
 }
 
