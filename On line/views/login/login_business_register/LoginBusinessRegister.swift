@@ -43,66 +43,67 @@ struct LoginBusinessRegister: View {
     }
     
     var body: some View {
-        ScrollView {
-            Divider()
-                .padding(.top, 10.0)
-            VStack {
-                TextView(input: $businessEmail, label: "E-mail", isSecure: false)
-                TextView(input: $businessPassword, label: "Senha", isSecure: true)
-                TextView(input: $businessName, label: "Nome do estabelecimento", isSecure: false)
-                TextView(input: $businessNumber, label: "Telefone", isSecure: false)
-                TextView(input: $businessAddress, label: "Endereço", isSecure: false)
-                Text("Capacidade máx. de pessoas por mesa")
-                    .foregroundColor(Color("primary"))
-                    .multilineTextAlignment(.center)
-                    .frame(width: 300, height: 29, alignment: .leading)
-                    .padding(.horizontal, 5)
-                    .padding(.bottom, -1)
-                    .padding(.top, 10)
-                    .padding(.leading, -15)
-                StepperView(peoplePerTable: $peoplePerTable)
-                Text("Descrição do estabelecimento")
-                    .foregroundColor(Color("primary"))
-                    .frame(width: 245, height: 29, alignment: .leading)
-                    .padding(.horizontal, 5)
-                    .padding(.bottom, 1)
-                    .padding(.top, 10)
-                    .padding(.leading, -75)
-                ZStack {
-                    TextEditor(text: $businessDescription)
-                        .frame(maxWidth: 320, maxHeight: .infinity)
-                        .border(Color("primary"))
-                    Text(businessDescription).opacity(0).padding(.all, 8)
+        VStack{
+            Divider().padding(.top, 10.0)
+            ScrollView {
+                
+                VStack {
+                    TextView(input: $businessEmail, label: "E-mail", isSecure: false)
+                    TextView(input: $businessPassword, label: "Senha", isSecure: true)
+                    TextView(input: $businessName, label: "Nome do estabelecimento", isSecure: false)
+                    TextView(input: $businessNumber, label: "Telefone", isSecure: false)
+                    TextView(input: $businessAddress, label: "Endereço", isSecure: false)
+                    Text("Capacidade máx. de pessoas por mesa")
+                        .foregroundColor(Color("primary"))
+                        .multilineTextAlignment(.center)
+                        .frame(width: 300, height: 29, alignment: .leading)
+                        .padding(.horizontal, 5)
+                        .padding(.bottom, -1)
+                        .padding(.top, 10)
+                        .padding(.leading, -15)
+                    StepperView(peoplePerTable: $peoplePerTable)
+                    Text("Descrição do estabelecimento")
+                        .foregroundColor(Color("primary"))
+                        .frame(width: 245, height: 29, alignment: .leading)
+                        .padding(.horizontal, 5)
+                        .padding(.bottom, 1)
+                        .padding(.top, 10)
+                        .padding(.leading, -75)
+                    ZStack {
+                        TextEditor(text: $businessDescription)
+                            .frame(maxWidth: 320, maxHeight: .infinity)
+                            .border(Color("primary"))
+                        Text(businessDescription).opacity(0).padding(.all, 8)
+                    }
+                    .padding(.bottom)
+                    NavigationLink(
+                        destination: BusinessView(),
+                        label: {
+                            ButtonView(text: "CADASTRAR", action: handleSingUp)
+                                .padding(.leading, 15.0)
+                        })
                 }
-                .padding(.bottom)
-                NavigationLink(
-                    destination: BusinessView(),
-                    label: {
-                        ButtonView(text: "CADASTRAR", action: handleSingUp)
-                            .padding(.leading, 15.0)
-                    })
-            }
-            .padding()
-            Spacer()
                 .padding()
-                .navigationTitle(Text("Cadastro"))
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden(true)
-        }
-        .navigationBarColor(UIColor.white)
-        .navigationBarItems(leading:
-                                Button(action : {
-                                    self.mode.wrappedValue.dismiss()
-                                }){
-                                    Image(systemName: "chevron.backward")
-                                        .foregroundColor(Color("primary"))
-                                }).alert(isPresented: $showAlert) {
-                                    Alert(
-                                        title: Text("Erro"),
-                                        message: Text("Houve um problema ao registrar sua conta, tente novamente.")
-                                    )
-                                }
-    }
+                Spacer()
+                    .padding()
+                    .navigationTitle(Text("Cadastro"))
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+            }
+            .navigationBarColor(UIColor.white)
+            .navigationBarItems(leading:
+                                    Button(action : {
+                                        self.mode.wrappedValue.dismiss()
+                                    }){
+                                        Image(systemName: "chevron.backward")
+                                            .foregroundColor(Color("primary"))
+                                    }).alert(isPresented: $showAlert) {
+                                        Alert(
+                                            title: Text("Erro"),
+                                            message: Text("Houve um problema ao registrar sua conta, tente novamente.")
+                                        )
+                                    }
+        }}
     
     
 }

@@ -42,37 +42,43 @@ struct LoginClientRegister: View {
     var body: some View {
         ZStack{
             LoaderView()
-            ScrollView {
-                
-                VStack{
-                    TextView(input: $name , label: "Nome", isSecure: false)
-                    TextView(input: $phone , label: "Telefone", isSecure: false)
-                    TextView(input: $email , label: "E-mail", isSecure: false)
-                    TextView(input: $password , label: "Senha", isSecure: false)
-                    TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
-                    ButtonView(text: "CADASTRAR") {
-                        handleSingUp()
+            VStack{
+                Divider() .padding(.top, 10.0)
+                ScrollView {
+                    
+                    VStack{
+                        TextView(input: $name , label: "Nome", isSecure: false)
+                        TextView(input: $phone , label: "Telefone", isSecure: false)
+                        TextView(input: $email , label: "E-mail", isSecure: false)
+                        TextView(input: $password , label: "Senha", isSecure: false)
+                        TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
+                        ButtonView(text: "CADASTRAR") {
+                            handleSingUp()
+                        }
                     }
+                    .padding()
+                    .navigationTitle(Text("Cadastro"))
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
                 }
-                .padding()
-                .navigationTitle(Text("Cadastro"))
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden(true)
+                .navigationBarColor(UIColor(.white))
+                .navigationBarItems(leading:
+                                        Button(action : {
+                                            self.mode.wrappedValue.dismiss()
+                                        }){
+                                            Image(systemName: "chevron.backward")
+                                                .foregroundColor(Color("primary"))
+                                        }).alert(isPresented: $showAlert) {
+                                            Alert(
+                                                title: Text("Erro"),
+                                                message: Text("Houve um problema ao registrar sua conta, tente novamente.")
+                                            )
+                                        }
             }
-            .navigationBarColor(UIColor(.white))
-            .navigationBarItems(leading:
-                                    Button(action : {
-                                        self.mode.wrappedValue.dismiss()
-                                    }){
-                                        Image(systemName: "chevron.backward")
-                                            .foregroundColor(Color("primary"))
-                                    }).alert(isPresented: $showAlert) {
-                                        Alert(
-                                            title: Text("Erro"),
-                                            message: Text("Houve um problema ao registrar sua conta, tente novamente.")
-                                        )
-                                    }
-        }}
+            
+        }
+        
+    }
 }
 
 struct LoginClientRegister_Previews: PreviewProvider {
