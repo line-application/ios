@@ -36,6 +36,7 @@
 		34EA28B6264A16400047E740 /* ClientBusinessListTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */; };
 		34EA28BB264A18150047E740 /* LoginClientRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BA264A18150047E740 /* LoginClientRegister.swift */; };
 		34EA28C0264A181E0047E740 /* LoginBusinessRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */; };
+		553F7BE0264EB95D00053383 /* ClientProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F7BDF264EB95D00053383 /* ClientProfileTabView.swift */; };
 		55409262264C4850004E6D9B /* ClientCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55409261264C4850004E6D9B /* ClientCardView.swift */; };
 		554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71D92641D4AC00E4F684 /* On_lineApp.swift */; };
 		554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71DB2641D4AC00E4F684 /* ContentView.swift */; };
@@ -96,6 +97,7 @@
 		34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBusinessListTab.swift; sourceTree = "<group>"; };
 		34EA28BA264A18150047E740 /* LoginClientRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClientRegister.swift; sourceTree = "<group>"; };
 		34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBusinessRegister.swift; sourceTree = "<group>"; };
+		553F7BDF264EB95D00053383 /* ClientProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileTabView.swift; sourceTree = "<group>"; };
 		55409261264C4850004E6D9B /* ClientCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCardView.swift; sourceTree = "<group>"; };
 		554F71D62641D4AC00E4F684 /* On line.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On line.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71D92641D4AC00E4F684 /* On_lineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineApp.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				34EA28B0264A13C30047E740 /* ClientProfileTab.swift */,
+				553F7BDF264EB95D00053383 /* ClientProfileTabView.swift */,
 			);
 			path = client_profile_tab;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				34EA28B1264A13C30047E740 /* ClientProfileTab.swift in Sources */,
 				34EA2859264A09FA0047E740 /* BusinessView.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
+				553F7BE0264EB95D00053383 /* ClientProfileTabView.swift in Sources */,
 				55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */,
 				341BBCAF2643608500A5AE69 /* Cognito.swift in Sources */,
 				34EA285E264A0A020047E740 /* ClientView.swift in Sources */,
