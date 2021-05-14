@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ClientProfileTab: View {
-    //@Binding var client:ClientModel
+    @Binding var currentView: Bool
     @State var name:String = ""
     @State var password:String = ""
     @State var phone: String = ""
@@ -22,8 +22,8 @@ struct ClientProfileTab: View {
                     .foregroundColor(.white)
                     .ignoresSafeArea()
                 Text("Perfil")
-                    .padding(.top, -190)
-                    .font(.system(size: 19, weight: .heavy, design: .default))
+                    .padding(.top, -165)
+                    .font(.system(size: 25, weight: .heavy, design: .default))
                     .foregroundColor(Color("primary"))
                 Divider()
                     .padding(.top, -115)
@@ -39,10 +39,10 @@ struct ClientProfileTab: View {
                         .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     TextView(input: $name , label: "Nome", isSecure: false)
                     TextView(input: $phone , label: "Telefone", isSecure: false)
-                    TextView(input: $password , label: "Senha", isSecure: true)
+                    TextView(input: $password , label: "Nova Senha", isSecure: true)
                     TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
                     ButtonView(text: "SALVAR") {
-                        
+                        currentView = false
                     }
                 }
                     .padding(.top, -323)
@@ -52,8 +52,8 @@ struct ClientProfileTab: View {
     }
 }
 
-struct ClientProfileTab_Previews: PreviewProvider {
-    static var previews: some View {
-        ClientProfileTab()
-    }
-}
+//struct ClientProfileTab_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ClientProfileTab(currentView: Binding<Bool>(Binding<Bool?>()) ?? true)
+//    }
+//}
