@@ -9,9 +9,8 @@ import SwiftUI
 
 struct RestaurantDetails: View {
     
-    @State var peoplePerTable: Int
-    
-    var bussinesModel: BusinessModel
+    @State var peoplePerTable: Int = 1
+    @Binding var bussinesModel: BusinessModel
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
@@ -84,12 +83,12 @@ struct RestaurantDetails: View {
     }
 
 
-struct RestaurantDetails_Previews: PreviewProvider {
-    static var previews: some View {
-//        RestaurantDetails(peoplePerTable: 2, bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
-        RestaurantDetails(peoplePerTable: 2, bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "A petiskeira é uma das maiores redes de restaurantes de Porto Alegre. Uma marca familiar nascida em 1984, gaúcha e ícone da cidade quando o assunto é gastronomia rápida.", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
-        
-    }
-}
+//struct RestaurantDetails_Previews: PreviewProvider {
+//    static var previews: some View {
+////        RestaurantDetails(peoplePerTable: 2, bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
+//        RestaurantDetails(peoplePerTable: 2, bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "A petiskeira é uma das maiores redes de restaurantes de Porto Alegre. Uma marca familiar nascida em 1984, gaúcha e ícone da cidade quando o assunto é gastronomia rápida.", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
+//        
+//    }
+//}
 
 

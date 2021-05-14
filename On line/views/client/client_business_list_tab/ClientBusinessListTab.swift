@@ -10,6 +10,7 @@ import SwiftUI
 struct ClientBusinessListTab: View {
     @State var list:[BusinessModel] = []
     @State var currentView: Bool = false
+    @State var currentBusinessModel: BusinessModel = BusinessModel(id: "-23", email: "", name: "", description: "", phone: "", waitTime: 0.0, address: "", maxTableCapacity: 0, image: "")
     
     func fetchHandler(_ businessesResponse: [BusinessModel]?) {
         //print(businessesResponse)
@@ -26,7 +27,7 @@ struct ClientBusinessListTab: View {
     
     var body: some View {
         if(currentView){
-            LoginView()
+            RestaurantDetails(bussinesModel: $currentBusinessModel)
         }
         else {
             VStack {
@@ -62,6 +63,7 @@ struct ClientBusinessListTab: View {
                         ForEach(list) { business in
                             Button(action: {
                                 currentView = true
+                                currentBusinessModel = business
                             }, label: {
                                 ClientCardView(bussinesModel: business)
                             })
