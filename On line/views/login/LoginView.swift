@@ -154,9 +154,6 @@ struct LoginView: View {
                                 .frame(width: 270, height: 32)
                                 .background(Color.white)
                                 .padding(5)
-                                //.border(Color.black, width: 1)
-                               // .cornerRadius(18)
-                                
                                 .overlay(
                                                 RoundedRectangle(cornerRadius: 18)
                                                 .stroke(Color.black, lineWidth: 1)
@@ -164,10 +161,7 @@ struct LoginView: View {
                                 
                             Image("Google Logo")
                                 .padding(.trailing, 205.0)
-                            //.frame(width: 10, height: 10)
                         }
-                       // .background(Color.black)
-                      //  .cornerRadius(50)
                     })
                 }
                 
@@ -175,7 +169,6 @@ struct LoginView: View {
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
         }
-        
     }
     
 }
