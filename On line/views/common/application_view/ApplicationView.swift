@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ApplicationView: View {
-    var userType:UserType = UserType.CLIENT
+    var userType:UserType = UserType.BUSINESS
     var body: some View {
         switch userType {
         case UserType.BUSINESS:
