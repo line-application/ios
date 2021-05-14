@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginClientRegister: View {
     @EnvironmentObject var settings: SettingsState
+    @State var showAlert:Bool = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var name: String = ""
     @State var phone: String = ""
@@ -18,7 +19,7 @@ struct LoginClientRegister: View {
     
     func handleSingUp() {
         settings.isLoading = true
-        Authentication.signUp(name: name,password: password, email: email, userType: .CLIENT) {
+        Authentication.signUp(name: name,password: password, email: email, phoneNumber: phone, userType: .CLIENT) {
             business in
             DispatchQueue.main.async {
                 switch(business) {
@@ -29,7 +30,7 @@ struct LoginClientRegister: View {
                     print("success")
                 case .ERROR:
                     print("failed")
-                    settings.showAlert = true
+                    showAlert = true
                 }
                 DispatchQueue.main.async {
                     settings.isLoading = false
@@ -65,7 +66,7 @@ struct LoginClientRegister: View {
                                     }){
                                         Image(systemName: "chevron.backward")
                                             .foregroundColor(.white)
-                                    }).alert(isPresented: $settings.showAlert) {
+                                    }).alert(isPresented: $showAlert) {
                                         Alert(
                                             title: Text("Erro"),
                                             message: Text("Houve um problema ao registrar sua conta, tente novamente.")

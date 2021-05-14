@@ -14,9 +14,9 @@ enum UserType {
     var stringForm:String {
         switch self.self {
         case UserType.BUSINESS:
-            return "client"
-        case  UserType.CLIENT:
             return "business"
+        case  UserType.CLIENT:
+            return "client"
         }
     }
 }

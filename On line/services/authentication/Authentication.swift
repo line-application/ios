@@ -32,14 +32,19 @@ struct Authentication {
     
     
     
-    static func signUp(name: String, password: String, email: String, userType: UserType, handler:@escaping (SignUpResponseTypes)->Void) {
+    static func signUp(name: String, password: String, email: String, phoneNumber: String? = nil, userType: UserType, highestTableCapacity:Int? = nil, description:String? = nil,handler:@escaping (SignUpResponseTypes)->Void) {
         print(userType.stringForm)
         
-        let userAttributes = [
+        var userAttributes = [
             AuthUserAttribute(.name, value: name),
             AuthUserAttribute(.email, value: email),
             AuthUserAttribute(.custom("userType"), value: userType.stringForm)
+                
         ]
+        if(phoneNumber != nil){ userAttributes.append(AuthUserAttribute(.phoneNumber, value: phoneNumber ?? "")) }
+        if(highestTableCapacity != nil){ userAttributes.append(AuthUserAttribute(.custom("highestTableCapacity"), value: String(highestTableCapacity ?? 1))) }
+        if(description != nil){ userAttributes.append(AuthUserAttribute(.custom("description"), value: userType.stringForm)) }
+        
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
         Amplify.Auth.signUp(username: email, password: password, options: options) { result in
             switch result {
