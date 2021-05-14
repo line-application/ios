@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ClientCardView: View {
-    
     var bussinesModel: BusinessModel
     var body: some View {
         ZStack {

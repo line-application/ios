@@ -27,7 +27,7 @@ struct ClientBusinessListTab: View {
     
     var body: some View {
         if(currentView){
-            RestaurantDetails(bussinesModel: $currentBusinessModel)
+            RestaurantDetails(currentView: $currentView, bussinesModel: $currentBusinessModel )
         }
         else {
             VStack {
