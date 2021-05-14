@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Logo.png",
+      "filename" : "IconePerfilCliente.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -10,7 +10,6 @@
       "scale" : "2x"
     },
     {
-      "filename" : "Logo-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

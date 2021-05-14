@@ -17,6 +17,8 @@ struct LoginClientRegister: View {
     
     var body: some View {
         ScrollView {
+            Divider()
+                .padding(.top, 10.0)
             VStack{
                 TextView(input: $name , label: "Nome", isSecure: false)
                 TextView(input: $phone , label: "Telefone", isSecure: false)
@@ -32,13 +34,13 @@ struct LoginClientRegister: View {
                                .navigationBarTitleDisplayMode(.inline)
                                .navigationBarBackButtonHidden(true)
         }
-        .navigationBarColor(UIColor(named: "primary"))
+        .navigationBarColor(UIColor.white)
         .navigationBarItems(leading:
         Button(action : {
             self.mode.wrappedValue.dismiss()
         }){
             Image(systemName: "chevron.backward")
-                .foregroundColor(.white)
+                .foregroundColor(Color("primary"))
         })
     }
 }

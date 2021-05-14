@@ -31,6 +31,9 @@ struct ClientBusinessListTab: View {
         else {
             VStack {
                 Image("Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 173, height: 51, alignment: .center)
                 Divider()
                 VStack {
                     ScrollView {
@@ -66,6 +69,7 @@ struct ClientBusinessListTab: View {
                     }//.padding(.bottom,83)
                 }
             }
+            .padding(.top)
             .onAppear(){
                 fetchBusiness()
             }

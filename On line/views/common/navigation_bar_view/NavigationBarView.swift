@@ -25,8 +25,7 @@ struct NavigationBarModifier: ViewModifier {
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
         coloredAppearance.backgroundColor = .clear
-        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize:19, weight: .bold)]
-      //  coloredAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize:19, weight: .bold)]
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "primary")!, NSAttributedString.Key.font: UIFont.systemFont(ofSize:19, weight: .bold)]
         coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         
         UINavigationBar.appearance().standardAppearance = coloredAppearance
