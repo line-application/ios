@@ -59,13 +59,13 @@ struct LoginClientRegister: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
             }
-            .navigationBarColor(UIColor(named: "primary"))
+            .navigationBarColor(UIColor(.white))
             .navigationBarItems(leading:
                                     Button(action : {
                                         self.mode.wrappedValue.dismiss()
                                     }){
                                         Image(systemName: "chevron.backward")
-                                            .foregroundColor(.white)
+                                            .foregroundColor(Color("primary"))
                                     }).alert(isPresented: $showAlert) {
                                         Alert(
                                             title: Text("Erro"),

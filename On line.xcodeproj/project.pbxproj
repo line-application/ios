@@ -43,6 +43,7 @@
 		34EA28B6264A16400047E740 /* ClientBusinessListTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */; };
 		34EA28BB264A18150047E740 /* LoginClientRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BA264A18150047E740 /* LoginClientRegister.swift */; };
 		34EA28C0264A181E0047E740 /* LoginBusinessRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */; };
+		553F7BE0264EB95D00053383 /* ClientProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F7BDF264EB95D00053383 /* ClientProfileTabView.swift */; };
 		55409262264C4850004E6D9B /* ClientCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55409261264C4850004E6D9B /* ClientCardView.swift */; };
 		554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71D92641D4AC00E4F684 /* On_lineApp.swift */; };
 		554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71DB2641D4AC00E4F684 /* ContentView.swift */; };
@@ -54,6 +55,8 @@
 		55D835E0264B167E002C4EF7 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835DF264B167E002C4EF7 /* NavigationBarView.swift */; };
 		55D835E3264B1748002C4EF7 /* ImageButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835E2264B1748002C4EF7 /* ImageButtonView.swift */; };
 		BF2BEB0F8ED87226D38CA592 /* Pods_On_line.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */; };
+		F85F7005264DA9BC00EE68F0 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */; };
+		F85F7007264DB92800EE68F0 /* ButtonView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7006264DB92800EE68F0 /* ButtonView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +113,7 @@
 		34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientBusinessListTab.swift; sourceTree = "<group>"; };
 		34EA28BA264A18150047E740 /* LoginClientRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClientRegister.swift; sourceTree = "<group>"; };
 		34EA28BF264A181E0047E740 /* LoginBusinessRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBusinessRegister.swift; sourceTree = "<group>"; };
+		553F7BDF264EB95D00053383 /* ClientProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileTabView.swift; sourceTree = "<group>"; };
 		55409261264C4850004E6D9B /* ClientCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCardView.swift; sourceTree = "<group>"; };
 		554F71D62641D4AC00E4F684 /* On line.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On line.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71D92641D4AC00E4F684 /* On_lineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineApp.swift; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		8E0D8F23CE3FC40F86C1890C /* Pods-On line.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.release.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.release.xcconfig"; sourceTree = "<group>"; };
 		CA31AEAB87888F49125A496C /* Pods-On line.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.debug.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.debug.xcconfig"; sourceTree = "<group>"; };
 		D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_line.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
+		F85F7006264DB92800EE68F0 /* ButtonView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				34EA28B0264A13C30047E740 /* ClientProfileTab.swift */,
+				553F7BDF264EB95D00053383 /* ClientProfileTabView.swift */,
 			);
 			path = client_profile_tab;
 			sourceTree = "<group>";
@@ -395,6 +402,7 @@
 			children = (
 				34EA28B5264A16400047E740 /* ClientBusinessListTab.swift */,
 				55409261264C4850004E6D9B /* ClientCardView.swift */,
+				F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */,
 			);
 			path = client_business_list_tab;
 			sourceTree = "<group>";
@@ -419,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				34EA2889264A0E920047E740 /* ButtonView.swift */,
+				F85F7006264DB92800EE68F0 /* ButtonView2.swift */,
 			);
 			path = button_view;
 			sourceTree = "<group>";
@@ -721,6 +730,8 @@
 				55D835E0264B167E002C4EF7 /* NavigationBarView.swift in Sources */,
 				349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */,
 				34E02AF3264AF23A0096BBDE /* StepperView.swift in Sources */,
+				F85F7005264DA9BC00EE68F0 /* RestaurantDetails.swift in Sources */,
+				F85F7007264DB92800EE68F0 /* ButtonView2.swift in Sources */,
 				34E02B01264AF6200096BBDE /* TextViewWrapper.swift in Sources */,
 				341BBCA92643559600A5AE69 /* AppDelegate.swift in Sources */,
 				34CD7BCB264DA379005B2048 /* SettingsState.swift in Sources */,
@@ -748,6 +759,7 @@
 				34EA28B1264A13C30047E740 /* ClientProfileTab.swift in Sources */,
 				34EA2859264A09FA0047E740 /* BusinessView.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
+				553F7BE0264EB95D00053383 /* ClientProfileTabView.swift in Sources */,
 				55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */,
 				341BBCAF2643608500A5AE69 /* Authentication.swift in Sources */,
 				341BBCAF2643608500A5AE69 /* Authentication.swift in Sources */,

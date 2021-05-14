@@ -37,7 +37,7 @@ struct ClientView: View {
                     Text("Status da fila")
                 }
                 .tag(Tabs.list)
-            ClientProfileTab()
+            ClientProfileTabView()
                 .tabItem {
                     Image(selectedTab == Tabs.profile ? "Icone_Perfil_bold" : "PerfilBranco")
                     Text("Perfil")

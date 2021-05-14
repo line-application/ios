@@ -91,48 +91,41 @@ struct LoginView: View {
                             //.frame(width: 10, height: 10)
                         }
                     })
-//                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-//                        ZStack {
-//                            Text("Continuar com o Facebook")
-//                                .font(.system(size: 15))
-//                                .bold()
-//                                .foregroundColor(.white)
-//                                .frame(width: 280, height: 44)
-//                                .background(Color("facebookColor"))
-//                                .cornerRadius(18)
-//                                .padding(5)
-//                            Image("Facebook Logo")
-//                                .resizable()
-//                                .frame(maxWidth: 25, maxHeight: 25)
-//                                .padding(.trailing, 205.0)
-//
-//                        }
-//                    })
-//                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-//                        ZStack {
-//                            Text("   Continuar com o Google")
-//                                .font(.system(size: 15))
-//                                .bold()
-//                                .foregroundColor(.black)
-//                                .frame(width: 270, height: 32)
-//                                .background(Color.white)
-//                                .padding(5)
-//                                //.border(Color.black, width: 1)
-//                                // .cornerRadius(18)
-//
-//                                .overlay(
-//                                    RoundedRectangle(cornerRadius: 18)
-//                                        .stroke(Color.black, lineWidth: 1)
-//                                )
-//
-//                            Image("Google Logo")
-//
-//                                .padding(.trailing, 205.0)
-//                            //.frame(width: 10, height: 10)
-//                        }
-//                        // .background(Color.black)
-//                        //  .cornerRadius(50)
-//                    })
+                    // Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    //     ZStack {
+                    //         Text("        Continuar com o Facebook")
+                    //             .font(.system(size: 15))
+                    //             .bold()
+                    //             .foregroundColor(.white)
+                    //             .frame(width: 280, height: 44)
+                    //             .background(Color("facebookColor"))
+                    //             .cornerRadius(18)
+                    //             .padding(5)
+                    //         Image("Facebook Logo")
+                    //             .resizable()
+                    //             .frame(maxWidth: 25, maxHeight: 25)
+                    //             .padding(.trailing, 205.0)
+                                
+                    //     }
+                    // })
+                    // Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    //     ZStack {
+                    //         Text("   Continuar com o Google")
+                    //             .font(.system(size: 15))
+                    //             .bold()
+                    //             .foregroundColor(.black)
+                    //             .frame(width: 270, height: 32)
+                    //             .background(Color.white)
+                    //             .padding(5)
+                    //             .overlay(
+                    //                             RoundedRectangle(cornerRadius: 18)
+                    //                             .stroke(Color.black, lineWidth: 1)
+                    //                     )
+                                
+                    //         Image("Google Logo")
+                    //             .padding(.trailing, 205.0)
+                    //     }
+                    // })
                 }
                 
             }
@@ -144,7 +137,6 @@ struct LoginView: View {
                 message: Text("Usuário ou senha inválidos.")
             )
         }
-        
     }
     
 }
