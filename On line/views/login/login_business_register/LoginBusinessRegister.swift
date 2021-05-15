@@ -44,7 +44,6 @@ struct LoginBusinessRegister: View {
     
     var body: some View {
         VStack{
-            Divider().padding(.top, 10.0)
             ScrollView {
                 
                 VStack {
@@ -80,24 +79,13 @@ struct LoginBusinessRegister: View {
                         destination: BusinessView(),
                         label: {
                             ButtonView(text: "CADASTRAR", action: handleSingUp)
-                                .padding(.leading, 15.0)
                         })
                 }
                 .padding()
                 Spacer()
                     .padding()
-                    .navigationTitle(Text("Cadastro"))
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationBarBackButtonHidden(true)
             }
-            .navigationBarColor(UIColor.white)
-            .navigationBarItems(leading:
-                                    Button(action : {
-                                        self.mode.wrappedValue.dismiss()
-                                    }){
-                                        Image(systemName: "chevron.backward")
-                                            .foregroundColor(Color("primary"))
-                                    }).alert(isPresented: $showAlert) {
+            .alert(isPresented: $showAlert) {
                                         Alert(
                                             title: Text("Erro"),
                                             message: Text("Houve um problema ao registrar sua conta, tente novamente.")
