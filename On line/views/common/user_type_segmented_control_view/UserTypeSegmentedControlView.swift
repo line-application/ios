@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserTypeSegmentedControllView: View {
+struct UserTypeSegmentedControlView: View {
     @EnvironmentObject var settings: SettingsState
     @Namespace var animation
     
@@ -69,8 +69,8 @@ struct UserTypeSegmentedControllView: View {
     }
 }
 
-struct UserTypeSegmentedControllView_Previews: PreviewProvider {
+struct UserTypeSegmentedControlView_Previews: PreviewProvider {
     static var previews: some View {
-        UserTypeSegmentedControllView()
+        UserTypeSegmentedControlView()
     }
 }

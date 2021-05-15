@@ -21,7 +21,7 @@
 		349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE15D2644CF1500C9D89A /* TypeAliases.swift */; };
 		34A3B619264C5BAD00D2D51D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A3B618264C5BAD00D2D51D /* LoaderView.swift */; };
 		34CD7BCB264DA379005B2048 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BCA264DA379005B2048 /* SettingsState.swift */; };
-		34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */; };
+		34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControlView.swift */; };
 		34CD7BD9264DE092005B2048 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BD8264DE092005B2048 /* RegisterView.swift */; };
 		34E02AF3264AF23A0096BBDE /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AF2264AF23A0096BBDE /* StepperView.swift */; };
 		34E02B00264AF6200096BBDE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AFE264AF6200096BBDE /* TextView.swift */; };
@@ -91,7 +91,7 @@
 		349BE15D2644CF1500C9D89A /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		34A3B618264C5BAD00D2D51D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		34CD7BCA264DA379005B2048 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
-		34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSegmentedControllView.swift; sourceTree = "<group>"; };
+		34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSegmentedControlView.swift; sourceTree = "<group>"; };
 		34CD7BD8264DE092005B2048 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		34E02AF2264AF23A0096BBDE /* StepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		34E02AFE264AF6200096BBDE /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -245,12 +245,12 @@
 			path = states;
 			sourceTree = "<group>";
 		};
-		34CD7BCF264DDED4005B2048 /* user_type_segmented_controll_view */ = {
+		34CD7BCF264DDED4005B2048 /* user_type_segmented_control_view */ = {
 			isa = PBXGroup;
 			children = (
-				34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */,
+				34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControlView.swift */,
 			);
-			path = user_type_segmented_controll_view;
+			path = user_type_segmented_control_view;
 			sourceTree = "<group>";
 		};
 		34CD7BD7264DE085005B2048 /* register_view */ = {
@@ -343,7 +343,7 @@
 		34EA2862264A0A0C0047E740 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				34CD7BCF264DDED4005B2048 /* user_type_segmented_controll_view */,
+				34CD7BCF264DDED4005B2048 /* user_type_segmented_control_view */,
 				34A3B60F264C5B5C00D2D51D /* loader */,
 				55D835E1264B16F7002C4EF7 /* image_button */,
 				55D835DE264B165E002C4EF7 /* navigation_bar_view */,
@@ -748,7 +748,7 @@
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
 				34EA288A264A0E920047E740 /* ButtonView.swift in Sources */,
-				34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControllView.swift in Sources */,
+				34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControlView.swift in Sources */,
 				34E02B0D264B0A420096BBDE /* api.swift in Sources */,
 				349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */,
 				34E02B21264B0BA10096BBDE /* AWS.swift in Sources */,

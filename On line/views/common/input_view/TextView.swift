@@ -10,7 +10,7 @@ import SwiftUI
 extension View {
     func underlineTextField() -> some View {
         self
-            .overlay(Rectangle().frame(height: 1).padding(.top, 35))
+            .overlay(Rectangle().frame(height: 1).padding(.top, 35).foregroundColor(Color("grayselector")))
             .foregroundColor(.black)
             .padding(5)
     }

@@ -11,7 +11,10 @@ struct LoginView: View {
     @Namespace var animation
     @State var email: String = ""
     @State var password: String = ""
+    @State var showRegisterAlert = false
+    @State private var actionState: Int? = 0
     @EnvironmentObject var settings: SettingsState
+    
     
     
     func handleSignIn() {
@@ -34,7 +37,6 @@ struct LoginView: View {
             ZStack{
                 LoaderView()
                 VStack {
-                    UserTypeSegmentedControllView()
                     Image("Logo")
                         .resizable()
                         .scaledToFit()
@@ -42,7 +44,7 @@ struct LoginView: View {
                         .padding(.top, 35)
                         .padding(.bottom, 38)
                     
-                    TextView(input: $email, label: "Email", isSecure: false)
+                    TextView(input: $email, label: "E-mail", isSecure: false)
                     TextView(input: $password, label: "Senha", isSecure: true)
                         .padding(.bottom, 15)
                     
@@ -59,38 +61,52 @@ struct LoginView: View {
                     HStack{
                         Text("Ainda não tem cadastro?")
                             .font(.system(size: 14))
-                        if settings.userType == UserType.BUSINESS {
-                            NavigationLink(destination: LoginBusinessRegister(),
-                                           label: {
-                                            Text("Cadastre-se")
-                                                .font(.system(size: 14))
-                                                .foregroundColor(.blue)})
-                        }
+                        // if settings.userType == UserType.BUSINESS {
                         
-                        else {
-                            NavigationLink(destination: LoginClientRegister(),
-                                           label: {
-                                            Text("Cadastre-se")
-                                                .font(.system(size: 14))
-                                                .foregroundColor(.blue)})
-                        }
+                        Text("Cadastre-se")
+                            .font(.system(size: 14))
+                            .foregroundColor(.blue)
+                            .actionSheet(isPresented: $showRegisterAlert) {
+                                ActionSheet(
+                                    title: Text("Quem você é?"),
+                                    message: Text("Precisamos saber se você é um cliente ou um estabelecimento para efetuar o cadastro."),
+                                    buttons: [
+                                        .default(Text("Cliente"), action: {
+                                            actionState = 1
+                                            settings.userType = UserType.CLIENT
+                                        }),
+                                        .default(Text("Estabelecimento"), action: {
+                                            actionState = 1
+                                            settings.userType = UserType.BUSINESS
+                                        })
+                                        
+                                    ]
+                                    
+                                )
+                            }
+                            .onTapGesture {
+                                showRegisterAlert.toggle()
+                            }
+                        NavigationLink(destination: RegisterView(), tag: 1, selection: self.$actionState) {}
+                        
                     }
+                    
                     .padding(3)
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        ZStack {
-                            Text("Logar com conta Apple")
-                                .font(.system(size: 15))
-                                .bold()
-                                .foregroundColor(.white)
-                                .frame(width: 280, height: 44)
-                                .background(Color.black)
-                                .cornerRadius(18)
-                                .padding(5)
-                            Image("Left White Logo Large")
-                                .padding(.trailing, 205.0)
-                            //.frame(width: 10, height: 10)
-                        }
-                    })
+                    //                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    //                        ZStack {
+                    //                            Text("Continuar com a Apple")
+                    //                                .font(.system(size: 15))
+                    //                                .bold()
+                    //                                .foregroundColor(.white)
+                    //                                .frame(width: 280, height: 44)
+                    //                                .background(Color.black)
+                    //                                .cornerRadius(18)
+                    //                                .padding(5)
+                    //                            Image("Left White Logo Large")
+                    //                                .padding(.trailing, 205.0)
+                    //                            //.frame(width: 10, height: 10)
+                    //                        }
+                    //                    })
                     // Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                     //     ZStack {
                     //         Text("        Continuar com o Facebook")
@@ -105,7 +121,7 @@ struct LoginView: View {
                     //             .resizable()
                     //             .frame(maxWidth: 25, maxHeight: 25)
                     //             .padding(.trailing, 205.0)
-                                
+                    
                     //     }
                     // })
                     // Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
@@ -121,12 +137,14 @@ struct LoginView: View {
                     //                             RoundedRectangle(cornerRadius: 18)
                     //                             .stroke(Color.black, lineWidth: 1)
                     //                     )
-                                
+                    
                     //         Image("Google Logo")
                     //             .padding(.trailing, 205.0)
                     //     }
                     // })
+                    Spacer()
                 }
+                .padding()
                 
             }
             .navigationBarHidden(true)
@@ -141,7 +159,7 @@ struct LoginView: View {
     
 }
 
-struct LoginVIew_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
