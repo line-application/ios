@@ -21,7 +21,7 @@
 		349BE15E2644CF1500C9D89A /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349BE15D2644CF1500C9D89A /* TypeAliases.swift */; };
 		34A3B619264C5BAD00D2D51D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A3B618264C5BAD00D2D51D /* LoaderView.swift */; };
 		34CD7BCB264DA379005B2048 /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BCA264DA379005B2048 /* SettingsState.swift */; };
-		34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */; };
+		34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControlView.swift */; };
 		34CD7BD9264DE092005B2048 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD7BD8264DE092005B2048 /* RegisterView.swift */; };
 		34E02AF3264AF23A0096BBDE /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AF2264AF23A0096BBDE /* StepperView.swift */; };
 		34E02B00264AF6200096BBDE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E02AFE264AF6200096BBDE /* TextView.swift */; };
@@ -55,6 +55,8 @@
 		55D835E0264B167E002C4EF7 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835DF264B167E002C4EF7 /* NavigationBarView.swift */; };
 		55D835E3264B1748002C4EF7 /* ImageButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835E2264B1748002C4EF7 /* ImageButtonView.swift */; };
 		BF2BEB0F8ED87226D38CA592 /* Pods_On_line.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */; };
+		F134F8DD264F1041002E46C3 /* ClientsCalledSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F134F8DC264F1041002E46C3 /* ClientsCalledSheet.swift */; };
+		F134F8DF264F17D0002E46C3 /* ClientCalledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F134F8DE264F17D0002E46C3 /* ClientCalledView.swift */; };
 		F85F7005264DA9BC00EE68F0 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */; };
 		F85F7007264DB92800EE68F0 /* ButtonView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7006264DB92800EE68F0 /* ButtonView2.swift */; };
 /* End PBXBuildFile section */
@@ -91,7 +93,7 @@
 		349BE15D2644CF1500C9D89A /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		34A3B618264C5BAD00D2D51D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		34CD7BCA264DA379005B2048 /* SettingsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
-		34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSegmentedControllView.swift; sourceTree = "<group>"; };
+		34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSegmentedControlView.swift; sourceTree = "<group>"; };
 		34CD7BD8264DE092005B2048 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		34E02AF2264AF23A0096BBDE /* StepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		34E02AFE264AF6200096BBDE /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 		8E0D8F23CE3FC40F86C1890C /* Pods-On line.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.release.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.release.xcconfig"; sourceTree = "<group>"; };
 		CA31AEAB87888F49125A496C /* Pods-On line.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-On line.debug.xcconfig"; path = "Target Support Files/Pods-On line/Pods-On line.debug.xcconfig"; sourceTree = "<group>"; };
 		D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_line.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F134F8DC264F1041002E46C3 /* ClientsCalledSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsCalledSheet.swift; sourceTree = "<group>"; };
+		F134F8DE264F17D0002E46C3 /* ClientCalledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCalledView.swift; sourceTree = "<group>"; };
 		F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		F85F7006264DB92800EE68F0 /* ButtonView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,12 +249,12 @@
 			path = states;
 			sourceTree = "<group>";
 		};
-		34CD7BCF264DDED4005B2048 /* user_type_segmented_controll_view */ = {
+		34CD7BCF264DDED4005B2048 /* user_type_segmented_control_view */ = {
 			isa = PBXGroup;
 			children = (
-				34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControllView.swift */,
+				34CD7BD2264DDF25005B2048 /* UserTypeSegmentedControlView.swift */,
 			);
-			path = user_type_segmented_controll_view;
+			path = user_type_segmented_control_view;
 			sourceTree = "<group>";
 		};
 		34CD7BD7264DE085005B2048 /* register_view */ = {
@@ -343,7 +347,7 @@
 		34EA2862264A0A0C0047E740 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				34CD7BCF264DDED4005B2048 /* user_type_segmented_controll_view */,
+				34CD7BCF264DDED4005B2048 /* user_type_segmented_control_view */,
 				34A3B60F264C5B5C00D2D51D /* loader */,
 				55D835E1264B16F7002C4EF7 /* image_button */,
 				55D835DE264B165E002C4EF7 /* navigation_bar_view */,
@@ -368,6 +372,8 @@
 			isa = PBXGroup;
 			children = (
 				34EA28A1264A12600047E740 /* BusinessDashboardTab.swift */,
+				F134F8DC264F1041002E46C3 /* ClientsCalledSheet.swift */,
+				F134F8DE264F17D0002E46C3 /* ClientCalledView.swift */,
 			);
 			path = business_dashboard_tab;
 			sourceTree = "<group>";
@@ -744,11 +750,12 @@
 				34E02B00264AF6200096BBDE /* TextView.swift in Sources */,
 				34EA28C0264A181E0047E740 /* LoginBusinessRegister.swift in Sources */,
 				34EA289A264A11FF0047E740 /* BusinessProfileTabView.swift in Sources */,
+				F134F8DF264F17D0002E46C3 /* ClientCalledView.swift in Sources */,
 				34EA28A7264A129A0047E740 /* BusinessDashboardClientsInLine.swift in Sources */,
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
 				34EA288A264A0E920047E740 /* ButtonView.swift in Sources */,
-				34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControllView.swift in Sources */,
+				34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControlView.swift in Sources */,
 				34E02B0D264B0A420096BBDE /* api.swift in Sources */,
 				349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */,
 				34E02B21264B0BA10096BBDE /* AWS.swift in Sources */,
@@ -762,6 +769,7 @@
 				553F7BE0264EB95D00053383 /* ClientProfileTabView.swift in Sources */,
 				55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */,
 				341BBCAF2643608500A5AE69 /* Authentication.swift in Sources */,
+				F134F8DD264F1041002E46C3 /* ClientsCalledSheet.swift in Sources */,
 				341BBCAF2643608500A5AE69 /* Authentication.swift in Sources */,
 				34EA285E264A0A020047E740 /* ClientView.swift in Sources */,
 				349BE0E626445FEF00C9D89A /* Api.swift in Sources */,
