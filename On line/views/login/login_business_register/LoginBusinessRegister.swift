@@ -70,8 +70,11 @@ struct LoginBusinessRegister: View {
                         .padding(.leading, -75)
                     ZStack {
                         TextEditor(text: $businessDescription)
-                            .frame(maxWidth: 320, maxHeight: .infinity)
-                            .border(Color("primary"))
+                            .frame(maxWidth: 320, minHeight: 87, maxHeight: .infinity)
+                            .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color("primary"), lineWidth: 1)
+                                    )
                         Text(businessDescription).opacity(0).padding(.all, 8)
                     }
                     .padding(.bottom)
