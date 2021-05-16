@@ -10,29 +10,31 @@ import SwiftUI
 struct ClientProfileTab: View {
     @EnvironmentObject var settings: SettingsState
     
-    @Binding var currentView: Bool
+    //@Binding var currentView: Bool
     @State var name:String = ""
     @State var password:String = ""
     @State var phone: String = ""
     @State var passwordConfirmation: String = ""
-
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
 
     var body: some View {
         VStack{
             //NavigationBarView
-            ZStack {
-                Rectangle()
-                    .size(CGSize(width: 1000.0, height: 80.0))
-                    .foregroundColor(.white)
-                    .ignoresSafeArea()
-                Text("Perfil")
-                    .padding(.top, -165)
-                    .font(.system(size: 25, weight: .heavy, design: .default))
-                    .foregroundColor(Color("primary"))
-                Divider()
-                    .padding(.top, -115)
-            }
+//            ZStack {
+//                Rectangle()
+//                    .size(CGSize(width: 1000.0, height: 80.0))
+//                    .foregroundColor(.white)
+//                    .ignoresSafeArea()
+//                Text("Perfil")
+//                    .padding(.top, -165)
+//                    .font(.system(size: 25, weight: .heavy, design: .default))
+//                    .foregroundColor(Color("primary"))
+//                Divider()
+//                    .padding(.top, -115)
+//            }
+            Divider()
+                .padding(.top,25)
                 VStack {
                     ScrollView {
                         Text("")
@@ -46,10 +48,22 @@ struct ClientProfileTab: View {
                     TextView(input: $password , label: "Nova Senha", isSecure: true)
                     TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
                     ButtonView(text: "SALVAR") {
-                        currentView = false
+                        //currentView = false
+                        self.mode.wrappedValue.dismiss()
                     }
                 }
-                    .padding(.top, -323)
+                    .navigationTitle(Text("Perfil"))
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarColor(UIColor.white)
+                    .navigationBarItems(leading:
+                                            Button(action : {
+                                                self.mode.wrappedValue.dismiss()
+                                            }){
+                                                Image(systemName: "chevron.backward")
+                                                    .foregroundColor(Color("primary"))
+                                            })
+                    //.padding(.top, -323)
             }
             Spacer()
         }
