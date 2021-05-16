@@ -26,57 +26,66 @@ struct ClientBusinessListTab: View {
     }
     
     var body: some View {
-        if(currentView){
-            RestaurantDetails(currentView: $currentView, bussinesModel: $currentBusinessModel )
-        }
-        else {
+//        if(currentView){
+//            RestaurantDetails(currentView: $currentView, bussinesModel: $currentBusinessModel )
+//        }
+//        else {
+        NavigationView {
             VStack {
-                Image("Logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 173, height: 51, alignment: .center)
-                Divider()
-                VStack {
-                    ScrollView {
-                        HStack {
-                            Text("Olá ...")
-                                .foregroundColor(Color("primary"))
-                                .font(.system(size: CGFloat(29)))
-                            Spacer()
-                        }
-                        .padding(.leading)
-                        HStack {
-                            Text("Onde você quer comer hoje?")
-                                .foregroundColor(Color("primary"))
-                            Spacer()
-                        }
-                        .padding(.leading)
-                        Text("")
-                        HStack {
-                            Text("Restaurantes com fila")
-                                .foregroundColor(Color("primary"))
-                                .font(.system(size: CGFloat(25)))
-                                .bold()
-                            Spacer()
-                        }
-                        .padding(.leading)
-                        ForEach(list) { business in
-                            Button(action: {
-                                currentView = true
-                                currentBusinessModel = business
-                            }, label: {
-                                ClientCardView(bussinesModel: business)
-                            })
-                        }
-                    }//.padding(.bottom,83)
+                    Image("Logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 173, height: 51, alignment: .center)
+                    Divider()
+                    VStack {
+                        ScrollView {
+                            HStack {
+                                Text("Olá ...")
+                                    .foregroundColor(Color("primary"))
+                                    .font(.system(size: CGFloat(29)))
+                                Spacer()
+                            }
+                            .padding(.leading)
+                            HStack {
+                                Text("Onde você quer comer hoje?")
+                                    .foregroundColor(Color("primary"))
+                                Spacer()
+                            }
+                            .padding(.leading)
+                            Text("")
+                            HStack {
+                                Text("Restaurantes com fila")
+                                    .foregroundColor(Color("primary"))
+                                    .font(.system(size: CGFloat(25)))
+                                    .bold()
+                                Spacer()
+                            }
+                            .padding(.leading)
+                            ForEach(list) { business in
+    //                            Button(action: {
+    //                                currentView = true
+    //                                currentBusinessModel = business
+    //                            }, label: {
+    //                                ClientCardView(bussinesModel: business)
+    //                            })
+                                NavigationLink(
+                                    destination: RestaurantDetails(bussinesModel: business ),
+                                    label: {
+                                        ClientCardView(bussinesModel: business)
+                                    })
+                            }
+                        }//.padding(.bottom,83)
+                    }
                 }
+                .padding(.top)
+                .onAppear(){
+                    fetchBusiness()
             }
-            .padding(.top)
-            .onAppear(){
-                fetchBusiness()
-            }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
-    }
+        }
+    //}
 }
 
 struct ClientBusinessListTab_Previews: PreviewProvider {

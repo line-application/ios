@@ -8,35 +8,56 @@
 import SwiftUI
 
 struct RestaurantDetails: View {
-    @Binding var currentView: Bool
+    //@Binding var currentView: Bool
     @State var peoplePerTable: Int = 1
-    @Binding var bussinesModel: BusinessModel
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var showAlert:Bool = false
+    //@Binding
+    var bussinesModel: BusinessModel
+    
+    func imageColor(colorImage:String) -> String {
+        switch colorImage {
+        case "Restaurante Laranja":
+            return "orangeColor"
+        case "Restaurante Azul":
+            return "primary"
+        case "Restaurante Rosa":
+            return "pinkColor"
+        case "Restaurante Verde":
+            return "greenColor"
+        default:
+            return "orangeColor"
+        }
+    }
+    
     var body: some View {
         VStack {
-            ZStack {
-                Rectangle()
-                    .size(CGSize(width: 1000.0, height: 80.0))
-                    .foregroundColor(.white)
-                    .ignoresSafeArea()
-                HStack {
-                    Button(action : {
-                        currentView = false
-                    },label:{
-                        Image(systemName: "chevron.backward")
-                            .foregroundColor(Color("primary"))
-                    })
-                    .padding(.top, -175)
-                    Spacer()
-                    Text("Restaurante")
-                        .padding(.top, -180)
-                        .font(.system(size: 25, weight: .heavy, design: .default))
-                        .foregroundColor(Color("primary"))
-                    Spacer()
-                }
-            }
-            .padding()
             Divider()
-                .padding(.top, -320)
+                .padding(.top,25)
+//            ZStack {
+//                Rectangle()
+//                    .size(CGSize(width: 1000.0, height: 80.0))
+//                    .foregroundColor(.white)
+//                    .ignoresSafeArea()
+//                HStack {
+//                    Button(action : {
+//                        currentView = false
+//                    },label:{
+//                        Image(systemName: "chevron.backward")
+//                            .foregroundColor(Color("primary"))
+//                    })
+//                    .padding(.top, -175)
+//                    Spacer()
+//                    Text("Restaurante")
+//                        .padding(.top, -180)
+//                        .font(.system(size: 25, weight: .heavy, design: .default))
+//                        .foregroundColor(Color("primary"))
+//                    Spacer()
+//                }
+//            }
+//            .padding()
+//            Divider()
+//                .padding(.top, -320)
             ScrollView {
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
@@ -46,14 +67,14 @@ struct RestaurantDetails: View {
                         VStack(alignment: .leading){
                             ZStack{
                                 RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(Color("orangeColor"))
+                                    .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
                                     .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
                                     .frame(width: UIScreen.main.bounds.width*0.9, height: 107, alignment: .leading)
                                 RoundedRectangle(cornerRadius: 0)
-                                    .foregroundColor(Color("orangeColor"))
+                                    .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
                                     .frame(width: UIScreen.main.bounds.width*0.9, height: 87, alignment: .leading)
                                     .offset(x: 0, y: 10)
-                                Image("Restaurante Laranja")
+                                Image("\(bussinesModel.image)")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 107, height: 107, alignment: .center)
@@ -99,14 +120,34 @@ struct RestaurantDetails: View {
                             Spacer()
                             HStack {
                                 Spacer()
-                                ButtonView2(text: "ENTRAR NA FILA", action: {})
+                                ButtonView2(text: "ENTRAR NA FILA", action: {
+                                    self.mode.wrappedValue.dismiss()
+                                    showAlert = true
+                                })
                                 Spacer()
                             }
                             Spacer()
                         }.frame(width: UIScreen.main.bounds.width*0.9, height: 600, alignment: .leading)
+                        .alert(isPresented: $showAlert) {
+                                                    Alert(
+                                                        title: Text("Na fila"),
+                                                        message: Text("Você entrou na fila com sucesso!")
+                                                    )
+                                                }
                 }
             }
-            .padding(.top, -320)
+            .navigationTitle(Text("Restaurante"))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarColor(UIColor.white)
+            .navigationBarItems(leading:
+                                    Button(action : {
+                                        self.mode.wrappedValue.dismiss()
+                                    }){
+                                        Image(systemName: "chevron.backward")
+                                            .foregroundColor(Color("primary"))
+                                    })
+            //.padding(.top, 15)
         }
         }
     }
@@ -115,8 +156,8 @@ struct RestaurantDetails: View {
 struct RestaurantDetails_Previews: PreviewProvider {
     //@State var oi:Bool = false
     static var previews: some View {
-//        RestaurantDetails(peoplePerTable: 2, bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))'
-        RestaurantDetails(currentView: .constant(true), peoplePerTable: 2, bussinesModel: .constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "A petiskeira é uma das maiores redes de restaurantes de Porto Alegre. Uma marca familiar nascida em 1984, gaúcha e ícone da cidade quando o assunto é gastronomia rápida.", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")))
+        RestaurantDetails(peoplePerTable: 2, bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
+//        RestaurantDetails(currentView: .constant(true), peoplePerTable: 2, bussinesModel: .constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "A petiskeira é uma das maiores redes de restaurantes de Porto Alegre. Uma marca familiar nascida em 1984, gaúcha e ícone da cidade quando o assunto é gastronomia rápida.", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")))
         
     }
 }
