@@ -58,7 +58,7 @@ struct BusinessDashboardTab: View {
                                     .background(
                                         ZStack{
                                             if currentTab == "Off"{
-                                                Color("grayselector")
+                                                Color("graySelector")
                                                     .cornerRadius(18)
                                                     .matchedGeometryEffect(id: "TAB", in: animation)
                                             }
