@@ -6,21 +6,22 @@
 //
 
 import SwiftUI
+import iPhoneNumberField
 
 extension View {
-    func underlineTextField() -> some View {
+    func underlineTextField(isWrong: Bool, input: String) -> some View {
         self
-            .overlay(Rectangle().frame(height: 1).padding(.top, 35).foregroundColor(Color("grayselector")))
+            .overlay(Rectangle().frame(height: 1).padding(.top, 35).foregroundColor(isWrong && input == "" ? .red : Color("grayselector")))
             .foregroundColor(.black)
             .padding(5)
     }
 }
 
 struct TextView: View {
+    @Binding var isWrong: Bool
     @Binding var input: String
     var label: String
     var isSecure: Bool = false
-    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -34,18 +35,32 @@ struct TextView: View {
             
             if isSecure == false {
                 HStack{
-                    TextField("", text: $input)
+                    if (label == "Telefone") {
+                        iPhoneNumberField("", text: $input)
+                            .maximumDigits(11)
+                    }
+                    else if (label == "E-mail") {
+                        TextField("", text: $input)
                         .autocapitalization(.none)
-                }.underlineTextField()
+                        .disableAutocorrection(true)
+                        .keyboardType(.emailAddress)
+                    }
+                    else {
+                        TextField("", text: $input)
+                        .autocapitalization(.none)
+                    }
+                    
+                }.underlineTextField(isWrong: isWrong, input: input)
             } else if isSecure == true {
                 HStack{
                     SecureField("", text: $input)
                         .autocapitalization(.none)
-                }.underlineTextField()
+                }.underlineTextField(isWrong: isWrong, input: input)
             }
         }.padding()
     }
 }
+
 
 //struct textview_Previews: PreviewProvider {
 //    static var previews: some View {

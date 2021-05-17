@@ -11,6 +11,7 @@ struct LoginView: View {
     @Namespace var animation
     @State var email: String = ""
     @State var password: String = ""
+    @State var isWrong = false
     @State var showRegisterAlert = false
     @State private var actionState: Int? = 0
     @EnvironmentObject var settings: SettingsState
@@ -44,8 +45,8 @@ struct LoginView: View {
                         .padding(.top, 35)
                         .padding(.bottom, 38)
                     
-                    TextView(input: $email, label: "E-mail", isSecure: false)
-                    TextView(input: $password, label: "Senha", isSecure: true)
+                    TextView(isWrong: $isWrong, input: $email, label: "E-mail", isSecure: false)
+                    TextView(isWrong: $isWrong, input: $password, label: "Senha", isSecure: true)
                         .padding(.bottom, 15)
                     
                     
@@ -78,8 +79,8 @@ struct LoginView: View {
                                         .default(Text("Estabelecimento"), action: {
                                             actionState = 1
                                             settings.userType = UserType.BUSINESS
-                                        })
-                                        
+                                        }),
+                                        .cancel(Text("Cancelar"))
                                     ]
                                     
                                 )
