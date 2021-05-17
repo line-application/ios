@@ -134,10 +134,9 @@ struct ClientLineStatusTab: View {
                 .navigationBarBackButtonHidden(true)
                 .navigationBarColor(UIColor.white)
                 .alert(isPresented: $showAlert) {
-                                            Alert(
-                                                title: Text("Na fila"),
-                                                message: Text("Você entrou na fila com sucesso!")
-                                            )
+                    Alert(title: Text("Sair da Fila"), message: Text("Você realmente gostaria de sair da fila?"), primaryButton: .default(Text("Sim")){
+                        lineplace.invoked = true
+                    }, secondaryButton: .default(Text("Não")))
                                         }
             }
         }
