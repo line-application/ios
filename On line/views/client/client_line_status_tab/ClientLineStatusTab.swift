@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ClientLineStatusTab: View {
     @State var lineplace:LinePlaceModel
+    var bussinesModel: BusinessModel = BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")
     var body: some View {
 //        if(currentView == true){
 //            ClientProfileTab(currentView: $currentView )
@@ -20,43 +21,56 @@ struct ClientLineStatusTab: View {
                         .padding(.top,25)
                     VStack {
                             ScrollView {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
+                                        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
+                                        .frame(width: UIScreen.main.bounds.width*0.9, height: 107, alignment: .leading)
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
+                                        .frame(width: UIScreen.main.bounds.width*0.9, height: 87, alignment: .leading)
+                                        .offset(x: 0, y: 10)
+                                    Image("\(bussinesModel.image)")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 107, height: 107, alignment: .center)
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                    
+                                }
+
                                 Text("")
                                 Text("Você está na fila do restaurante Petiskeira!")
                                     .font(.title3)
                                     .foregroundColor(Color("primary"))
+                                    .frame(width: UIScreen.main.bounds.width*0.85, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .leading)
                                 Text("")
-                                HStack {
+                                HStack(spacing:100) {
                                     Text("Mesa para ")
-                                    Spacer()
-                                    Image("Clients")
-                                        .resizable()
-                                        .frame(width: 26, height: 20, alignment: .center)
-                                    if(lineplace.peopleInLine == 0){
-                                        Text("Nenhuma pessoa na fila")
-                                            .font(.system(size: 17))
-                                            .foregroundColor(Color("primary"))
-                                            .multilineTextAlignment(.leading)
+                                    //Spacer()
+                                    HStack {
+                                        Image("Clients")
+                                            .resizable()
+                                            .frame(width: 26, height: 20, alignment: .center)
                                             //.padding(.leading, 2.0)
-                                            .frame(width: 200, alignment: .leading)
-                                    }
-                                    else if(lineplace.peopleInLine == 1){
-                                        Text("\(Int(lineplace.peopleInLine ?? 0)) pessoa na fila")
-                                            .font(.system(size: 17))
-                                            .foregroundColor(Color("primary"))
-                                            .multilineTextAlignment(.leading)
-                                            //.padding(.leading, 2.0)
-                                            .frame(width: 200, alignment: .leading)
-                                    }
-                                    else {
-                                        Text("\(Int(lineplace.peopleInLine ?? 0)) pessoas na fila")
-                                            .font(.system(size: 17))
-                                            .foregroundColor(Color("primary"))
-                                            .multilineTextAlignment(.leading)
-                                            //.padding(.leading, 2.0)
-                                            .frame(width: 200, alignment: .leading)
+                                        if(lineplace.peopleInLine == 1){
+                                            Text("\(Int(lineplace.peopleInLine ?? 0)) pessoa")
+                                                //.font(.system(size: 17))
+                                                .foregroundColor(Color("primary"))
+                                                .multilineTextAlignment(.center)
+                                                //.padding(.trailing, 2.0)
+                                                //.frame(width: 200, alignment: .leading)
+                                        }
+                                        else {
+                                            Text("\(Int(lineplace.peopleInLine ?? 0)) pessoas")
+                                                //.font(.system(size: 17))
+                                                .foregroundColor(Color("primary"))
+                                                .multilineTextAlignment(.center)
+                                                //.padding(.trailing, 2.0)
+                                                //.frame(width: 200, alignment: .leading)
+                                        }
                                     }
                                 }
-                                .padding(.leading)
+                                .frame(width: UIScreen.main.bounds.width*0.85, alignment: .center)
                                 ZStack{
                                     Rectangle()
                                         .frame(width: 307, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -102,11 +116,25 @@ struct ClientLineStatusTab: View {
             }
         }
     //}
+    func imageColor(colorImage:String) -> String {
+        switch colorImage {
+        case "Restaurante Laranja":
+            return "orangeColor"
+        case "Restaurante Azul":
+            return "primary"
+        case "Restaurante Rosa":
+            return "pinkColor"
+        case "Restaurante Verde":
+            return "greenColor"
+        default:
+            return "orangeColor"
+        }
+    }
 }
 
 
 struct ClientLineStatusTab_Previews: PreviewProvider {
     static var previews: some View {
-        ClientLineStatusTab(lineplace: LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: false, success: false, peopleInLine: 3, businessEmail: "", clientEmail: ""))
+        ClientLineStatusTab(lineplace: LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: false, success: false, peopleInLine: 3, businessEmail: "", clientEmail: ""),bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
     }
 }
