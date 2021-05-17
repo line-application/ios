@@ -14,18 +14,17 @@ struct UserTypeSegmentedControlView: View {
     var body: some View {
         ZStack {
             ZStack{
-                HStack{
-                    
+                HStack (alignment: .center) {
                     Text("Cliente")
                         .foregroundColor(settings.userType == UserType.CLIENT ? .white : Color("primary"))
-                        .padding(.vertical, 12)
+                        .padding(.vertical, 10)
                         .padding(.leading, 40)
-                        .padding(.trailing, 40)
+                        .padding(.trailing, settings.userType == UserType.CLIENT ? 40 : 26)
                         .background(
                             ZStack{
                                 if settings.userType == UserType.CLIENT{
                                     Color("primary")
-                                        .cornerRadius(30)
+                                        .cornerRadius(18)
                                         .matchedGeometryEffect(id: "TAB", in: animation)
                                 }
                             }
@@ -39,14 +38,14 @@ struct UserTypeSegmentedControlView: View {
                     
                     Text("Estabelecimento")
                         .foregroundColor(settings.userType == UserType.BUSINESS ? .white : Color("primary"))
-                        .padding(.vertical, 12)
-                        .padding(.leading, 20)
-                        .padding(.trailing, 14)
+                        .padding(.vertical, 10)
+                        .padding(.leading, settings.userType == UserType.BUSINESS ? 14 : 5.8)
+                        .padding(.trailing, 12)
                         .background(
                             ZStack{
                                 if settings.userType == UserType.BUSINESS{
                                     Color("primary")
-                                        .cornerRadius(35)
+                                        .cornerRadius(18)
                                         .matchedGeometryEffect(id: "TAB", in: animation)
                                 }
                             }
@@ -59,12 +58,12 @@ struct UserTypeSegmentedControlView: View {
                         }
                 }
                 .background(Color.white)
-                .cornerRadius(30)
+                .cornerRadius(18)
             }
-            .padding(.vertical, 3)
-            .padding(.horizontal, 3)
+            .padding(.vertical, 1)
+            .padding(.horizontal, 1)
             .background(Color("primary"))
-            .cornerRadius(30)
+            .cornerRadius(18)
         }
     }
 }

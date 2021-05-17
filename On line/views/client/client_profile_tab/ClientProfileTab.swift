@@ -11,6 +11,7 @@ struct ClientProfileTab: View {
     @EnvironmentObject var settings: SettingsState
     
     //@Binding var currentView: Bool
+    @State var isWrong = false
     @State var name:String = ""
     @State var password:String = ""
     @State var phone: String = ""
@@ -43,10 +44,10 @@ struct ClientProfileTab: View {
                     Image("IconePerfilCliente")
                         .resizable()
                         .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    TextView(input: $name , label: "Nome", isSecure: false)
-                    TextView(input: $phone , label: "Telefone", isSecure: false)
-                    TextView(input: $password , label: "Nova Senha", isSecure: true)
-                    TextView(input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
+                        TextView(isWrong: $isWrong, input: $name , label: "Nome", isSecure: false)
+                    TextView(isWrong: $isWrong, input: $phone , label: "Telefone", isSecure: false)
+                        TextView(isWrong: $isWrong, input: $password , label: "Nova Senha", isSecure: true)
+                        TextView(isWrong: $isWrong, input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
                     ButtonView(text: "SALVAR") {
                         //currentView = false
                         self.mode.wrappedValue.dismiss()
