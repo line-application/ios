@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ClientLineStatusTab: View {
     @State var lineplace:LinePlaceModel
+    @State var showAlert:Bool = false
     var bussinesModel: BusinessModel = BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")
     var body: some View {
 //        if(currentView == true){
@@ -37,14 +38,11 @@ struct ClientLineStatusTab: View {
                                         .clipShape(RoundedRectangle(cornerRadius: 15))
                                     
                                 }
-
-                                Text("")
-                                Text("Você está na fila do restaurante Petiskeira!")
+                                Text("Você está na fila do restaurante \(bussinesModel.name)!")
                                     .font(.title3)
                                     .foregroundColor(Color("primary"))
-                                    .frame(width: UIScreen.main.bounds.width*0.85, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .leading)
-                                Text("")
-                                HStack(spacing:100) {
+                                    .frame(width: UIScreen.main.bounds.width*0.8, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .leading)
+                                HStack(spacing:120) {
                                     Text("Mesa para ")
                                     //Spacer()
                                     HStack {
@@ -70,49 +68,77 @@ struct ClientLineStatusTab: View {
                                         }
                                     }
                                 }
-                                .frame(width: UIScreen.main.bounds.width*0.85, alignment: .center)
-                                ZStack{
-                                    Rectangle()
-                                        .frame(width: 307, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        .cornerRadius(10.0)
-                                        .foregroundColor(Color("grayPeopleInLine"))
-                                    HStack {
-                                        Image("clock")
-                                            .resizable()
-                                            .frame(width: 25.6, height: 27.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        Text(" 12:30 - 13:00")
-                                            .font(.title3)
-                                            .foregroundColor(Color("primary"))
-                                            .bold()
+                                .frame(width: UIScreen.main.bounds.width*0.9, alignment: .center)
+                                Text("\n")
+                                HStack {
+                                    Text("Previsão de retorno")
+                                    Spacer()
+                                }
+                                .frame(width: UIScreen.main.bounds.width*0.82, alignment: .center)
+                                if(lineplace.invoked==false) {
+                                    ZStack{
+                                        Rectangle()
+                                            .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            .cornerRadius(10.0)
+                                            .foregroundColor(Color("grayPeopleInLine"))
+                                        HStack {
+                                            Image("clock")
+                                                .resizable()
+                                                .frame(width: 25.6, height: 27.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            Text(" 12:30 - 13:00")
+                                                .font(.title2)
+                                                .foregroundColor(Color("primary"))
+                                                .bold()
+                                        }
+                                    }
+                                }
+                                else {
+                                    ZStack{
+                                        Rectangle()
+                                            .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            .cornerRadius(10.0)
+                                            .foregroundColor(Color("greenSelector"))
+                                        HStack {
+                                            Text("VOCÊ FOI CHAMADO")
+                                                .font(.title2)
+                                                .foregroundColor(Color(.white))
+                                                .bold()
+                                        }
                                     }
                                 }
                             //Text(name)
-                            Spacer()
-                            Text("\n\n\n")
-                            NavigationLink(
-                                destination: ClientProfileTab(),
-                                label: {
-                                    ZStack{
-                                        RoundedRectangle(cornerRadius: 22.0)
-                                            .frame(width: 129, height: 44, alignment: .center)
-                                            .foregroundColor(Color("primary"))
-                                        Text("EDITAR")
-                                            .foregroundColor(Color.white)
-                                            .bold()
-                                    }
+                                Button(action: {
+                                    showAlert = true
+                                }, label: {
+                                        ZStack{
+                                            RoundedRectangle(cornerRadius: 22.0)
+                                                .frame(width: 210, height: 44, alignment: .center)
+                                                .foregroundColor(Color("primary"))
+                                            Text("SAIR DA FILA")
+                                                .foregroundColor(Color.white)
+                                                .bold()
+                                        }
+                                        .padding(.top,65.0)
+                                    
                                 })
-                            Text("\n")
+                            //Text("\n")
                         }
                             //.padding(.top, -323)
                     }
                     Spacer()
                 }
-                .navigationTitle(Text("Perfil")
+                .navigationTitle(Text("Status da Fila")
                                     .font(.title)
                 )
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .navigationBarColor(UIColor.white)
+                .alert(isPresented: $showAlert) {
+                                            Alert(
+                                                title: Text("Na fila"),
+                                                message: Text("Você entrou na fila com sucesso!")
+                                            )
+                                        }
             }
         }
     //}
