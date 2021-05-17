@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import iPhoneNumberField
 
 extension View {
     func underlineTextField(isWrong: Bool, input: String) -> some View {
@@ -24,6 +23,18 @@ struct TextView: View {
     var isSecure: Bool = false
     
     var body: some View {
+        
+        let binding = Binding<String>(get: {
+                    if (self.input.count <= 14 && input.first == "(") || (self.input.count <= 10 && input.first != "(") {
+                        return self.input.applyPatternOnNumbers(pattern: "(##) ####-####", replacementCharacter: "#")
+                    } else {
+                        return self.input.applyPatternOnNumbers(pattern: "(##) #####-####", replacementCharacter: "#")
+                    }
+                }, set: {
+                    self.input = $0
+                    // do whatever you want here
+                })
+        
         VStack(alignment: .leading) {
             
             Text(label)
@@ -36,8 +47,8 @@ struct TextView: View {
             if isSecure == false {
                 HStack{
                     if (label == "Telefone") {
-                        iPhoneNumberField("", text: $input)
-                            .maximumDigits(11)
+                        TextField("", text: binding)
+                            .keyboardType(.phonePad)
                     }
                     else if (label == "E-mail") {
                         TextField("", text: $input)
@@ -61,6 +72,19 @@ struct TextView: View {
     }
 }
 
+extension String {
+    func applyPatternOnNumbers(pattern: String, replacementCharacter: Character) -> String {
+        var pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+        for index in 0 ..< pattern.count {
+            guard index < pureNumber.count else { return pureNumber }
+            let stringIndex = String.Index(utf16Offset: index, in: pattern)
+            let patternCharacter = pattern[stringIndex]
+            guard patternCharacter != replacementCharacter else { continue }
+            pureNumber.insert(patternCharacter, at: stringIndex)
+        }
+        return pureNumber
+    }
+}
 
 //struct textview_Previews: PreviewProvider {
 //    static var previews: some View {

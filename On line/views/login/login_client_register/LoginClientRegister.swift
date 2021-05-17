@@ -18,6 +18,7 @@ struct LoginClientRegister: View {
     @State var password: String = ""
     @State var passwordConfirmation: String = ""
     
+    
     func handleSingUp() {
         settings.isLoading = true
         Authentication.signUp(name: name,password: password, email: email, phoneNumber: "+55" + phone, userType: .CLIENT) {
@@ -85,8 +86,12 @@ struct LoginClientRegister: View {
                                 showWarning = true
                             }
                             else {
+                                print("\(phone)")
+                                phone = phone.replacingOccurrences(of: "(", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                phone = phone.replacingOccurrences(of: ")", with: "", options: NSString.CompareOptions.literal, range: nil)
                                 phone = phone.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
                                 phone = phone.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                print("\(phone)")
                                 handleSingUp()
                             }
                         }
