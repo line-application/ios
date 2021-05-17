@@ -31,7 +31,7 @@ struct ClientView: View {
                     Text(" Zaitty")
                 }
                 .tag(Tabs.home)
-            ClientLineStatusTab()
+            ClientLineStatusTab(lineplace: LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: false, success: false, peopleInLine: 3, businessEmail: "", clientEmail: ""))
                 .tabItem {
                     Image(selectedTab == Tabs.list ? "Icone_Lista_bold" : "ListaBranca")
                     Text("Status da fila")
