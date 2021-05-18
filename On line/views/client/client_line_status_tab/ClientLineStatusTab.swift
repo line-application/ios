@@ -9,12 +9,24 @@ import SwiftUI
 
 struct ClientLineStatusTab: View {
     @Binding var currentLine:BusinessModel?
-    @State var lineplace:LinePlaceModel
+    @Binding var lineplace:LinePlaceModel?
     @State var showAlert:Bool = false
     //var bussinesModel: BusinessModel = BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")
     var body: some View {
         if(currentLine == nil){
-            Text("não está em nenhuma fila")
+            NavigationView {
+                VStack {
+                    Divider()
+                        .padding(.top,25)
+                    VStack {
+                        Text("não está em nenhuma fila")
+                            .navigationTitle(Text("Status da Fila"))
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationBarBackButtonHidden(true)
+                            .navigationBarColor(UIColor.white)
+                    }
+                }
+            }
         }
         else {
             NavigationView {
@@ -51,8 +63,8 @@ struct ClientLineStatusTab: View {
                                             .resizable()
                                             .frame(width: 26, height: 20, alignment: .center)
                                             //.padding(.leading, 2.0)
-                                        if(lineplace.peopleInLine == 1){
-                                            Text("\(Int(lineplace.peopleInLine ?? 0)) pessoa")
+                                        if(lineplace?.peopleInLine == 1){
+                                            Text("\(Int(lineplace?.peopleInLine ?? 0)) pessoa")
                                                 //.font(.system(size: 17))
                                                 .foregroundColor(Color("primary"))
                                                 .multilineTextAlignment(.center)
@@ -60,7 +72,7 @@ struct ClientLineStatusTab: View {
                                                 //.frame(width: 200, alignment: .leading)
                                         }
                                         else {
-                                            Text("\(Int(lineplace.peopleInLine ?? 0)) pessoas")
+                                            Text("\(Int(lineplace?.peopleInLine ?? 0)) pessoas")
                                                 //.font(.system(size: 17))
                                                 .foregroundColor(Color("primary"))
                                                 .multilineTextAlignment(.center)
@@ -76,7 +88,7 @@ struct ClientLineStatusTab: View {
                                     Spacer()
                                 }
                                 .frame(width: UIScreen.main.bounds.width*0.82, alignment: .center)
-                                if(lineplace.invoked==false) {
+                                if(lineplace?.invoked==false) {
                                     ZStack{
                                         Rectangle()
                                             .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -136,7 +148,7 @@ struct ClientLineStatusTab: View {
                 .navigationBarColor(UIColor.white)
                 .alert(isPresented: $showAlert) {
                     Alert(title: Text("Sair da Fila"), message: Text("Você realmente gostaria de sair da fila?"), primaryButton: .default(Text("Sim")){
-                        lineplace.invoked = true
+                        lineplace?.invoked = true
                     }, secondaryButton: .default(Text("Não")))
                                         }
             }
@@ -161,6 +173,6 @@ struct ClientLineStatusTab: View {
 
 struct ClientLineStatusTab_Previews: PreviewProvider {
     static var previews: some View {
-        ClientLineStatusTab(currentLine: Binding.constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")), lineplace: LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: false, success: false, peopleInLine: 3, businessEmail: "", clientEmail: ""))
+        ClientLineStatusTab(currentLine: Binding.constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")), lineplace: Binding.constant(LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: false, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "")))
     }
 }
