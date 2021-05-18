@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ClientLineStatusTab: View {
+    @Binding var currentLine:BusinessModel?
     @State var lineplace:LinePlaceModel
     @State var showAlert:Bool = false
-    var bussinesModel: BusinessModel = BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")
+    //var bussinesModel: BusinessModel = BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")
     var body: some View {
-//        if(currentView == true){
-//            ClientProfileTab(currentView: $currentView )
-//        }
-//        else {
+        if(currentLine == nil){
+            Text("não está em nenhuma fila")
+        }
+        else {
             NavigationView {
                 VStack{
                     Divider()
@@ -24,21 +25,21 @@ struct ClientLineStatusTab: View {
                             ScrollView {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 20)
-                                        .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
+                                        .foregroundColor(Color(imageColor(colorImage: currentLine!.image)))
                                         .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
                                         .frame(width: UIScreen.main.bounds.width*0.9, height: 107, alignment: .leading)
                                     RoundedRectangle(cornerRadius: 20)
-                                        .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
+                                        .foregroundColor(Color(imageColor(colorImage: currentLine!.image)))
                                         .frame(width: UIScreen.main.bounds.width*0.9, height: 87, alignment: .leading)
                                         .offset(x: 0, y: 10)
-                                    Image("\(bussinesModel.image)")
+                                    Image("\(currentLine!.image)")
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 107, height: 107, alignment: .center)
                                         .clipShape(RoundedRectangle(cornerRadius: 15))
                                     
                                 }
-                                Text("Você está na fila do restaurante \(bussinesModel.name)!")
+                                Text("Você está na fila do restaurante \(currentLine!.name)!")
                                     .font(.title3)
                                     .foregroundColor(Color("primary"))
                                     .frame(width: UIScreen.main.bounds.width*0.8, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .leading)
@@ -140,7 +141,7 @@ struct ClientLineStatusTab: View {
                                         }
             }
         }
-    //}
+    }
     func imageColor(colorImage:String) -> String {
         switch colorImage {
         case "Restaurante Laranja":
@@ -160,6 +161,6 @@ struct ClientLineStatusTab: View {
 
 struct ClientLineStatusTab_Previews: PreviewProvider {
     static var previews: some View {
-        ClientLineStatusTab(lineplace: LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: false, success: false, peopleInLine: 3, businessEmail: "", clientEmail: ""),bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
+        ClientLineStatusTab(currentLine: Binding.constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")), lineplace: LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: false, success: false, peopleInLine: 3, businessEmail: "", clientEmail: ""))
     }
 }

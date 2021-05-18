@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ClientBusinessListTab: View {
+    @Binding var currentLine:BusinessModel?
     @State var list:[BusinessModel] = []
     @State var currentView: Bool = false
     @State var currentBusinessModel: BusinessModel = BusinessModel(id: "-23", email: "", name: "", description: "", phone: "", waitTime: 0.0, address: "", maxTableCapacity: 0, image: "")
@@ -69,7 +70,7 @@ struct ClientBusinessListTab: View {
     //                                ClientCardView(bussinesModel: business)
     //                            })
                                 NavigationLink(
-                                    destination: RestaurantDetails(bussinesModel: business ),
+                                    destination: RestaurantDetails(currentLine: $currentLine, bussinesModel: business ),
                                     label: {
                                         ClientCardView(bussinesModel: business)
                                     })
@@ -90,6 +91,6 @@ struct ClientBusinessListTab: View {
 
 struct ClientBusinessListTab_Previews: PreviewProvider {
     static var previews: some View {
-        ClientBusinessListTab()
+        ClientBusinessListTab(currentLine: Binding.constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")))
     }
 }
