@@ -134,8 +134,8 @@ struct RestaurantDetails: View {
                         }.frame(width: UIScreen.main.bounds.width*0.9, height: 600, alignment: .leading)
                         .alert(isPresented: $showAlert) {
                                                     Alert(
-                                                        title: Text("Na fila"),
-                                                        message: Text("Você entrou na fila com sucesso!")
+                                                        title: Text("Você entrou na fila!"),
+                                                        message: Text("Para acompanhar seu progresso na fila acesse o Status da fila.")
                                                     )
                                                 }
                 }
