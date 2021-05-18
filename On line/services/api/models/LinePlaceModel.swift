@@ -8,7 +8,8 @@
 import Foundation
 
 
-struct LinePlaceModel: Codable {
+struct LinePlaceModel: Codable, Identifiable {
+    var id: String
     let enterLine: IsoString
     let exitLine: IsoString?
     let called: IsoString?
