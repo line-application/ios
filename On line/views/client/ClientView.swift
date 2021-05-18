@@ -14,7 +14,8 @@ enum Tabs {
 }
 
 struct ClientView: View {
-    
+    @State var currentLine:BusinessModel? = nil
+    @State var currentLinePlace:LinePlaceModel? = nil
     @State var selectedTab:Tabs = .home
     
     init() {
@@ -25,13 +26,13 @@ struct ClientView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
            
-            ClientBusinessListTab()
+            ClientBusinessListTab(currentLine: $currentLine, lineplace: $currentLinePlace)
                 .tabItem {
                     Image(selectedTab == Tabs.home ? "Icone_Home_bold" : "RelogioBranco")
                     Text(" Zaitty")
                 }
                 .tag(Tabs.home)
-            ClientLineStatusTab()
+            ClientLineStatusTab(currentLine: $currentLine, lineplace: $currentLinePlace)
                 .tabItem {
                     Image(selectedTab == Tabs.list ? "Icone_Lista_bold" : "ListaBranca")
                     Text("Status da fila")

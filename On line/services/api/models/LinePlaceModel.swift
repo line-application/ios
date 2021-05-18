@@ -12,7 +12,7 @@ struct LinePlaceModel: Codable {
     let enterLine: IsoString?
     let exitLine: IsoString?
     let called: IsoString?
-    let invoked: Bool?
+    var invoked: Bool?
     let success: Bool?
     let peopleInLine: Int?
     let businessEmail: Email?

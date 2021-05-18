@@ -14,16 +14,16 @@ let authConfiguration = AuthCategoryConfiguration(
             "IdentityManager": [:],
             "CredentialsProvider": [
                 "CognitoIdentity": [
-                    "default": [
-                        "PoolId": "us-east-1:9e243e49-f702-4dcb-9b70-ab2b19af6a44",
+                    "Default": [
+                        "PoolId": "us-east-1:a5f0a0b5-0625-4b40-ba8a-c348b2e7472b",
                         "Region": "us-east-1"
                     ]
                 ]
             ],
             "CognitoUserPool": [
                 "Default": [
-                    "PoolId": "us-east-1_sRBMjUSVs",
-                    "AppClientId": "3oqk1re1tqjqdroel24m3lop0p",
+                    "PoolId": "us-east-1_VF1lNjVxI",
+                    "AppClientId": "20nfnq7ua4ocu7hnrru4obhp2q",
                     "Region": "us-east-1"
                 ]
             ],
