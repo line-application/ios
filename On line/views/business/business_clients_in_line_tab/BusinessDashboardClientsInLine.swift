@@ -39,27 +39,3 @@ struct BusinessClientsInLineTab_Previews: PreviewProvider {
 }
 
 
-//var body: some View {
-//    VStack{
-//        Text("Fila")
-//            .font(.system(size: 20))
-//            .bold()
-//            .foregroundColor(Color("primary"))
-//        Divider()
-//        HStack{
-//            Text("Fila Geral")
-//                .font(.system(size: 17))
-//                .bold()
-//                .foregroundColor(Color("primary"))
-//                .padding(20)
-//            Spacer()
-//        }
-//        ScrollView{
-//        BusinessClientsInLineTab(people: 2, name: "João Gabriel", time: 30)
-//        BusinessClientsInLineTab(people: 2, name: "João Gabriel", time: 30)
-//        BusinessClientsInLineTab(people: 2, name: "João Gabriel", time: 30)
-//        }
-//        Spacer()
-//    }
-//}
-//}
