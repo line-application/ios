@@ -30,9 +30,10 @@ struct ClientLineStatusTab: View {
                                     .foregroundColor(Color("primary"))
                                     .bold()
                                 Text("Para entrar em uma fila escolha um restaurente")
-                                    .frame(width: 378, height: 50
-                                           , alignment: .leading)
-                                    .multilineTextAlignment(.leading)
+                                    .frame(width: 358, height: 50
+                                           , alignment: .center)
+                                    .font(.system(size: 15))
+                                    .multilineTextAlignment(.center)
                                     .foregroundColor(Color("primary"))
                             }
                             .frame(width: 368, height: 141,alignment: .center)
