@@ -62,6 +62,7 @@
 		F85F7007264DB92800EE68F0 /* ButtonView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7006264DB92800EE68F0 /* ButtonView2.swift */; };
 		F8C4897B2654344F00FF465B /* ButtonView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4897A2654344F00FF465B /* ButtonView3.swift */; };
 		F8C4897D2654346300FF465B /* ButtonView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4897C2654346300FF465B /* ButtonView4.swift */; };
+		F8C4897F265439F000FF465B /* BusinessLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4897E265439F000FF465B /* BusinessLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		F85F7006264DB92800EE68F0 /* ButtonView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView2.swift; sourceTree = "<group>"; };
 		F8C4897A2654344F00FF465B /* ButtonView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView3.swift; sourceTree = "<group>"; };
 		F8C4897C2654346300FF465B /* ButtonView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView4.swift; sourceTree = "<group>"; };
+		F8C4897E265439F000FF465B /* BusinessLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				34EA28A6264A129A0047E740 /* BusinessDashboardClientsInLine.swift */,
+				F8C4897E265439F000FF465B /* BusinessLine.swift */,
 			);
 			path = business_clients_in_line_tab;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				34EA28A7264A129A0047E740 /* BusinessDashboardClientsInLine.swift in Sources */,
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
+				F8C4897F265439F000FF465B /* BusinessLine.swift in Sources */,
 				F8C4897D2654346300FF465B /* ButtonView4.swift in Sources */,
 				34EA288A264A0E920047E740 /* ButtonView.swift in Sources */,
 				34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControlView.swift in Sources */,
