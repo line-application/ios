@@ -17,8 +17,7 @@ struct ClientProfileTab: View {
     @State var phone: String = ""
     @State var passwordConfirmation: String = ""
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-
-
+    
     var body: some View {
         VStack{
             //NavigationBarView

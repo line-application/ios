@@ -88,17 +88,14 @@ struct Authentication {
         }
     }
     
-    static func fetchAttributes() {
-        /**
-         TODO
-         - format incoming data.
-         - return data.
-         */
+    static func fetchAttributes(handler: @escaping ([AuthUserAttribute]?)->Void) {
         Amplify.Auth.fetchUserAttributes() { result in
             switch result {
             case .success(let attributes):
+                handler(attributes)
                 print("User attributes - \(attributes)")
             case .failure(let error):
+                handler(nil)
                 print("Fetching user attributes failed with error \(error)")
             }
         }
