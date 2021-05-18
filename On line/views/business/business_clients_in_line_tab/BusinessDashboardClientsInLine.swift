@@ -24,12 +24,14 @@ struct BusinessClientsInLineTab: View {
 
         let updatedAtStr = timeString
         let updatedAt = dateFormatter.date(from: updatedAtStr) // "Jun 5, 2016, 4:56 PM"
-        var inLinetime:Double? = updatedAt?.distance(to: Date())
-        return 0
+        var inLinetime:Double = updatedAt?.distance(to: Date()) ?? 0
+        inLinetime = inLinetime/60000
+        return Int(inLinetime)
     }
     
     init() {
         handleListLinePlace()
+        print(lineplacesList)
     }
     var body: some View {
         VStack{
