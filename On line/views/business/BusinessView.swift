@@ -25,7 +25,7 @@ struct BusinessView: View {
                     Text(" Zaitty")
                 }
                 .tag(Tabs.home)
-            BusinessClientsInLineTab()
+            BusinessClientsInLineTab(people: 2, name: "João", time: 30)
                 .tabItem {
                     Image(selectedTab == Tabs.list ? "Icone_Lista_bold" : "ListaBranca")
                     Text("Fila")

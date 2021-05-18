@@ -60,6 +60,8 @@
 		F162C61B265307CE00C74D75 /* BusinessProfileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162C61A265307CE00C74D75 /* BusinessProfileEditor.swift */; };
 		F85F7005264DA9BC00EE68F0 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */; };
 		F85F7007264DB92800EE68F0 /* ButtonView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7006264DB92800EE68F0 /* ButtonView2.swift */; };
+		F8C4897B2654344F00FF465B /* ButtonView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4897A2654344F00FF465B /* ButtonView3.swift */; };
+		F8C4897D2654346300FF465B /* ButtonView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4897C2654346300FF465B /* ButtonView4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,8 @@
 		F162C61A265307CE00C74D75 /* BusinessProfileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileEditor.swift; sourceTree = "<group>"; };
 		F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		F85F7006264DB92800EE68F0 /* ButtonView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView2.swift; sourceTree = "<group>"; };
+		F8C4897A2654344F00FF465B /* ButtonView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView3.swift; sourceTree = "<group>"; };
+		F8C4897C2654346300FF465B /* ButtonView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +441,8 @@
 			children = (
 				34EA2889264A0E920047E740 /* ButtonView.swift */,
 				F85F7006264DB92800EE68F0 /* ButtonView2.swift */,
+				F8C4897A2654344F00FF465B /* ButtonView3.swift */,
+				F8C4897C2654346300FF465B /* ButtonView4.swift */,
 			);
 			path = button_view;
 			sourceTree = "<group>";
@@ -747,6 +753,7 @@
 				55409262264C4850004E6D9B /* ClientCardView.swift in Sources */,
 				340B7B8D2644E05700BCA158 /* Client.swift in Sources */,
 				554F71DC2641D4AC00E4F684 /* ContentView.swift in Sources */,
+				F8C4897B2654344F00FF465B /* ButtonView3.swift in Sources */,
 				34EA2895264A0FBD0047E740 /* UserType.swift in Sources */,
 				55D835E3264B1748002C4EF7 /* ImageButtonView.swift in Sources */,
 				34EA28BB264A18150047E740 /* LoginClientRegister.swift in Sources */,
@@ -757,6 +764,7 @@
 				34EA28A7264A129A0047E740 /* BusinessDashboardClientsInLine.swift in Sources */,
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
+				F8C4897D2654346300FF465B /* ButtonView4.swift in Sources */,
 				34EA288A264A0E920047E740 /* ButtonView.swift in Sources */,
 				34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControlView.swift in Sources */,
 				34E02B0D264B0A420096BBDE /* api.swift in Sources */,
