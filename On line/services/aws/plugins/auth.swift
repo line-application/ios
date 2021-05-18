@@ -15,15 +15,15 @@ let authConfiguration = AuthCategoryConfiguration(
             "CredentialsProvider": [
                 "CognitoIdentity": [
                     "Default": [
-                        "PoolId": "us-east-1:a5f0a0b5-0625-4b40-ba8a-c348b2e7472b",
+                        "PoolId": "us-east-1:98c746e9-c257-4309-b056-f9cad7bceeb1",
                         "Region": "us-east-1"
                     ]
                 ]
             ],
             "CognitoUserPool": [
                 "Default": [
-                    "PoolId": "us-east-1_VF1lNjVxI",
-                    "AppClientId": "20nfnq7ua4ocu7hnrru4obhp2q",
+                    "PoolId": "us-east-1_QverS6VBZ",
+                    "AppClientId": "5pu13fa7i3v8cnb9eefs1k3q39",
                     "Region": "us-east-1"
                 ]
             ],

@@ -12,12 +12,12 @@ let apiConfiguration = APICategoryConfiguration(plugins: [
     "awsAPIPlugin":[
         "on-line-api":[
             "endpointType": "REST",
-            "endpoint": "https://ph1o9i0fak.execute-api.us-east-1.amazonaws.com/DEVELOPMENT",
+            "endpoint": "https://y13bvjzg7g.execute-api.us-east-1.amazonaws.com/DEVELOPMENT",
             "region": "us-east-1",
             "authorizationType": "AMAZON_COGNITO_USER_POOLS"
         ]
     ]
 ])
 
-let API_URL = "https://ph1o9i0fak.execute-api.us-east-1.amazonaws.com/DEVELOPMENT"
+let API_URL = "https://y13bvjzg7g.execute-api.us-east-1.amazonaws.com/DEVELOPMENT"
 
