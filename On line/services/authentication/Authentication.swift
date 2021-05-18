@@ -20,7 +20,8 @@ struct Authentication {
         
         Amplify.Auth.signIn(username: username, password: password) { result in
             switch result {
-            case .success:
+            case .success(let success):
+                print(success)
                 handler(true)
             case .failure(let error):
                 print(error)
