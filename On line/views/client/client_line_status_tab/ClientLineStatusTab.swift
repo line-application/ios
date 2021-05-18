@@ -29,7 +29,7 @@ struct ClientLineStatusTab: View {
                                     .font(.title3)
                                     .foregroundColor(Color("primary"))
                                     .bold()
-                                Text("Para entrar em uma fila escolha um restaurente")
+                                Text("Para entrar em uma fila escolha um restaurente.")
                                     .frame(width: 358, height: 50
                                            , alignment: .center)
                                     .font(.system(size: 15))
