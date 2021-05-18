@@ -14,8 +14,10 @@ let apiConfiguration = APICategoryConfiguration(plugins: [
             "endpointType": "REST",
             "endpoint": "https://ph1o9i0fak.execute-api.us-east-1.amazonaws.com/DEVELOPMENT",
             "region": "us-east-1",
-            "authorizationType": "API_KEY",
-            "apiKey": "YOUR_API_KEY"
+            "authorizationType": "AMAZON_COGNITO_USER_POOLS"
         ]
     ]
 ])
+
+let API_URL = "https://ph1o9i0fak.execute-api.us-east-1.amazonaws.com/DEVELOPMENT"
+

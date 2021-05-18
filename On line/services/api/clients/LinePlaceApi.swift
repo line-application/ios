@@ -6,13 +6,18 @@
 //
 
 import Foundation
-
+import Amplify
 enum LinePlaceRemoveType {
     case AsClient, AsBusiness
 }
 
 struct LinePlaceApi {
     let api = Api()
+    
+    func list(invoked: Bool,handler:@escaping ([LinePlaceModel]?) -> Void){
+        let url = "/line-place?invoked=\(invoked ? "true": "false")"
+        api.get(url: url, handler: handler)
+    }
     
     //client
     func create(linePlace: LinePlaceModel, handler: @escaping (TimeEstimativeModel?) -> Void) {

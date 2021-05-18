@@ -9,12 +9,14 @@ import Foundation
 
 
 struct LinePlaceModel: Codable {
-    let enterLine: IsoString?
+    let enterLine: IsoString
     let exitLine: IsoString?
     let called: IsoString?
     var invoked: Bool?
     let success: Bool?
-    let peopleInLine: Int?
-    let businessEmail: Email?
-    let clientEmail: Email?
+    let peopleInLine: Int
+    let businessEmail: Email
+    let clientEmail: Email
+    let clientName: String
+    
 }
