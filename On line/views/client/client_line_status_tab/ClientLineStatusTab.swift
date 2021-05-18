@@ -21,16 +21,16 @@ struct ClientLineStatusTab: View {
                     VStack {
                         ZStack{
                             Rectangle()
-                                .frame(width: 368, height: 141, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                .frame(width: 328, height: 141, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                 .cornerRadius(10.0)
                                 .foregroundColor(Color("grayPeopleInLine"))
                             VStack {
                                 Text("Você não está em nenhuma na fila!")
-                                    .font(.title3)
+                                    .font(.system(size: 18))
                                     .foregroundColor(Color("primary"))
                                     .bold()
-                                Text("Para entrar em uma fila escolha um restaurente.")
-                                    .frame(width: 358, height: 50
+                                Text("Para entrar em uma fila escolha\n um restaurente.")
+                                    .frame(width: 308, height: 50
                                            , alignment: .center)
                                     .font(.system(size: 15))
                                     .multilineTextAlignment(.center)
@@ -38,6 +38,7 @@ struct ClientLineStatusTab: View {
                             }
                             .frame(width: 368, height: 141,alignment: .center)
                         }
+                        .padding(.top)
                         Spacer()
                             .navigationTitle(Text("Status da Fila"))
                             .navigationBarTitleDisplayMode(.inline)
