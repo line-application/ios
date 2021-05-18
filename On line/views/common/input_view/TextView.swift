@@ -10,7 +10,7 @@ import SwiftUI
 extension View {
     func underlineTextField(isWrong: Bool, input: String) -> some View {
         self
-            .overlay(Rectangle().frame(height: 1).padding(.top, 35).foregroundColor(Color("graySelector")))
+            .overlay(Rectangle().frame(height: 1).padding(.top, 35).foregroundColor(isWrong && input == "" ? .red : Color("graySelector")))
             .foregroundColor(.black)
             .padding(5)
     }
