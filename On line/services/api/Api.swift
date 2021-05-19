@@ -83,25 +83,32 @@ struct Api {
         }
     }
     
-    func patch<RequestPayload: Codable, ResponsePayload: Codable>(url:String, data:RequestPayload, queryStrings:[String : String]? = nil,handler: @escaping (ResponsePayload?) -> Void) {
-        let request: RESTRequest = (queryStrings != nil)
-            ? RESTRequest(path: url, queryParameters: queryStrings, body: try? encoder.encode(data) )
-            : RESTRequest(path: url, body: try? encoder.encode(data) )
-        
-        print("request:")
-        print(data)
-        print("----")
-        Amplify.API.patch(request: request) {result in
-            switch result {
-            case .success(let data):
-                let result = try? decoder.decode(ResponsePayload.self, from: data)
-                handler(result)
-                
-            case .failure(let apiError):
-                print(apiError)
-                handler(nil)
+    func patch<RequestPayload: Codable, ResponsePayload: Codable>(url:String, data:RequestPayload ,handler: @escaping (ResponsePayload?) -> Void) {
+      
+        let path = "\(API_URL)\(url)"
+    
+        Amplify.Auth.fetchAuthSession() { result in
+            do {
+                let session = try result.get()
+                if let cognitoTokenProvider = session as? AuthCognitoTokensProvider {
+                    let tokens = try cognitoTokenProvider.getCognitoTokens().get()
+                    let request = RestRequest(method: .patch, url: path)
+                    request.headerParameters = ["Authorization":"Bearer \(tokens.idToken)"]
+                    print(request.headerParameters)
+                    request.messageBody = try? JSONEncoder().encode(data)
+                    request.responseObject { (object:RestResponse<ResponsePayload>) in
+                        print(object.result)
+                        if let data = object.data {
+                            let result = try? decoder.decode(ResponsePayload.self, from: data)
+                            handler(result)
+                        }
+                    }
+                }
+            } catch {
+                print("Fetch auth session failed with error - \(error)")
             }
         }
+       
     }
     
     func delete<ResponsePayload: Codable>(url:String, handler: @escaping (ResponsePayload?) -> Void) {

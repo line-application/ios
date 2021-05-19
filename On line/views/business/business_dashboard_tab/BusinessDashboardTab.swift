@@ -14,6 +14,12 @@ struct BusinessDashboardTab: View {
     @State var showingSheet = false
     var businessName: String = ""
     var peopleInLine: Int = 0
+    
+    func handleListing(){
+        let linePlaceApi = LinePlaceApi()
+        linePlaceApi.confirm(clientEmail: "arturluisoliveira@gmail.com"){response in print(response) }
+    }
+    
     var body: some View {
         ZStack {
             VStack {
@@ -125,7 +131,7 @@ struct BusinessDashboardTab: View {
                     .padding(20)
                     .padding(.top, -13.0)
                 
-                Button(action: {}, label: {
+                Button(action: handleListing, label: {
                     Text("CHAMAR O PRÓXIMO")
                         .font(.system(size: 18))
                         .foregroundColor(.white)
@@ -136,7 +142,7 @@ struct BusinessDashboardTab: View {
                         .cornerRadius(22)
                     
                 })
-                .disabled(peopleInLine == 0 ? true : false)
+                //                .disabled(peopleInLine == 0 ? true : false)
                 .padding()
                 
                 

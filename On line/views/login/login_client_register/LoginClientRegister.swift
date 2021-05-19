@@ -44,10 +44,8 @@ struct LoginClientRegister: View {
     var body: some View {
         ZStack{
             LoaderView()
-            VStack{
-                
+            VStack {
                 ScrollView {
-                    
                     VStack{
                         Group {
                             TextView(isWrong: $showWarning, input: $name , label: "Nome", isSecure: false)
@@ -69,7 +67,7 @@ struct LoginClientRegister: View {
                                 .padding(.leading, -158)
                                 .padding(.top, -15)
                             TextView(isWrong: $showWarning, input: $password , label: "Senha", isSecure: true)
-                            Text(password == "" && showWarning == true ? "Digite uma senha válida" : "")
+                            Text(password.count < 6 && password != "" ? "Sua senha deve ter pelo menos 6 caracteres" : "")
                                 .font(.system(size: 10))
                                 .foregroundColor(.red)
                                 .padding(.leading, -158)
@@ -82,7 +80,7 @@ struct LoginClientRegister: View {
                                 .padding(.top, -15)
                         }
                         ButtonView(text: "CADASTRAR") {
-                            if (password != passwordConfirmation || email == "" || name == "" || phone == "" || password == "") {
+                            if ((password != passwordConfirmation && password.count < 6) || email == "" || name == "" || phone == "") {
                                 showWarning = true
                             }
                             else {

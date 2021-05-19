@@ -18,6 +18,6 @@ struct LinePlaceModel: Codable, Identifiable {
     let peopleInLine: Int
     let businessEmail: Email
     let clientEmail: Email
-    let clientName: String
+    let clientName: String?
     
 }
