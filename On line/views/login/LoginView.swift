@@ -62,7 +62,6 @@ struct LoginView: View {
                     HStack{
                         Text("Ainda não tem cadastro?")
                             .font(.system(size: 14))
-                        // if settings.userType == UserType.BUSINESS {
                         
                         Text("Cadastre-se")
                             .font(.system(size: 14))

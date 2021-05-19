@@ -31,8 +31,6 @@ struct Authentication {
         
     }
     
-    
-    
     static func signUp(name: String, password: String, email: String, phoneNumber: String? = nil, userType: UserType, highestTableCapacity:Int? = nil, description:String? = nil,handler:@escaping (SignUpResponseTypes)->Void) {
         print(userType.stringForm)
         
@@ -40,7 +38,7 @@ struct Authentication {
             AuthUserAttribute(.name, value: name),
             AuthUserAttribute(.email, value: email),
             AuthUserAttribute(.custom("userType"), value: userType.stringForm)
-                
+            
         ]
         if(phoneNumber != nil){ userAttributes.append(AuthUserAttribute(.phoneNumber, value: phoneNumber ?? "")) }
         if(highestTableCapacity != nil){ userAttributes.append(AuthUserAttribute(.custom("highestTableCapacity"), value: String(highestTableCapacity ?? 1))) }
@@ -98,6 +96,37 @@ struct Authentication {
             case .failure(let error):
                 handler(nil)
                 print("Fetching user attributes failed with error \(error)")
+            }
+        }
+    }
+    
+    static func updateAttribute(userAttribute: AuthUserAttribute, handler: @escaping ((Bool)->Void)) {
+        Amplify.Auth.update(userAttribute: userAttribute) { result in
+            do {
+                let updateResult = try result.get()
+                switch updateResult.nextStep {
+                case .confirmAttributeWithCode(let deliveryDetails, let info):
+                    print("Confirm the attribute with details send to - \(deliveryDetails) \(String(describing: info))")
+                case .done:
+                    handler(true)
+                    print("Update completed")
+                }
+            } catch {
+                handler(false)
+                print("Update attribute failed with error \(error)")
+            }
+        }
+    }
+    
+    static func changePassword(oldPassword: String, newPassword: String, handler: @escaping ((Bool)->Void)) {
+        Amplify.Auth.update(oldPassword: oldPassword, to: newPassword) { result in
+            switch result {
+            case .success:
+                print("Change password succeeded")
+                handler(true)
+            case .failure(let error):
+                print("Change password failed with error \(error)")
+                handler(false)
             }
         }
     }

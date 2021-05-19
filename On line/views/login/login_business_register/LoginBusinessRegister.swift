@@ -57,7 +57,7 @@ struct LoginBusinessRegister: View {
                         .padding(.leading, -158)
                         .padding(.top, -15)
                     TextView(isWrong: $showWarning, input: $businessPassword, label: "Senha", isSecure: true)
-                    Text(businessPassword == "" && showWarning == true ? "Digite uma senha válida" : "")
+                    Text(businessPassword.count < 6 && businessPassword != "" ? "Sua senha deve ter pelo menos 6 caracteres" : "")
                             .font(.system(size: 10))
                             .foregroundColor(.red)
                             .padding(.leading, -158)
@@ -123,7 +123,7 @@ struct LoginBusinessRegister: View {
                         destination: BusinessView(),
                         label: {
                             ButtonView(text: "CADASTRAR") {
-                                if (businessPassword != passwordConfirmation || businessEmail == "" || businessName == "" || businessNumber == "" || businessPassword == "" || businessAddress == "" || businessDescription == "") {
+                                if ((businessPassword != passwordConfirmation && businessPassword.count < 6) || businessEmail == "" || businessName == "" || businessNumber == "" || businessAddress == "" || businessDescription == "") {
                                     showWarning = true
                                 }
                                 else {

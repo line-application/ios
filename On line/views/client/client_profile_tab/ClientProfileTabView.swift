@@ -42,16 +42,12 @@ struct ClientProfileTabView: View {
                             name = attribute.value
                         case .phoneNumber:
                             if (attribute.value.count == 13) {
-                                let range = attribute.value.index(attribute.value.startIndex, offsetBy: 3)..<attribute.value.endIndex
-                                var newPhone = attribute.value
-                                newPhone.removeSubrange(range)
+                                let newPhone = String(attribute.value.dropFirst(3))
                                 let phoneFormatted = newPhone.applyPatternOnNumbers(pattern: "(##) ####-####", replacementCharacter: "#")
                                 phone = phoneFormatted
                             }
                             else {
-                                let range = attribute.value.index(attribute.value.startIndex, offsetBy: 3)..<attribute.value.endIndex
-                                var newPhone = attribute.value
-                                newPhone.removeSubrange(range)
+                                let newPhone = String(attribute.value.dropFirst(3))
                                 let phoneFormatted = newPhone.applyPatternOnNumbers(pattern: "(##) #####-####", replacementCharacter: "#")
                                 phone = phoneFormatted
                             }
@@ -77,7 +73,7 @@ struct ClientProfileTabView: View {
         //        else {
         NavigationView {
             ZStack {
-                //  LoaderView()
+                  LoaderView()
                 VStack{
                     Divider()
                         .padding(.top,25)
@@ -168,9 +164,7 @@ struct ClientProfileTabView: View {
                     Spacer()
                 }
             }
-            .navigationTitle(Text("Perfil")
-                                .font(.title)
-            )
+            .navigationTitle("Perfil")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarColor(UIColor.white)
@@ -179,7 +173,7 @@ struct ClientProfileTabView: View {
             handleDataFetch()
         }
     }
-    //}
+
 }
 
 struct ClientProfileTabView_Previews: PreviewProvider {

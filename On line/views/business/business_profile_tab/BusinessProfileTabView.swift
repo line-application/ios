@@ -42,16 +42,12 @@ struct BusinessProfileTabView: View {
                             businessName = attribute.value
                         case .phoneNumber:
                             if (attribute.value.count == 13) {
-                                let range = attribute.value.index(attribute.value.startIndex, offsetBy: 3)..<attribute.value.endIndex
-                                var phone = attribute.value
-                                phone.removeSubrange(range)
+                                let phone = String(attribute.value.dropFirst(3))
                                 let phoneFormatted = phone.applyPatternOnNumbers(pattern: "(##) ####-####", replacementCharacter: "#")
                                 businessNumber = phoneFormatted
                             }
                             else {
-                                let range = attribute.value.index(attribute.value.startIndex, offsetBy: 3)..<attribute.value.endIndex
-                                var phone = attribute.value
-                                phone.removeSubrange(range)
+                                let phone = String(attribute.value.dropFirst(3))
                                 let phoneFormatted = phone.applyPatternOnNumbers(pattern: "(##) #####-####", replacementCharacter: "#")
                                 businessNumber = phoneFormatted
                             }
@@ -121,7 +117,6 @@ struct BusinessProfileTabView: View {
                                     .padding(.top, 5)
                                 Text("Capacidade máx. de pessoas por mesa")
                                     .foregroundColor(Color("primary"))
-                                    // .multilineTextAlignment(.center)
                                     .frame(width: 300, height: 29)
                                     .padding(.horizontal, 1)
                                     .padding(.bottom, -5)
@@ -136,12 +131,12 @@ struct BusinessProfileTabView: View {
                                 .foregroundColor(Color("primary"))
                                 .frame(width: 245, height: 29, alignment: .leading)
                                 .padding(.horizontal, 5)
-                                .padding(.bottom, 1)
+                                .padding(.bottom, -5)
                                 .padding(.top, 10)
-                                .padding(.leading, -5)
                             Text("\(businessDescription)")
                                 .foregroundColor(Color("formText"))
                                 .frame(maxWidth: 320, minHeight: 87, maxHeight: .infinity)
+                                .padding(.horizontal, 5)
                                 .padding(.bottom, 30)
                             NavigationLink(
                                 destination: BusinessProfileEditor(),
