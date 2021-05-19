@@ -11,7 +11,8 @@ struct ClientProfileTabView: View {
     //@Binding var client:ClientModel
     @EnvironmentObject var settings: SettingsState
     @State var currentView: Bool = false
-    @State var name:String = "Teste"
+    @State var showDataFetchAlert = false
+    @State var name:String = ""
     @State var password:String = ""
     @State var phone: String = ""
     @State var passwordConfirmation: String = ""
@@ -30,39 +31,102 @@ struct ClientProfileTabView: View {
         }
     }
     
+    func handleDataFetch() {
+        settings.isLoading = true
+        Authentication.fetchAttributes() { attributes in
+            DispatchQueue.main.async {
+                if let unwrappedAttributes = attributes {
+                    unwrappedAttributes.forEach { attribute in
+                        switch attribute.key {
+                        case .name:
+                            name = attribute.value
+                        case .phoneNumber:
+                            if (attribute.value.count == 13) {
+                                let newPhone = String(attribute.value.dropFirst(3))
+                                let phoneFormatted = newPhone.applyPatternOnNumbers(pattern: "(##) ####-####", replacementCharacter: "#")
+                                phone = phoneFormatted
+                            }
+                            else {
+                                let newPhone = String(attribute.value.dropFirst(3))
+                                let phoneFormatted = newPhone.applyPatternOnNumbers(pattern: "(##) #####-####", replacementCharacter: "#")
+                                phone = phoneFormatted
+                            }
+                        default:
+                            return
+                        }
+                    }
+                    settings.isLoading = false
+                }
+                
+                else {
+                    settings.isLoading = false
+                    showDataFetchAlert = true
+                }
+            }
+        }
+    }
+    
     var body: some View {
-//        if(currentView == true){
-//            ClientProfileTab(currentView: $currentView )
-//        }
-//        else {
-            NavigationView {
+        //        if(currentView == true){
+        //            ClientProfileTab(currentView: $currentView )
+        //        }
+        //        else {
+        NavigationView {
+            ZStack {
+                  LoaderView()
                 VStack{
                     Divider()
                         .padding(.top,25)
                     //NavigationBarView
-    //                ZStack {
-    //                    Rectangle()
-    //                        .size(CGSize(width: 1000.0, height: 80.0))
-    //                        .foregroundColor(.white)
-    //                        .ignoresSafeArea()
-    //                    Text("Perfil")
-    //                        .padding(.top, -165)
-    //                        .font(.system(size: 25, weight: .heavy, design: .default))
-    //                        .foregroundColor(Color("primary"))
-    //                    Divider()
-    //                        .padding(.top, -115)
-    //                }
-
-                        VStack {
-                            ScrollView {
+                    //                ZStack {
+                    //                    Rectangle()
+                    //                        .size(CGSize(width: 1000.0, height: 80.0))
+                    //                        .foregroundColor(.white)
+                    //                        .ignoresSafeArea()
+                    //                    Text("Perfil")
+                    //                        .padding(.top, -165)
+                    //                        .font(.system(size: 25, weight: .heavy, design: .default))
+                    //                        .foregroundColor(Color("primary"))
+                    //                    Divider()
+                    //                        .padding(.top, -115)
+                    //                }
+                    
+                    VStack {
+                        ScrollView {
+                            Group {
                                 Text("")
                                 Text("")
                                 Text("")
-                            Image("IconePerfilCliente")
-                                .resizable()
-                                .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            Text(name)
-                            Spacer()
+                                Image("IconePerfilCliente")
+                                    .resizable()
+                                    .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                // Text(name)
+                                Spacer()
+                                VStack() {
+                                    Text("Nome")
+                                        .foregroundColor(Color("primary"))
+                                        .frame(width: 225, height: 29, alignment: .leading)
+                                        .padding(.trailing, 45)
+                                        .padding(.bottom, -5)
+                                        .padding(.top, -10)
+                                    Text("\(name)")
+                                        .foregroundColor(Color("formText"))
+                                        .frame(width: 225, height: 29, alignment: .leading)
+                                        .padding(.trailing, 45)
+                                        .padding(.top, 5)
+                                    Text("Telefone")
+                                        .foregroundColor(Color("primary"))
+                                        .frame(width: 225, height: 29, alignment: .leading)
+                                        .padding(.trailing, 45)
+                                        .padding(.bottom, -5)
+                                        .padding(.top, 10)
+                                    Text("\(phone)")
+                                        .foregroundColor(Color("formText"))
+                                        .frame(width: 225, height: 29, alignment: .leading)
+                                        .padding(.trailing, 45)
+                                        .padding(.top, 5)
+                                }
+                            }
                             Text("\n\n\n")
                             NavigationLink(
                                 destination: ClientProfileTab(),
@@ -82,24 +146,34 @@ struct ClientProfileTabView: View {
                                     .foregroundColor(.blue)
                             })
                         }
-                            //.padding(.top, -323)
-                    }.alert(isPresented: $settings.showAlert) {
+                        //.padding(.top, -323)
+                        
+                    }
+                    .alert(isPresented: $settings.showAlert) {
                         Alert(
                             title: Text("Erro"),
                             message: Text("Houve um problema ao deslogar, por favor, tente novamente")
                         )
                     }
+                    .alert(isPresented: $showDataFetchAlert) {
+                        Alert(
+                            title: Text("Erro"),
+                            message: Text("Houve um problema ao recuperar seus dados, por favor, tente novamente")
+                        )
+                    }
                     Spacer()
                 }
-                .navigationTitle(Text("Perfil")
-                                    .font(.title)
-                )
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarColor(UIColor.white)
             }
+            .navigationTitle("Perfil")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarColor(UIColor.white)
         }
-    //}
+        .onAppear() {
+            handleDataFetch()
+        }
+    }
+
 }
 
 struct ClientProfileTabView_Previews: PreviewProvider {
