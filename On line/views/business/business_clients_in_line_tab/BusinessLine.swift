@@ -88,7 +88,7 @@ struct BusinessLine: View {
                         .padding(.horizontal, 30)
     
                         ButtonView4(text: "CHAMAR", action: {
-    
+                            handleCall()
                             print("Entrar")
                         })
                     }
