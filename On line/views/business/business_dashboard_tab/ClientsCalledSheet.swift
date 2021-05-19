@@ -19,10 +19,12 @@ struct ClientsCalledSheet: View {
     @State var clientsCalled:[LinePlaceModel] = []
     @State private var clientsCalled2:[ClientCalled] = []
     @State var currentToDelete:String = ""
+    var clientToDelete:LinePlaceModel = LinePlaceModel(id: "1", enterLine: ",", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")
     
     func handleRemoveFromLine() {
         let linePlaceApi = LinePlaceApi()
         linePlaceApi.remove(type: .AsBusiness, email: currentToDelete, handler: {_ in })
+        print("Removido")
     }
     
     func handleListLinePlace() {
@@ -82,17 +84,26 @@ struct ClientsCalledSheet: View {
         }
     }
     
-    private func deleteItems() {
-        for id in selection {
-            if let index = clientsCalled2.lastIndex(where: { $0.id == id }) {
-                clientsCalled2.remove(at: index)
-            }
-        }
-        selection = Set<UUID>()
-    }
+//    private func deleteItems() {
+////        currentToDelete = clientsCalled[id].clientEmail
+////        handleRemoveFromLine()
+//        for id in selection {
+//            if let index = clientsCalled.lastIndex(where: { _ in id == id }) {
+//                currentToDelete = clientsCalled[index].clientEmail
+//                handleRemoveFromLine()
+//                print("teste")
+//                clientsCalled.remove(at: index)
+//            }
+//        }
+//        selection = Set<UUID>()
+//    }
     
     func deleteItems(at offsets: IndexSet) {
-        clientsCalled2.remove(atOffsets: offsets)
+        //handleRemoveFromLine()
+//        for n in IndexSet {
+//            
+//        }
+        clientsCalled.remove(atOffsets: offsets)
     }
 }
 

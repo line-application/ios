@@ -32,34 +32,18 @@ struct RestaurantDetails: View {
         }
     }
     
+//    func handleEnterinLine(lineplace:LinePlaceModel) {
+//        let linePlaceApi = LinePlaceApi()
+//        linePlaceApi.create(linePlace: lineplace) { timeEstimative in
+//            print(timeEstimative)
+//        }
+//        
+//    }
+    
     var body: some View {
         VStack {
             Divider()
                 .padding(.top,25)
-//            ZStack {
-//                Rectangle()
-//                    .size(CGSize(width: 1000.0, height: 80.0))
-//                    .foregroundColor(.white)
-//                    .ignoresSafeArea()
-//                HStack {
-//                    Button(action : {
-//                        currentView = false
-//                    },label:{
-//                        Image(systemName: "chevron.backward")
-//                            .foregroundColor(Color("primary"))
-//                    })
-//                    .padding(.top, -175)
-//                    Spacer()
-//                    Text("Restaurante")
-//                        .padding(.top, -180)
-//                        .font(.system(size: 25, weight: .heavy, design: .default))
-//                        .foregroundColor(Color("primary"))
-//                    Spacer()
-//                }
-//            }
-//            .padding()
-//            Divider()
-//                .padding(.top, -320)
             ScrollView {
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
