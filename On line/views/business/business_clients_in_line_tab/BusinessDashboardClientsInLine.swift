@@ -12,7 +12,7 @@ struct BusinessClientsInLineTab: View {
     
     func handleListLinePlace() {
         let linePlaceApi = LinePlaceApi()
-        linePlaceApi.list(invoked: true) {
+        linePlaceApi.list(invoked: false) {
             linePlacesResponse in if let linePlaces = linePlacesResponse{lineplacesList = linePlaces}
         }
     }
@@ -30,8 +30,7 @@ struct BusinessClientsInLineTab: View {
     }
     
     init() {
-        handleListLinePlace()
-        print(lineplacesList)
+        
     }
     var body: some View {
         VStack{
@@ -51,11 +50,15 @@ struct BusinessClientsInLineTab: View {
             }
             ScrollView{
                 ForEach(lineplacesList){ lineplace in
-                    BusinessLine(people: lineplace.peopleInLine, name: lineplace.clientName, time: time(timeString: lineplace.enterLine))
+                    BusinessLine(people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
                 }
 
             }
             Spacer()
+        }
+        .onAppear(){
+            handleListLinePlace()
+            print(lineplacesList.count)
         }
     }
 }

@@ -8,19 +8,36 @@
 import SwiftUI
 
 struct ClientCalled: Identifiable {
-    let name: String
-    let numberOfPeople: Int
+    let clientName: String
+    let peopleInLine: Int
+    let clientEmail:String
     let id = UUID()
 }
 
+extension UUID {
+    
+}
+
 struct ClientsCalledSheet: View {
-    @State private var clientsCalled = [
-        ClientCalled(name: "Artur Luis", numberOfPeople: 2),
-        ClientCalled(name: "Camila Gudolle", numberOfPeople: 3),
-        ClientCalled(name: "Diego Henrique", numberOfPeople: 1),
-        ClientCalled(name: "Felipe Nipper", numberOfPeople: 5),
-        ClientCalled(name: "João Biazus", numberOfPeople: 4)
-    ]
+    @State var clientsCalled:[LinePlaceModel]
+    @State var clientsCalled2:[ClientCalled]
+//        = [
+//        ClientCalled(name: "Artur Luis", numberOfPeople: 2),
+//        ClientCalled(name: "Camila Gudolle", numberOfPeople: 3),
+//        ClientCalled(name: "Diego Henrique", numberOfPeople: 1),
+//        ClientCalled(name: "Felipe Nipper", numberOfPeople: 5),
+//        ClientCalled(name: "João Biazus", numberOfPeople: 4)
+//    ]
+    
+    func handleListLinePlace() {
+        let linePlaceApi = LinePlaceApi()
+        linePlaceApi.list(invoked: true) {
+            linePlacesResponse in if let linePlaces = linePlacesResponse{clientsCalled = linePlaces}
+        }
+        for n in 0...clientsCalled2.count {
+            clientsCalled2.append(ClientCalled(clientName:clientsCalled2[n].clientName , peopleInLine: clientsCalled2[n].peopleInLine, clientEmail: clientsCalled2[n].clientEmail))
+        }
+    }
     
     @State var editMode: EditMode = .active
     @State var selection = Set<UUID>()
@@ -30,8 +47,8 @@ struct ClientsCalledSheet: View {
             VStack {
                 List {
                     Section {
-                        ForEach(clientsCalled) { item in
-                            ClientCalledView(clientName: item.name, numberOfPeople: item.numberOfPeople)
+                        ForEach(clientsCalled2) { item in
+                            ClientCalledView(clientName: item.clientName, numberOfPeople: item.peopleInLine)
                         }
                         .onDelete(perform: deleteItems)
                     }

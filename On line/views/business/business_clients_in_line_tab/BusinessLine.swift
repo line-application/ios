@@ -11,7 +11,18 @@ struct BusinessLine: View {
     @State var expand = false
     @State var people: Int
     @State var name: String
+    @State var clientEmail: String
     @State var time: Int
+    
+    func handleRemoveFromLine() {
+        let linePlaceApi = LinePlaceApi()
+        linePlaceApi.remove(type: .AsBusiness, email: clientEmail, handler: {_ in })
+    }
+    
+    func handleCall() {
+        let linePlaceApi = LinePlaceApi()
+        linePlaceApi.confirm(clientEmail: clientEmail, handler: {_ in })
+    }
     
     var body: some View{
         VStack(alignment: .leading){
@@ -72,8 +83,7 @@ struct BusinessLine: View {
                     HStack(alignment:.center){
     
                         ButtonView3(text: "Tirar da fila", action: {
-    
-                            print("Tira")
+                            handleRemoveFromLine()
                         })
                         .padding(.horizontal, 30)
     
@@ -95,7 +105,7 @@ struct BusinessLine: View {
     }
 struct BusinessLine_Previews: PreviewProvider {
     static var previews: some View {
-        BusinessLine(people: 2, name: "João Gabriel", time: 30)
+        BusinessLine(people: 2, name: "João Gabriel", clientEmail: "", time: 30)
     }
 }
 
