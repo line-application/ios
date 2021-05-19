@@ -17,6 +17,6 @@ struct LinePlaceModel: Codable {
     let peopleInLine: Int
     let businessEmail: Email
     let clientEmail: Email
-    let clientName: String
+    let clientName: String?
     
 }

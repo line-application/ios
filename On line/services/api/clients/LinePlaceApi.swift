@@ -40,14 +40,14 @@ struct LinePlaceApi {
         struct RemoveLinePlaceRequest: Codable {
             let email: Email
         }
-        api.patch(url: "/line-place", data: RemoveLinePlaceRequest(email: email), queryStrings: queryStrings, handler: handler)
+        api.patch(url: "/line-place", data: RemoveLinePlaceRequest(email: email), handler: handler)
     }
     
     //business
     func confirm(clientEmail: Email, handler: @escaping (LinePlaceModel?) -> Void) {
         struct ConfirmLinePlaceRequest: Codable {
-            let clientEmail: Email
+            let email: Email
         }
-        api.patch(url: "/line-place", data: ConfirmLinePlaceRequest(clientEmail: clientEmail), queryStrings:  ["action":"confirm","entity":"business"], handler: handler)
+        api.patch(url: "/line-place?action=confirm&entity=business", data: ConfirmLinePlaceRequest(email:clientEmail), handler: handler)
     }
 }
