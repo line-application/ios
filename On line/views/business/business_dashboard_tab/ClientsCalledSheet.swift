@@ -14,22 +14,26 @@ struct ClientCalled: Identifiable {
     let id = UUID()
 }
 
-extension UUID {
-    
-}
 
 struct ClientsCalledSheet: View {
     @State var clientsCalled:[LinePlaceModel] = []
     @State private var clientsCalled2:[ClientCalled] = []
+    @State var currentToDelete:String = ""
+    
+    func handleRemoveFromLine() {
+        let linePlaceApi = LinePlaceApi()
+        linePlaceApi.remove(type: .AsBusiness, email: currentToDelete, handler: {_ in })
+    }
     
     func handleListLinePlace() {
         let linePlaceApi = LinePlaceApi()
         linePlaceApi.list(invoked: true) {
-            linePlacesResponse in if let linePlaces = linePlacesResponse{clientsCalled = linePlaces}
-        }
-        for n in clientsCalled2 { 
-//            clientsCalled2.append(ClientCalled(clientName:clientsCalled2[n].clientName , peopleInLine: clientsCalled2[n].peopleInLine, clientEmail: clientsCalled2[n].clientEmail))
-            clientsCalled2.append(ClientCalled(clientName:n.clientName, peopleInLine: n.peopleInLine, clientEmail: n.clientEmail))
+            linePlacesResponse in if let linePlaces = linePlacesResponse{
+                DispatchQueue.main.async {
+                    clientsCalled = linePlaces
+                    print(linePlaces)
+                }
+            }
         }
     }
     
@@ -41,8 +45,8 @@ struct ClientsCalledSheet: View {
             VStack {
                 List {
                     Section {
-                        ForEach(clientsCalled2) { item in
-                            ClientCalledView(clientName: item.clientName, numberOfPeople: item.peopleInLine)
+                        ForEach(clientsCalled) { item in
+                            ClientCalledView(clientName: item.clientName!, numberOfPeople: item.peopleInLine)
                         }
                         .onDelete(perform: deleteItems)
                     }
@@ -60,6 +64,12 @@ struct ClientsCalledSheet: View {
         .onAppear(){
             handleListLinePlace()
         }
+        .onChange(of: clientsCalled, perform: { value in
+            print(value.count)
+//            for n in 0..<clientsCalled.count {
+//            clientsCalled2.append(ClientCalled(clientName:clientsCalled2[n].clientName , peopleInLine: clientsCalled2[n].peopleInLine, clientEmail: clientsCalled2[n].clientEmail))
+//            }
+        })
         
     }
     
