@@ -13,6 +13,8 @@ struct ClientBusinessListTab: View {
     @Binding var time:TimeEstimativeModel? 
     @State var list:[BusinessModel] = []
     @State var currentView: Bool = false
+    @State var clientName:String = ""
+    @State var clientEmail:String = ""
     @State var currentBusinessModel: BusinessModel = BusinessModel(id: "-23", email: "", name: "", description: "", phone: "", waitTime: 0.0, address: "", maxTableCapacity: 0, image: "")
     
     func fetchHandler(_ businessesResponse: [BusinessModel]?) {
@@ -26,6 +28,30 @@ struct ClientBusinessListTab: View {
     func fetchBusiness(){
         let businessApi = BusinessApi()
         businessApi.list{businesses in fetchHandler(businesses)}
+    }
+    
+    func handleDataFetch() {
+        //settings.isLoading = true
+        Authentication.fetchAttributes() { attributes in
+            DispatchQueue.main.async {
+                if let unwrappedAttributes = attributes {
+                    unwrappedAttributes.forEach { attribute in
+                        switch attribute.key {
+                        case .name:
+                            clientName = attribute.value
+                        case .email:
+                            clientEmail = attribute.value
+                        default:
+                            return
+                        }
+                    }
+                }
+                
+                else {
+                    //showDataFetchAlert = true
+                }
+            }
+        }
     }
     
     var body: some View {
@@ -43,7 +69,7 @@ struct ClientBusinessListTab: View {
                     VStack {
                         ScrollView {
                             HStack {
-                                Text("Olá ...")
+                                Text("Olá, \(clientName)!")
                                     .foregroundColor(Color("primary"))
                                     .font(.system(size: CGFloat(29)))
                                 Spacer()
@@ -86,6 +112,9 @@ struct ClientBusinessListTab: View {
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
+        }
+        .onAppear(){
+            handleDataFetch()
         }
         }
     //}
