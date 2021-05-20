@@ -14,16 +14,15 @@ struct ClientCalled: Identifiable {
     let id = UUID()
 }
 
-
 struct ClientsCalledSheet: View {
     @State var clientsCalled:[LinePlaceModel] = []
     @State private var clientsCalled2:[ClientCalled] = []
     @State var currentToDelete:String = ""
     var clientToDelete:LinePlaceModel = LinePlaceModel(id: "1", enterLine: ",", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")
     
-    func handleRemoveFromLine() {
+    func handleRemoveFromLine(email : String) {
         let linePlaceApi = LinePlaceApi()
-        linePlaceApi.remove(type: .AsBusiness, email: currentToDelete, handler: {_ in })
+        linePlaceApi.remove(type: .AsBusiness, email: email, handler: {_ in })
         print("Removido")
     }
     
@@ -68,9 +67,6 @@ struct ClientsCalledSheet: View {
         }
         .onChange(of: clientsCalled, perform: { value in
             print(value.count)
-//            for n in 0..<clientsCalled.count {
-//            clientsCalled2.append(ClientCalled(clientName:clientsCalled2[n].clientName , peopleInLine: clientsCalled2[n].peopleInLine, clientEmail: clientsCalled2[n].clientEmail))
-//            }
         })
         
     }
@@ -84,25 +80,10 @@ struct ClientsCalledSheet: View {
         }
     }
     
-//    private func deleteItems() {
-////        currentToDelete = clientsCalled[id].clientEmail
-////        handleRemoveFromLine()
-//        for id in selection {
-//            if let index = clientsCalled.lastIndex(where: { _ in id == id }) {
-//                currentToDelete = clientsCalled[index].clientEmail
-//                handleRemoveFromLine()
-//                print("teste")
-//                clientsCalled.remove(at: index)
-//            }
-//        }
-//        selection = Set<UUID>()
-//    }
-    
     func deleteItems(at offsets: IndexSet) {
-        //handleRemoveFromLine()
-//        for n in IndexSet {
-//            
-//        }
+        offsets.forEach { index in
+            handleRemoveFromLine(email: clientsCalled[index].clientEmail)
+        }
         clientsCalled.remove(atOffsets: offsets)
     }
 }
