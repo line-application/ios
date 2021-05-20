@@ -27,7 +27,7 @@ struct LoginClientRegister: View {
                 switch(business) {
                 case .CONFIRM_ACCOUNT:
                     print("confirm your account")
-                    self.mode.wrappedValue.dismiss()
+                    // self.mode.wrappedValue.dismiss()
                 case .SUCCESS:
                     print("success")
                 case .ERROR:
@@ -70,7 +70,7 @@ struct LoginClientRegister: View {
                             Text(password.count < 6 && password != "" ? "Sua senha deve ter pelo menos 6 caracteres" : "")
                                 .font(.system(size: 10))
                                 .foregroundColor(.red)
-                                .padding(.leading, -158)
+                                .padding(.leading, -101)
                                 .padding(.top, -15)
                             TextView(isWrong: $showWarning, input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
                             Text(password != passwordConfirmation && passwordConfirmation != "" ? "As senhas não conferem" : "")

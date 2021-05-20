@@ -20,7 +20,11 @@ struct ApplicationView: View {
             case UserType.CLIENT:
                 ClientView().allowsHitTesting(!settings.isLoading)
             }
-        } else {
+        }
+        else if settings.needsConfirmation {
+            RegisterConfirmationView(email: settings.clientId).allowsHitTesting(!settings.isLoading)
+        }
+        else {
             LoginView().allowsHitTesting(!settings.isLoading)
         }
     }

@@ -130,4 +130,17 @@ struct Authentication {
             }
         }
     }
+    
+    static func confirmSignUp(for username: String, with confirmationCode: String, handler: @escaping ((Bool)->Void))  {
+        Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
+            switch result {
+            case .success:
+                print("Confirm signUp succeeded")
+                handler(true)
+            case .failure(let error):
+                print("An error occurred while confirming sign up \(error)")
+                handler(false)
+            }
+        }
+    }
 }

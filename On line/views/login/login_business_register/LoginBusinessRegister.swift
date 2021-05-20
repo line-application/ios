@@ -30,7 +30,9 @@ struct LoginBusinessRegister: View {
                 switch(business) {
                 case .CONFIRM_ACCOUNT:
                     print("confirm your account")
-                    self.mode.wrappedValue.dismiss()
+                    settings.needsConfirmation = true
+                    settings.clientId = businessEmail
+                    // self.mode.wrappedValue.dismiss()
                 case .SUCCESS:
                     print("success")
                 case .ERROR:
@@ -60,7 +62,7 @@ struct LoginBusinessRegister: View {
                     Text(businessPassword.count < 6 && businessPassword != "" ? "Sua senha deve ter pelo menos 6 caracteres" : "")
                             .font(.system(size: 10))
                             .foregroundColor(.red)
-                            .padding(.leading, -158)
+                            .padding(.leading, -101)
                             .padding(.top, -15)
                     TextView(isWrong: $showWarning, input: $passwordConfirmation, label: "Confirmar senha", isSecure: true)
                     Text(businessPassword != passwordConfirmation && passwordConfirmation != "" ? "As senhas não conferem" : "")
@@ -119,9 +121,9 @@ struct LoginBusinessRegister: View {
                         .foregroundColor(.red)
                         .padding(.leading, -158)
                         .padding(.top, -15)
-                    NavigationLink(
-                        destination: BusinessView(),
-                        label: {
+//                    NavigationLink(
+//                        destination: RegisterConfirmationView(email: businessEmail),
+                       // label: {
                             ButtonView(text: "CADASTRAR") {
                                 if ((businessPassword != passwordConfirmation && businessPassword.count < 6) || businessEmail == "" || businessName == "" || businessNumber == "" || businessAddress == "" || businessDescription == "") {
                                     showWarning = true
@@ -135,7 +137,7 @@ struct LoginBusinessRegister: View {
                                     handleSingUp()
                                 }
                             }
-                        })
+                    //    })
                     }
                 }
                 .padding()
