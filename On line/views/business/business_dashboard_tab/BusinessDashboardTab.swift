@@ -64,8 +64,8 @@ struct BusinessDashboardTab: View {
     
     func handleOpen(){
         settings.isLoading = true
-        let BusinessApi = BusinessApi()
-        BusinessApi.open(handler: {_ in
+        let businessApi = BusinessApi()
+        businessApi.open(handler: {_ in
             DispatchQueue.main.async {
                 settings.isLoading = false
             }
@@ -74,8 +74,8 @@ struct BusinessDashboardTab: View {
     
     func handleClose(){
         settings.isLoading = true
-        let BusinessApi = BusinessApi()
-        BusinessApi.close(handler: {_ in
+        let businessApi = BusinessApi()
+        businessApi.close(handler: {_ in
             DispatchQueue.main.async {
                 settings.isLoading = false
             }
