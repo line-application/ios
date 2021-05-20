@@ -15,6 +15,7 @@ struct BusinessProfileTabView: View {
     @State var businessAddress : String = ""
     @State var businessDescription : String = ""
     @State var peoplePerTable = 1
+    @State var cameBack = false
     
     func handleSignOut() {
         settings.isLoading = true
@@ -139,7 +140,7 @@ struct BusinessProfileTabView: View {
                                 .padding(.horizontal, 5)
                                 .padding(.bottom, 30)
                             NavigationLink(
-                                destination: BusinessProfileEditor(),
+                                destination: BusinessProfileEditor(cameBack: $cameBack),
                                 label: {
                                     ZStack{
                                         RoundedRectangle(cornerRadius: 22.0)
@@ -172,9 +173,13 @@ struct BusinessProfileTabView: View {
                                 message: Text("Houve um problema ao recuperar seus dados, por favor, tente novamente")
                             )
                         }
+                        .onAppear() {
+                            handleDataFetch()
+                        }
                         
                         .padding(.top, 37)
                         Spacer()
+                            
                             .navigationTitle(Text("Perfil"))
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarBackButtonHidden(true)
@@ -182,9 +187,10 @@ struct BusinessProfileTabView: View {
                     }
                 }
             }
-        }
-        .onAppear() {
-            handleDataFetch()
+            .onChange(of: cameBack, perform: { value in
+                cameBack = false
+                handleDataFetch()
+            })
         }
     }
     

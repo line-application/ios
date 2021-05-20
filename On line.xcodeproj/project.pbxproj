@@ -57,6 +57,7 @@
 		BF2BEB0F8ED87226D38CA592 /* Pods_On_line.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */; };
 		F134F8DD264F1041002E46C3 /* ClientsCalledSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F134F8DC264F1041002E46C3 /* ClientsCalledSheet.swift */; };
 		F134F8DF264F17D0002E46C3 /* ClientCalledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F134F8DE264F17D0002E46C3 /* ClientCalledView.swift */; };
+		F13A311E26561FD900DCEF5D /* RegisterConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13A311D26561FD900DCEF5D /* RegisterConfirmationView.swift */; };
 		F162C61B265307CE00C74D75 /* BusinessProfileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162C61A265307CE00C74D75 /* BusinessProfileEditor.swift */; };
 		F85F7005264DA9BC00EE68F0 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */; };
 		F85F7007264DB92800EE68F0 /* ButtonView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7006264DB92800EE68F0 /* ButtonView2.swift */; };
@@ -141,6 +142,7 @@
 		D1E0C95150A56FB3CB602A91 /* Pods_On_line.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_On_line.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F134F8DC264F1041002E46C3 /* ClientsCalledSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsCalledSheet.swift; sourceTree = "<group>"; };
 		F134F8DE264F17D0002E46C3 /* ClientCalledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCalledView.swift; sourceTree = "<group>"; };
+		F13A311D26561FD900DCEF5D /* RegisterConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterConfirmationView.swift; sourceTree = "<group>"; };
 		F162C61A265307CE00C74D75 /* BusinessProfileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileEditor.swift; sourceTree = "<group>"; };
 		F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		F85F7006264DB92800EE68F0 /* ButtonView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView2.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				34CD7BD8264DE092005B2048 /* RegisterView.swift */,
+				F13A311D26561FD900DCEF5D /* RegisterConfirmationView.swift */,
 			);
 			path = register_view;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				F8C4897D2654346300FF465B /* ButtonView4.swift in Sources */,
 				34EA288A264A0E920047E740 /* ButtonView.swift in Sources */,
 				34CD7BD3264DDF25005B2048 /* UserTypeSegmentedControlView.swift in Sources */,
+				F13A311E26561FD900DCEF5D /* RegisterConfirmationView.swift in Sources */,
 				34E02B0D264B0A420096BBDE /* api.swift in Sources */,
 				349BE1422644C70D00C9D89A /* BusinessModel.swift in Sources */,
 				34E02B21264B0BA10096BBDE /* AWS.swift in Sources */,

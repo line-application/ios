@@ -10,17 +10,20 @@ import Amplify
 
 struct ApplicationView: View {
     @EnvironmentObject var settings: SettingsState
-    var userType:UserType = UserType.BUSINESS
     
     var body: some View {
         if settings.isAuthenticated {
-            switch userType {
+            switch settings.userType {
             case UserType.BUSINESS:
                 BusinessView().allowsHitTesting(!settings.isLoading)
             case UserType.CLIENT:
                 ClientView().allowsHitTesting(!settings.isLoading)
             }
-        } else {
+        }
+        else if settings.needsConfirmation {
+            RegisterConfirmationView(email: settings.clientId).allowsHitTesting(!settings.isLoading)
+        }
+        else {
             LoginView().allowsHitTesting(!settings.isLoading)
         }
     }
