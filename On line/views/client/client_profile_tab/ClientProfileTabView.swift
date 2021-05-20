@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ClientProfileTabView: View {
-    //@Binding var client:ClientModel
+    @State var cameBack = false
     @EnvironmentObject var settings: SettingsState
     @State var currentView: Bool = false
     @State var showDataFetchAlert = false
@@ -67,30 +67,12 @@ struct ClientProfileTabView: View {
     }
     
     var body: some View {
-        //        if(currentView == true){
-        //            ClientProfileTab(currentView: $currentView )
-        //        }
-        //        else {
         NavigationView {
             ZStack {
                   LoaderView()
                 VStack{
                     Divider()
-                        .padding(.top,25)
-                    //NavigationBarView
-                    //                ZStack {
-                    //                    Rectangle()
-                    //                        .size(CGSize(width: 1000.0, height: 80.0))
-                    //                        .foregroundColor(.white)
-                    //                        .ignoresSafeArea()
-                    //                    Text("Perfil")
-                    //                        .padding(.top, -165)
-                    //                        .font(.system(size: 25, weight: .heavy, design: .default))
-                    //                        .foregroundColor(Color("primary"))
-                    //                    Divider()
-                    //                        .padding(.top, -115)
-                    //                }
-                    
+                        .padding(.top,10)
                     VStack {
                         ScrollView {
                             Group {
@@ -100,7 +82,6 @@ struct ClientProfileTabView: View {
                                 Image("IconePerfilCliente")
                                     .resizable()
                                     .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                // Text(name)
                                 Spacer()
                                 VStack() {
                                     Text("Nome")
@@ -129,7 +110,7 @@ struct ClientProfileTabView: View {
                             }
                             Text("\n\n\n")
                             NavigationLink(
-                                destination: ClientProfileTab(),
+                                destination: ClientProfileTab(cameBack: $cameBack),
                                 label: {
                                     ZStack{
                                         RoundedRectangle(cornerRadius: 22.0)
@@ -146,8 +127,6 @@ struct ClientProfileTabView: View {
                                     .foregroundColor(.blue)
                             })
                         }
-                        //.padding(.top, -323)
-                        
                     }
                     .alert(isPresented: $settings.showAlert) {
                         Alert(
@@ -161,6 +140,9 @@ struct ClientProfileTabView: View {
                             message: Text("Houve um problema ao recuperar seus dados, por favor, tente novamente")
                         )
                     }
+                    .onAppear() {
+                        handleDataFetch()
+                    }
                     Spacer()
                 }
             }
@@ -168,10 +150,12 @@ struct ClientProfileTabView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarColor(UIColor.white)
+            .onChange(of: cameBack, perform: { value in
+                cameBack = false
+                handleDataFetch()
+            })
         }
-        .onAppear() {
-            handleDataFetch()
-        }
+        
     }
 
 }

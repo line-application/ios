@@ -20,10 +20,25 @@ struct LoginView: View {
     
     func handleSignIn() {
         settings.isLoading = true
-        Authentication.signIn(username: email, password: password,handler: {success in print("logged: \(success)")
+        Authentication.signIn(username: email, password: password,handler: { success in print("logged: \(success)")
             DispatchQueue.main.async {
                 if(success) {
-                    settings.isAuthenticated = true
+                    Authentication.fetchAttributes() { attributes in
+                        DispatchQueue.main.async {
+                            if let unwrappedAttributes = attributes {
+                                unwrappedAttributes.forEach { attribute in
+                                    switch attribute.key {
+                                    case .custom("userType"):
+                                        print(attribute.value)
+                                        settings.userType = attribute.value == "business" ? .BUSINESS : .CLIENT
+                                        settings.isAuthenticated = true
+                                    default:
+                                        return
+                                    }
+                                }
+                            }
+                        }
+                    }
                 } else {
                     settings.showAlert = true
                 }
@@ -50,7 +65,9 @@ struct LoginView: View {
                         .padding(.bottom, 15)
                     
                     
-                    ButtonView(text: "ENTRAR", action: handleSignIn)
+                    ButtonView(text: "ENTRAR") {
+                        handleSignIn()
+                    }
                         .padding(.bottom, 22)
                     
                     Text("Esqueci a senha")
