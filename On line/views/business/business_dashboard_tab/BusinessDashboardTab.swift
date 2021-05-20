@@ -12,13 +12,65 @@ struct BusinessDashboardTab: View {
     @Namespace var animation
     @State var peoplePerTable = 1
     @State var showingSheet = false
-    var businessName: String = ""
+    @State var businessName: String = ""
+    @State var businessEmail: String = ""
     var peopleInLine: Int = 0
+    @State var lineplacesList:[LinePlaceModel] = []
     
-    func handleListing(){
+    func handleListLinePlace() {
         let linePlaceApi = LinePlaceApi()
-        linePlaceApi.confirm(clientEmail: "arturluisoliveira@gmail.com"){response in print(response) }
+        linePlaceApi.list(invoked: false) {
+            linePlacesResponse in if let linePlaces = linePlacesResponse{lineplacesList = linePlaces}
+        }
     }
+    
+    func handleDataFetch() {
+        //settings.isLoading = true
+        Authentication.fetchAttributes() { attributes in
+            DispatchQueue.main.async {
+                if let unwrappedAttributes = attributes {
+                    unwrappedAttributes.forEach { attribute in
+                        switch attribute.key {
+                        case .name:
+                            businessName = attribute.value
+                        case .email:
+                            businessEmail = attribute.value
+                        default:
+                            return
+                        }
+                    }
+                }
+                
+                else {
+                    //showDataFetchAlert = true
+                }
+            }
+        }
+    }
+    
+    func handleCall(peopleToCall:Int){
+        let linePlaceApi = LinePlaceApi()
+        handleListLinePlace()
+        var clientEmail2 = ""
+        for n in 0..<lineplacesList.count{
+            if(lineplacesList[n].peopleInLine<=peopleToCall){
+                clientEmail2 = lineplacesList[n].clientEmail
+                break
+            }
+        }
+        linePlaceApi.confirm(clientEmail: clientEmail2){response in print(response) }
+    }
+    
+    func handleOpen(){
+        let BusinessApi = BusinessApi()
+        BusinessApi.open(handler: {_ in })
+    }
+    
+    func handleClose(){
+        let BusinessApi = BusinessApi()
+        BusinessApi.close(handler: {_ in })
+    }
+    
     
     var body: some View {
         ZStack {
@@ -74,6 +126,7 @@ struct BusinessDashboardTab: View {
                                     .onTapGesture {
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.6)){
                                             currentTab = "Off"
+                                            handleClose()
                                         }
                                     }
                                 
@@ -94,6 +147,7 @@ struct BusinessDashboardTab: View {
                                     .onTapGesture {
                                         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.6, blendDuration: 0.6)){
                                             currentTab = "On"
+                                            handleOpen()
                                         }
                                     }
                             }
@@ -131,7 +185,7 @@ struct BusinessDashboardTab: View {
                     .padding(20)
                     .padding(.top, -13.0)
                 
-                Button(action: handleListing, label: {
+                Button(action: {handleCall(peopleToCall: peoplePerTable)}, label: {
                     Text("CHAMAR O PRÓXIMO")
                         .font(.system(size: 18))
                         .foregroundColor(.white)

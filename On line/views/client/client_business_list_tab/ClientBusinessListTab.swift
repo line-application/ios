@@ -10,6 +10,7 @@ import SwiftUI
 struct ClientBusinessListTab: View {
     @Binding var currentLine:BusinessModel?
     @Binding var lineplace:LinePlaceModel?
+    @Binding var time:TimeEstimativeModel? 
     @State var list:[BusinessModel] = []
     @State var currentView: Bool = false
     @State var currentBusinessModel: BusinessModel = BusinessModel(id: "-23", email: "", name: "", description: "", phone: "", waitTime: 0.0, address: "", maxTableCapacity: 0, image: "")
@@ -71,7 +72,7 @@ struct ClientBusinessListTab: View {
     //                                ClientCardView(bussinesModel: business)
     //                            })
                                 NavigationLink(
-                                    destination: RestaurantDetails(currentLine: $currentLine, lineplace: $lineplace, bussinesModel: business ),
+                                    destination: RestaurantDetails(currentLine: $currentLine, lineplace: $lineplace,time2: $time , bussinesModel: business),
                                     label: {
                                         ClientCardView(bussinesModel: business)
                                     })
@@ -92,6 +93,6 @@ struct ClientBusinessListTab: View {
 
 struct ClientBusinessListTab_Previews: PreviewProvider {
     static var previews: some View {
-        ClientBusinessListTab(currentLine: Binding.constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")), lineplace: Binding.constant(LinePlaceModel(id: "2", enterLine: "", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: ""))) 
+        ClientBusinessListTab(currentLine: Binding.constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")), lineplace: Binding.constant(LinePlaceModel(id: "2", enterLine: "", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")), time: Binding.constant(nil)) 
     }
 }
