@@ -32,34 +32,18 @@ struct RestaurantDetails: View {
         }
     }
     
+//    func handleEnterinLine(lineplace:LinePlaceModel) {
+//        let linePlaceApi = LinePlaceApi()
+//        linePlaceApi.create(linePlace: lineplace) { timeEstimative in
+//            print(timeEstimative)
+//        }
+//        
+//    }
+    
     var body: some View {
         VStack {
             Divider()
                 .padding(.top,25)
-//            ZStack {
-//                Rectangle()
-//                    .size(CGSize(width: 1000.0, height: 80.0))
-//                    .foregroundColor(.white)
-//                    .ignoresSafeArea()
-//                HStack {
-//                    Button(action : {
-//                        currentView = false
-//                    },label:{
-//                        Image(systemName: "chevron.backward")
-//                            .foregroundColor(Color("primary"))
-//                    })
-//                    .padding(.top, -175)
-//                    Spacer()
-//                    Text("Restaurante")
-//                        .padding(.top, -180)
-//                        .font(.system(size: 25, weight: .heavy, design: .default))
-//                        .foregroundColor(Color("primary"))
-//                    Spacer()
-//                }
-//            }
-//            .padding()
-//            Divider()
-//                .padding(.top, -320)
             ScrollView {
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
@@ -126,7 +110,7 @@ struct RestaurantDetails: View {
                                     self.mode.wrappedValue.dismiss()
                                     showAlert = true
                                     currentLine = bussinesModel
-                                    lineplace = LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")
+                                    lineplace = LinePlaceModel(id: "12", enterLine: "", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")
                                 })
                                 Spacer()
                             }
@@ -160,7 +144,7 @@ struct RestaurantDetails: View {
 struct RestaurantDetails_Previews: PreviewProvider {
     //@State var oi:Bool = false
     static var previews: some View {
-        RestaurantDetails(currentLine: Binding.constant(nil), lineplace: Binding.constant(LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")), peoplePerTable: 2, bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
+        RestaurantDetails(currentLine: Binding.constant(nil), lineplace: Binding.constant(LinePlaceModel(id: "1", enterLine: ",", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")), peoplePerTable: 2, bussinesModel: BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul"))
 //        RestaurantDetails(currentView: .constant(true), peoplePerTable: 2, bussinesModel: .constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "A petiskeira é uma das maiores redes de restaurantes de Porto Alegre. Uma marca familiar nascida em 1984, gaúcha e ícone da cidade quando o assunto é gastronomia rápida.", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")))
         
     }
