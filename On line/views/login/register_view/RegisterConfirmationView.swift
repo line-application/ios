@@ -28,7 +28,7 @@ struct RegisterConfirmationView: View {
         }
     }
     
-    @State private var activeAlert: ActiveAlert
+    @State private var activeAlert: ActiveAlert = .first
     @EnvironmentObject var settings: SettingsState
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var isWrong : Bool = false
