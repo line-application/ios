@@ -15,11 +15,17 @@ struct RegisterConfirmationView: View {
             print("logged: \(success)")
             DispatchQueue.main.async {
                 if(success) {
+                    Authentication.signOutGlobally{ success in
+                        DispatchQueue.main.async {
+                            if(success) {
+                                settings.isAuthenticated = false
+                            } else {
+                                settings.showAlert = true
+                            }
+                        }
+                    }
                     activeAlert = .first
                     showAlert = true
-                    settings.needsConfirmation = false
-                    settings.isAuthenticated = true
-                    settings.clientId = ""
                 } else {
                     activeAlert = .second
                     showAlert = true
@@ -35,13 +41,14 @@ struct RegisterConfirmationView: View {
     @State var isWrong : Bool = false
     @State var code : String = ""
     @State var showAlert : Bool = false
+    @Binding var shouldDismiss: Bool
     var email : String = ""
     var body: some View {
-        NavigationView {
             ZStack {
                 LoaderView()
                 VStack(alignment: .center) {
-                    Divider() .padding(.top, 10.0)
+                    Divider()
+                        .padding(.horizontal,-20)
                     Text("Um código de verificação de 6 dígitos foi enviado para:")
                         .font(.system(size: 20))
                         .foregroundColor(Color("primary"))
@@ -99,7 +106,7 @@ struct RegisterConfirmationView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
             }
-        }
+        
         .padding()
         .navigationBarColor(UIColor.white)
         .navigationBarItems(leading:
@@ -114,7 +121,10 @@ struct RegisterConfirmationView: View {
             case .second:
                 return Alert(title: Text("Erro"), message: Text("Houve um problema ao validar sua conta, por favor, verifique o código digitado."))
             default:
-                return Alert(title: Text("Conta confirmada! 😃"), message: Text("Sua conta foi confirmada! Por favor, faça o login."))
+                return Alert(title: Text("Conta confirmada! 😃"), message: Text("Sua conta foi confirmada! Por favor, faça o login."),
+                    dismissButton: .default((Text("OK")), action: {
+                                                shouldDismiss = true
+                                                self.mode.wrappedValue.dismiss()}))
             }
         }
     }

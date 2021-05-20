@@ -9,8 +9,10 @@ import SwiftUI
 
 struct LoginBusinessRegister: View {
     @EnvironmentObject var settings: SettingsState
+    @State private var actionState: Int? = 0
     @State var showAlert:Bool = false
     @State var showWarning : Bool = false
+    @State var shouldDismiss: Bool = false
     @State var businessEmail : String = ""
     @State var businessPassword : String = ""
     @State var passwordConfirmation : String = ""
@@ -30,9 +32,6 @@ struct LoginBusinessRegister: View {
                 switch(business) {
                 case .CONFIRM_ACCOUNT:
                     print("confirm your account")
-                    settings.needsConfirmation = true
-                    settings.clientId = businessEmail
-                    // self.mode.wrappedValue.dismiss()
                 case .SUCCESS:
                     print("success")
                 case .ERROR:
@@ -135,9 +134,10 @@ struct LoginBusinessRegister: View {
                                     businessNumber = businessNumber.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
                                     businessNumber = businessNumber.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
                                     handleSingUp()
+                                    actionState = 1
                                 }
                             }
-                    //    })
+                        NavigationLink(destination: RegisterConfirmationView(shouldDismiss: $shouldDismiss, email: businessEmail), tag: 1, selection: self.$actionState) {}
                     }
                 }
                 .padding()
@@ -145,6 +145,10 @@ struct LoginBusinessRegister: View {
                     .padding()
                 
             }
+            .onChange(of: shouldDismiss, perform: { value in
+                shouldDismiss = false
+                self.mode.wrappedValue.dismiss()
+            })
             .alert(isPresented: $showAlert) {
                                         Alert(
                                             title: Text("Erro"),
@@ -152,7 +156,6 @@ struct LoginBusinessRegister: View {
                                         )
                                     }
         }}
-    
     
 }
 
