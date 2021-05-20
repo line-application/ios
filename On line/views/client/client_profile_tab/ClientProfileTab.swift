@@ -196,12 +196,10 @@ struct ClientProfileTab: View {
                     .alert(isPresented: $showAlert) {
                         switch activeAlert {
                         case .first:
-                            return Alert(title: Text("Feito! 😃"), message: Text("Dados editados com sucesso!\nDeseja voltar ao Perfil?"),
-                                         primaryButton: .default(Text("Não")),
-                                         secondaryButton: .cancel(Text("Sim"), action: {
-                                            cameBack = true
-                                            self.mode.wrappedValue.dismiss()
-                                         }))
+                            return Alert(title: Text("Feito! 😃"), message: Text("Dados editados com sucesso!"),
+                                         dismissButton: .default((Text("OK")), action: {
+                                                                    cameBack = true
+                                                                    self.mode.wrappedValue.dismiss()}))
                         case .second:
                             return Alert(title: Text("Erro"), message: Text("Houve um problema ao editar sua conta, por favor, tente novamente."))
                         case .third:
