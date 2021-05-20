@@ -222,6 +222,9 @@ struct BusinessDashboardTab: View {
                 }
             }
         }
+        .onAppear(){
+            handleDataFetch()
+        }
     }
 }
 
