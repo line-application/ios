@@ -17,8 +17,8 @@ struct ApplicationView: View {
                 BusinessView().allowsHitTesting(!settings.isLoading)
             case UserType.CLIENT:
                 ClientView().allowsHitTesting(!settings.isLoading)
-            case .LOADING:
-                LoaderView()
+            case UserType.LOADING:
+                SplashScreenView()
             }
         }
         else {
