@@ -24,7 +24,7 @@ struct LoginBusinessRegister: View {
     
     func handleSingUp() {
         settings.isLoading = true
-        Authentication.signUp(name: businessName, password: businessPassword, email: businessEmail, phoneNumber: "+55" + businessNumber, userType: .BUSINESS, highestTableCapacity: peoplePerTable, description: businessDescription) {
+        Authentication.signUp(name: businessName, password: businessPassword, email: businessEmail, phoneNumber: "+55" + businessNumber, userType: .BUSINESS, highestTableCapacity: peoplePerTable, description: businessDescription, address: businessAddress) {
             business in
             DispatchQueue.main.async {
                 switch(business) {

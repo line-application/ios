@@ -18,6 +18,7 @@ struct RegisterConfirmationView: View {
                     activeAlert = .first
                     showAlert = true
                     settings.needsConfirmation = false
+                    settings.isAuthenticated = true
                     settings.clientId = ""
                 } else {
                     activeAlert = .second
