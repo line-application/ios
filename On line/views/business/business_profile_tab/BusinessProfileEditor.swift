@@ -32,6 +32,7 @@ struct BusinessProfileEditor: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     func handlePasswordChange(completion: @escaping ()->(Void)) {
+        //settings.isLoading = true
         Authentication.changePassword(oldPassword: oldPassword, newPassword: businessPassword) { success in
             DispatchQueue.main.async {
                 if(success) {
@@ -39,6 +40,7 @@ struct BusinessProfileEditor: View {
                 } else {
                     showOldPasswordWarning = true
                 }
+                //  settings.isLoading = false
                 completion()
             }
         }
