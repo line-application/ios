@@ -10,7 +10,6 @@ import Amplify
 
 struct ApplicationView: View {
     @EnvironmentObject var settings: SettingsState
-    
     var body: some View {
         if settings.isAuthenticated {
             switch settings.userType {
