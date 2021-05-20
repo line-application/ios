@@ -10,8 +10,51 @@ import SwiftUI
 struct ClientLineStatusTab: View {
     @Binding var currentLine:BusinessModel?
     @Binding var lineplace:LinePlaceModel?
+    @Binding var time2:TimeEstimativeModel?
+    @State var clientName:String = ""
+    @State var clientEmail:String = ""
     @State var showAlert:Bool = false
     //var bussinesModel: BusinessModel = BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")
+    func time(timeString:IsoString) -> Date {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
+
+        let updatedAtStr = timeString
+        let updatedAt = dateFormatter.date(from: updatedAtStr) // "Jun 5, 2016, 4:56 PM"
+        return  updatedAt!
+    }
+    
+    func handleDataFetch() {
+        //settings.isLoading = true
+        Authentication.fetchAttributes() { attributes in
+            DispatchQueue.main.async {
+                if let unwrappedAttributes = attributes {
+                    unwrappedAttributes.forEach { attribute in
+                        switch attribute.key {
+                        case .name:
+                            clientName = attribute.value
+                        case .email:
+                            clientEmail = attribute.value
+                        default:
+                            return
+                        }
+                    }
+                }
+                
+                else {
+                    //showDataFetchAlert = true
+                }
+            }
+        }
+    }
+    
+    func handleRemoveFromLine() {
+        handleDataFetch()
+        let linePlaceApi = LinePlaceApi()
+        linePlaceApi.remove(type: .AsClient, email: clientEmail, handler: {_ in })
+    }
+    
     var body: some View {
         if(currentLine == nil){
             NavigationView {
@@ -118,7 +161,7 @@ struct ClientLineStatusTab: View {
                                             Image("clock")
                                                 .resizable()
                                                 .frame(width: 25.6, height: 27.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                            Text(" 12:30 - 13:00")
+                                            Text(" \(time(timeString: (time2?.good)!)) - \(time(timeString: (time2?.bad)!))")
                                                 .font(.title2)
                                                 .foregroundColor(Color("primary"))
                                                 .bold()
@@ -142,6 +185,7 @@ struct ClientLineStatusTab: View {
                             //Text(name)
                                 Button(action: {
                                     showAlert = true
+                                    handleRemoveFromLine()
                                 }, label: {
                                         ZStack{
                                             RoundedRectangle(cornerRadius: 22.0)
@@ -194,6 +238,6 @@ struct ClientLineStatusTab: View {
 struct ClientLineStatusTab_Previews: PreviewProvider {
     static var previews: some View {
         //ClientLineStatusTab(currentLine: Binding.constant(BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")), lineplace: Binding.constant(LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: false, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "")))
-        ClientLineStatusTab(currentLine: Binding.constant(nil), lineplace: Binding.constant(LinePlaceModel(enterLine: "", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")))
+        ClientLineStatusTab(currentLine: Binding.constant(nil), lineplace: Binding.constant(LinePlaceModel(id: "2", enterLine: "", exitLine: "", called: "", invoked: true, success: false, peopleInLine: 3, businessEmail: "", clientEmail: "", clientName: "")), time2: Binding.constant(nil))
     }
 }

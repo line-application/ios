@@ -8,13 +8,16 @@
 import SwiftUI
 import Amplify
 
+enum ActiveAlert {
+    case first, second, third
+}
+
 struct BusinessProfileEditor: View {
+    @State private var activeAlert: ActiveAlert = .first
     @EnvironmentObject var settings: SettingsState
-    @State var showDataFetchAlert: Bool = false
     @State var showAlert: Bool = false
     @State var showWarning : Bool = false
     @State var showOldPasswordWarning : Bool = false
-    @State var showDataEditSucessAlert : Bool = false
     @State var oldPassword : String = ""
     @State var businessPassword : String = ""
     @State var passwordConfirmation : String = ""
@@ -23,12 +26,13 @@ struct BusinessProfileEditor: View {
     @State var businessAddress : String = ""
     @State var businessDescription : String = ""
     @State var peoplePerTable = 1
+    @Binding var cameBack : Bool
     
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    func handlePasswordChange() {
-        settings.isLoading = true
+    func handlePasswordChange(completion: @escaping ()->(Void)) {
+        //settings.isLoading = true
         Authentication.changePassword(oldPassword: oldPassword, newPassword: businessPassword) { success in
             DispatchQueue.main.async {
                 if(success) {
@@ -36,7 +40,8 @@ struct BusinessProfileEditor: View {
                 } else {
                     showOldPasswordWarning = true
                 }
-                settings.isLoading = false
+                //  settings.isLoading = false
+                completion()
             }
         }
     }
@@ -46,7 +51,6 @@ struct BusinessProfileEditor: View {
         Authentication.fetchAttributes() { attributes in
             DispatchQueue.main.async {
                 if let unwrappedAttributes = attributes {
-                    
                     unwrappedAttributes.forEach { attribute in
                         switch attribute.key {
                         case .name:
@@ -77,7 +81,8 @@ struct BusinessProfileEditor: View {
                 
                 else {
                     settings.isLoading = false
-                    showDataFetchAlert = true
+                    self.activeAlert = .third
+                    showAlert = true
                 }
             }
         }
@@ -85,52 +90,44 @@ struct BusinessProfileEditor: View {
     
     func handleAttributesUpdate() {
         settings.isLoading = true
-        Authentication.updateAttribute(userAttribute: AuthUserAttribute(.name, value: businessName)){ success in
-            DispatchQueue.main.async {
-                if(!success) {
-                    settings.isLoading = false
-                    showAlert = true
+        let dataTypes: [[AuthUserAttributeKey : String]] = [[.name : businessName], [.phoneNumber : "+55" + businessNumber], [.address : businessAddress], [.custom("description") : businessDescription], [.custom("highestTableCapacity") : String(peoplePerTable)]]
+        let dispatchGroup = DispatchGroup()
+        var keysWithError: [AuthUserAttributeKey] = []
+        
+        for dictionary in dataTypes {
+            print("🟢")
+            dispatchGroup.enter()
+            guard let key = dictionary.first?.key,
+                  let value = dictionary.first?.value
+            else {
+                dispatchGroup.leave()
+                continue
+            }
+            
+            Authentication.updateAttribute(userAttribute: AuthUserAttribute(key, value: value)){ success in
+                DispatchQueue.main.async {
+                    if !success {
+                        keysWithError.append(key)
+                    }
+                    print("🔵")
+                    dispatchGroup.leave()
                 }
             }
-        }
-        Authentication.updateAttribute(userAttribute: AuthUserAttribute(.address, value: businessAddress)){ success in
-            DispatchQueue.main.async {
-                if(!success) {
-                    settings.isLoading = false
-                    showAlert = true
-                }
-            }
+            
         }
         
-        Authentication.updateAttribute(userAttribute: AuthUserAttribute(.phoneNumber, value: "+55" + businessNumber)){ success in
-            DispatchQueue.main.async {
-                if(!success) {
-                    settings.isLoading = false
+        dispatchGroup.notify(queue: .main) {
+                settings.isLoading = false
+                if (keysWithError.isEmpty) {
+                    self.activeAlert = .first
                     showAlert = true
                 }
-            }
-        }
-        
-        Authentication.updateAttribute(userAttribute: AuthUserAttribute(.custom("description"), value: businessDescription)){ success in
-            DispatchQueue.main.async {
-                if(!success) {
-                    settings.isLoading = false
+                else {
+                    self.activeAlert = .second
                     showAlert = true
                 }
-            }
+                print("🔴")
         }
-        
-        Authentication.updateAttribute(userAttribute: AuthUserAttribute(.custom("highestTableCapacity"), value: String(peoplePerTable))){ success in
-            DispatchQueue.main.async {
-                if(!success) {
-                    settings.isLoading = false
-                    showAlert = true
-                }
-            }
-        }
-        
-        settings.isLoading = false
-        showDataEditSucessAlert = true
     }
     
     var body: some View {
@@ -212,30 +209,36 @@ struct BusinessProfileEditor: View {
                                 .padding(.top, -15)
                             Button(action: {
                                 if ((businessPassword != passwordConfirmation && businessPassword.count < 6) || businessName == "" || businessNumber == "" || businessAddress == "" || businessDescription == "") {
-                                        showWarning = true
+                                    showWarning = true
+                                }
+                                else {
+                                    if oldPassword == "" {
+                                        print("\(businessNumber)")
+                                        businessNumber = businessNumber.replacingOccurrences(of: "(", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                        businessNumber = businessNumber.replacingOccurrences(of: ")", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                        businessNumber = businessNumber.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                        businessNumber = businessNumber.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                        handleAttributesUpdate()
                                     }
                                     else {
-                                        if oldPassword == "" {
-                                            print("\(businessNumber)")
-                                            businessNumber = businessNumber.replacingOccurrences(of: "(", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                            businessNumber = businessNumber.replacingOccurrences(of: ")", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                            businessNumber = businessNumber.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                            businessNumber = businessNumber.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                            handleAttributesUpdate()
-                                            self.mode.wrappedValue.dismiss()
-                                        }
-                                        else {
-                                            handlePasswordChange()
-                                            if !showOldPasswordWarning {
-                                                businessNumber = businessNumber.replacingOccurrences(of: "(", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                                businessNumber = businessNumber.replacingOccurrences(of: ")", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                                businessNumber = businessNumber.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                                businessNumber = businessNumber.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                                handleAttributesUpdate()
-                                                self.mode.wrappedValue.dismiss()
+                                        DispatchQueue.global(qos: .background).async {
+                                            let dispatchSemaphore = DispatchSemaphore(value: 0)
+                                            handlePasswordChange() {
+                                                dispatchSemaphore.signal()
+                                            }
+                                            dispatchSemaphore.wait()
+                                            DispatchQueue.main.async {
+                                                if !showOldPasswordWarning {
+                                                    businessNumber = businessNumber.replacingOccurrences(of: "(", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                                    businessNumber = businessNumber.replacingOccurrences(of: ")", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                                    businessNumber = businessNumber.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                                    businessNumber = businessNumber.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                                    handleAttributesUpdate()
+                                                }
                                             }
                                         }
                                     }
+                                }
                             }, label: {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 22.0)
@@ -246,37 +249,37 @@ struct BusinessProfileEditor: View {
                                         .bold()
                                 }
                             })
+                            .alert(isPresented: $showAlert) {
+                                switch activeAlert {
+                                case .first:
+                                    return Alert(title: Text("Feito! 😃"), message: Text("Dados editados com sucesso!"),
+                                                 dismissButton: .default((Text("OK")), action: {
+                                                                            cameBack = true
+                                                                            self.mode.wrappedValue.dismiss()}))
+                                case .second:
+                                    return Alert(title: Text("Erro"), message: Text("Houve um problema ao editar sua conta, por favor, tente novamente."))
+                                case .third:
+                                    return Alert(
+                                        title: Text("Erro"),
+                                        message: Text("Houve um problema ao recuperar seus dados, por favor, tente novamente")
+                                    )
+                                }
+                            }
                             .padding(.top, 35)
                         }
                     }
                     .padding()
                     Spacer()
                         .padding()
-                    
                 }
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Erro"),
-                        message: Text("Houve um problema ao editar sua conta, tente novamente.")
-                    )
-                }
-                .alert(isPresented: $showDataFetchAlert) {
-                    Alert(
-                        title: Text("Erro"),
-                        message: Text("Houve um problema ao recuperar seus dados, por favor, tente novamente")
-                    )
-                }
-                .alert(isPresented: $showDataEditSucessAlert) {
-                    Alert(
-                        title: Text("Sucesso"),
-                        message: Text("Dados editados com sucesso!")
-                    )
-                }
+                
+                
                 .navigationTitle(Text("Perfil"))
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
             }
         }
+        
         .navigationBarColor(UIColor.white)
         .navigationBarItems(leading:
                                 Button(action : {
@@ -289,11 +292,10 @@ struct BusinessProfileEditor: View {
             handleDataFetch()
         }
     }
-    
 }
 
-struct BusinessProfileEditor_Previews: PreviewProvider {
-    static var previews: some View {
-        BusinessProfileEditor()
-    }
-}
+//struct BusinessProfileEditor_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BusinessProfileEditor()
+//    }
+//}

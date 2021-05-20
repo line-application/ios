@@ -9,8 +9,10 @@ import SwiftUI
 
 struct LoginClientRegister: View {
     @EnvironmentObject var settings: SettingsState
+    @State private var actionState: Int? = 0
     @State var showAlert : Bool = false
     @State var showWarning : Bool = false
+    @State var shouldDismiss: Bool = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var name: String = ""
     @State var phone: String = ""
@@ -27,7 +29,6 @@ struct LoginClientRegister: View {
                 switch(business) {
                 case .CONFIRM_ACCOUNT:
                     print("confirm your account")
-                    self.mode.wrappedValue.dismiss()
                 case .SUCCESS:
                     print("success")
                 case .ERROR:
@@ -70,7 +71,7 @@ struct LoginClientRegister: View {
                             Text(password.count < 6 && password != "" ? "Sua senha deve ter pelo menos 6 caracteres" : "")
                                 .font(.system(size: 10))
                                 .foregroundColor(.red)
-                                .padding(.leading, -158)
+                                .padding(.leading, -101)
                                 .padding(.top, -15)
                             TextView(isWrong: $showWarning, input: $passwordConfirmation , label: "Confirmar senha", isSecure: true)
                             Text(password != passwordConfirmation && passwordConfirmation != "" ? "As senhas não conferem" : "")
@@ -91,8 +92,10 @@ struct LoginClientRegister: View {
                                 phone = phone.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
                                 print("\(phone)")
                                 handleSingUp()
+                                actionState = 1
                             }
                         }
+                        NavigationLink(destination: RegisterConfirmationView(shouldDismiss: $shouldDismiss, email: email), tag: 1, selection: self.$actionState) {}
                         .padding()
                     }
                     .padding()
@@ -106,6 +109,10 @@ struct LoginClientRegister: View {
             }
             
         }
+        .onChange(of: shouldDismiss, perform: { value in
+            shouldDismiss = false
+            self.mode.wrappedValue.dismiss()
+        })
         
     }
 }

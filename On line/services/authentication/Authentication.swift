@@ -32,7 +32,7 @@ struct Authentication {
         
     }
     
-    static func signUp(name: String, password: String, email: String, phoneNumber: String? = nil, userType: UserType, highestTableCapacity:Int? = nil, description:String? = nil,handler:@escaping (SignUpResponseTypes)->Void) {
+    static func signUp(name: String, password: String, email: String, phoneNumber: String? = nil, userType: UserType, highestTableCapacity:Int? = nil, description:String? = nil, address:String? = nil,handler:@escaping (SignUpResponseTypes)->Void) {
         print(userType.stringForm)
         
         var userAttributes = [
@@ -43,7 +43,8 @@ struct Authentication {
         ]
         if(phoneNumber != nil){ userAttributes.append(AuthUserAttribute(.phoneNumber, value: phoneNumber ?? "")) }
         if(highestTableCapacity != nil){ userAttributes.append(AuthUserAttribute(.custom("highestTableCapacity"), value: String(highestTableCapacity ?? 1))) }
-        if(description != nil){ userAttributes.append(AuthUserAttribute(.custom("description"), value: userType.stringForm)) }
+        if(description != nil){ userAttributes.append(AuthUserAttribute(.custom("description"), value: description ?? ""))}
+        if(address != nil){ userAttributes.append(AuthUserAttribute(.address, value: address ?? ""))}
         
         let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
         Amplify.Auth.signUp(username: email, password: password, options: options) { result in
@@ -127,6 +128,19 @@ struct Authentication {
                 handler(true)
             case .failure(let error):
                 print("Change password failed with error \(error)")
+                handler(false)
+            }
+        }
+    }
+    
+    static func confirmSignUp(for username: String, with confirmationCode: String, handler: @escaping ((Bool)->Void))  {
+        Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
+            switch result {
+            case .success:
+                print("Confirm signUp succeeded")
+                handler(true)
+            case .failure(let error):
+                print("An error occurred while confirming sign up \(error)")
                 handler(false)
             }
         }

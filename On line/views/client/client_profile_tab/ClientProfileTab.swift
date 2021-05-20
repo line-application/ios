@@ -10,14 +10,12 @@ import Amplify
 
 struct ClientProfileTab: View {
     @EnvironmentObject var settings: SettingsState
-    
-    //@Binding var currentView: Bool
+    @Binding var cameBack : Bool
+    @State private var activeAlert: ActiveAlert = .first
     @State var isWrong = false
-    @State var showDataFetchAlert: Bool = false
     @State var showAlert: Bool = false
     @State var showWarning : Bool = false
     @State var showOldPasswordWarning : Bool = false
-    @State var showDataEditSucessAlert : Bool = false
     @State var oldPassword : String = ""
     @State var name:String = ""
     @State var password:String = ""
@@ -25,7 +23,7 @@ struct ClientProfileTab: View {
     @State var passwordConfirmation: String = ""
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    func handlePasswordChange() {
+    func handlePasswordChange(completion: @escaping ()->(Void)) {
         settings.isLoading = true
         Authentication.changePassword(oldPassword: oldPassword, newPassword: password) { success in
             DispatchQueue.main.async {
@@ -35,6 +33,7 @@ struct ClientProfileTab: View {
                     showOldPasswordWarning = true
                 }
                 settings.isLoading = false
+                completion()
             }
         }
     }
@@ -68,7 +67,8 @@ struct ClientProfileTab: View {
                 
                 else {
                     settings.isLoading = false
-                    showDataFetchAlert = true
+                    self.activeAlert = .third
+                    showAlert = true
                 }
             }
         }
@@ -76,45 +76,50 @@ struct ClientProfileTab: View {
     
     func handleAttributesUpdate() {
         settings.isLoading = true
-        Authentication.updateAttribute(userAttribute: AuthUserAttribute(.name, value: name)){ success in
-            DispatchQueue.main.async {
-                if(!success) {
-                    settings.isLoading = false
-                    showAlert = true
+        let dataTypes: [[AuthUserAttributeKey : String]] = [[.name : name], [.phoneNumber : "+55" + phone]]
+        let dispatchGroup = DispatchGroup()
+        var keysWithError: [AuthUserAttributeKey] = []
+        
+        for dictionary in dataTypes {
+            print("🟢")
+            dispatchGroup.enter()
+            guard let key = dictionary.first?.key,
+                  let value = dictionary.first?.value
+            else {
+                dispatchGroup.leave()
+                continue
+            }
+            
+            Authentication.updateAttribute(userAttribute: AuthUserAttribute(key, value: value)){ success in
+                DispatchQueue.main.async {
+                    if !success {
+                        keysWithError.append(key)
+                    }
+                    print("🔵")
+                    dispatchGroup.leave()
                 }
             }
+            
         }
         
-        Authentication.updateAttribute(userAttribute: AuthUserAttribute(.phoneNumber, value: "+55" + phone)){ success in
-            DispatchQueue.main.async {
-                if(!success) {
-                    settings.isLoading = false
-                    showAlert = true
-                }
+        dispatchGroup.notify(queue: .main) {
+            settings.isLoading = false
+            if (keysWithError.isEmpty) {
+                self.activeAlert = .first
+                showAlert = true
             }
+            else {
+                self.activeAlert = .second
+                showAlert = true
+            }
+            print("🔴")
         }
-        
-        settings.isLoading = false
-        showDataEditSucessAlert = true
     }
     
     var body: some View {
         VStack{
-            //NavigationBarView
-            //            ZStack {
-            //                Rectangle()
-            //                    .size(CGSize(width: 1000.0, height: 80.0))
-            //                    .foregroundColor(.white)
-            //                    .ignoresSafeArea()
-            //                Text("Perfil")
-            //                    .padding(.top, -165)
-            //                    .font(.system(size: 25, weight: .heavy, design: .default))
-            //                    .foregroundColor(Color("primary"))
-            //                Divider()
-            //                    .padding(.top, -115)
-            //            }
             Divider()
-                .padding(.top,25)
+                .padding(.top,10)
             VStack {
                 ScrollView {
                     Group {
@@ -167,43 +172,46 @@ struct ClientProfileTab: View {
                                 phone = phone.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
                                 phone = phone.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
                                 handleAttributesUpdate()
-                                if !showAlert {
-                                    self.mode.wrappedValue.dismiss()
-                                }
                             }
                             else {
-                                handlePasswordChange()
-                                if !showOldPasswordWarning {
-                                    phone = phone.replacingOccurrences(of: "(", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                    phone = phone.replacingOccurrences(of: ")", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                    phone = phone.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                    phone = phone.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
-                                    handleAttributesUpdate()
-                                    if !showAlert {
-                                        self.mode.wrappedValue.dismiss()
+                                DispatchQueue.global(qos: .background).async {
+                                    let dispatchSemaphore = DispatchSemaphore(value: 0)
+                                    handlePasswordChange() {
+                                        dispatchSemaphore.signal()
+                                    }
+                                    dispatchSemaphore.wait()
+                                    DispatchQueue.main.async {
+                                        if !showOldPasswordWarning {
+                                            phone = phone.replacingOccurrences(of: "(", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                            phone = phone.replacingOccurrences(of: ")", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                            phone = phone.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                            phone = phone.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
+                                            handleAttributesUpdate()
+                                        }
                                     }
                                 }
                             }
                         }
                     }
+                    .alert(isPresented: $showAlert) {
+                        switch activeAlert {
+                        case .first:
+                            return Alert(title: Text("Feito! 😃"), message: Text("Dados editados com sucesso!"),
+                                         dismissButton: .default((Text("OK")), action: {
+                                                                    cameBack = true
+                                                                    self.mode.wrappedValue.dismiss()}))
+                        case .second:
+                            return Alert(title: Text("Erro"), message: Text("Houve um problema ao editar sua conta, por favor, tente novamente."))
+                        case .third:
+                            return Alert(
+                                title: Text("Erro"),
+                                message: Text("Houve um problema ao recuperar seus dados, por favor, tente novamente")
+                            )
+                        }
+                    }
                 }
-                .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Erro"),
-                        message: Text("Houve um problema ao editar sua conta, tente novamente.")
-                    )
-                }
-                .alert(isPresented: $showDataFetchAlert) {
-                    Alert(
-                        title: Text("Erro"),
-                        message: Text("Houve um problema ao recuperar seus dados, por favor, tente novamente")
-                    )
-                }
-                .alert(isPresented: $showDataEditSucessAlert) {
-                    Alert(
-                        title: Text("Sucesso"),
-                        message: Text("Dados editados com sucesso!")
-                    )
+                .onAppear() {
+                    handleDataFetch()
                 }
                 .navigationTitle(Text("Perfil"))
                 .navigationBarTitleDisplayMode(.inline)
@@ -219,9 +227,6 @@ struct ClientProfileTab: View {
             }
             .padding()
             Spacer()
-        }
-        .onAppear() {
-            handleDataFetch()
         }
     }
 }

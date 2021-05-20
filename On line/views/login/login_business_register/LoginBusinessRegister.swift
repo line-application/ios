@@ -9,8 +9,10 @@ import SwiftUI
 
 struct LoginBusinessRegister: View {
     @EnvironmentObject var settings: SettingsState
+    @State private var actionState: Int? = 0
     @State var showAlert:Bool = false
     @State var showWarning : Bool = false
+    @State var shouldDismiss: Bool = false
     @State var businessEmail : String = ""
     @State var businessPassword : String = ""
     @State var passwordConfirmation : String = ""
@@ -24,13 +26,12 @@ struct LoginBusinessRegister: View {
     
     func handleSingUp() {
         settings.isLoading = true
-        Authentication.signUp(name: businessName, password: businessPassword, email: businessEmail, phoneNumber: "+55" + businessNumber, userType: .BUSINESS, highestTableCapacity: peoplePerTable, description: businessDescription) {
+        Authentication.signUp(name: businessName, password: businessPassword, email: businessEmail, phoneNumber: "+55" + businessNumber, userType: .BUSINESS, highestTableCapacity: peoplePerTable, description: businessDescription, address: businessAddress) {
             business in
             DispatchQueue.main.async {
                 switch(business) {
                 case .CONFIRM_ACCOUNT:
                     print("confirm your account")
-                    self.mode.wrappedValue.dismiss()
                 case .SUCCESS:
                     print("success")
                 case .ERROR:
@@ -60,7 +61,7 @@ struct LoginBusinessRegister: View {
                     Text(businessPassword.count < 6 && businessPassword != "" ? "Sua senha deve ter pelo menos 6 caracteres" : "")
                             .font(.system(size: 10))
                             .foregroundColor(.red)
-                            .padding(.leading, -158)
+                            .padding(.leading, -101)
                             .padding(.top, -15)
                     TextView(isWrong: $showWarning, input: $passwordConfirmation, label: "Confirmar senha", isSecure: true)
                     Text(businessPassword != passwordConfirmation && passwordConfirmation != "" ? "As senhas não conferem" : "")
@@ -119,9 +120,9 @@ struct LoginBusinessRegister: View {
                         .foregroundColor(.red)
                         .padding(.leading, -158)
                         .padding(.top, -15)
-                    NavigationLink(
-                        destination: BusinessView(),
-                        label: {
+//                    NavigationLink(
+//                        destination: RegisterConfirmationView(email: businessEmail),
+                       // label: {
                             ButtonView(text: "CADASTRAR") {
                                 if ((businessPassword != passwordConfirmation && businessPassword.count < 6) || businessEmail == "" || businessName == "" || businessNumber == "" || businessAddress == "" || businessDescription == "") {
                                     showWarning = true
@@ -133,9 +134,10 @@ struct LoginBusinessRegister: View {
                                     businessNumber = businessNumber.replacingOccurrences(of: " ", with: "", options: NSString.CompareOptions.literal, range: nil)
                                     businessNumber = businessNumber.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
                                     handleSingUp()
+                                    actionState = 1
                                 }
                             }
-                        })
+                        NavigationLink(destination: RegisterConfirmationView(shouldDismiss: $shouldDismiss, email: businessEmail), tag: 1, selection: self.$actionState) {}
                     }
                 }
                 .padding()
@@ -143,6 +145,10 @@ struct LoginBusinessRegister: View {
                     .padding()
                 
             }
+            .onChange(of: shouldDismiss, perform: { value in
+                shouldDismiss = false
+                self.mode.wrappedValue.dismiss()
+            })
             .alert(isPresented: $showAlert) {
                                         Alert(
                                             title: Text("Erro"),
@@ -150,7 +156,6 @@ struct LoginBusinessRegister: View {
                                         )
                                     }
         }}
-    
     
 }
 
