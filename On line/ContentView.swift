@@ -22,6 +22,9 @@ struct ContentView: View {
             
         })
     }
+    func processPushPayload() {
+        
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
