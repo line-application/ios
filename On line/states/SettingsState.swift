@@ -14,6 +14,7 @@ class SettingsState: ObservableObject {
     @Published var showAlert: Bool = false
     
     init() {
+        //Trocar loaderView
         Authentication.fetchAttributes() { attributes in
             DispatchQueue.main.async { [self] in
                 if let unwrappedAttributes = attributes {
