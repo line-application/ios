@@ -16,19 +16,21 @@ struct BusinessApi {
     }
     
     //business
-    private func setIsOpen(isOpen: Bool, handler: @escaping (BusinessModel?) -> Void) {
+    private func setIsOpen(isOpen: Bool, handler: @escaping (OpenCloseResponse?) -> Void) {
         //business email goes throught auth token.
         api.patch(url: "/business", data: BusinessStatus(isOpen: isOpen), handler: handler)
     }
-    
+    struct OpenCloseResponse:Codable {
+        let success:Bool
+    }
     //business
-    func open(handler: @escaping (BusinessModel?) -> Void) {
+    func open(handler: @escaping (OpenCloseResponse?) -> Void) {
         //business email goes throught auth token.
         setIsOpen(isOpen: true) { business in handler(business) }
     }
     
     //business
-    func close(handler: @escaping (BusinessModel?) -> Void) {
+    func close(handler: @escaping (OpenCloseResponse?) -> Void) {
         //business email goes throught auth token.
         setIsOpen(isOpen: false) { business in handler(business) }
     }

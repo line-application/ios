@@ -10,6 +10,7 @@ import Foundation
 enum UserType {
     case BUSINESS
     case CLIENT
+    case LOADING
     
     var stringForm:String {
         switch self.self {
@@ -17,6 +18,8 @@ enum UserType {
             return "business"
         case  UserType.CLIENT:
             return "client"
+        case UserType.LOADING:
+            return "loading"
         }
     }
 }
