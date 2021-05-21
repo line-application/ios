@@ -10,7 +10,10 @@ import UserNotifications
 import Foundation
 import SwiftUI
 
+
+
 struct Push {
+    @StateObject var pushNotificationData = PushNotificationDataState.shared
     static func registerForPushNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
@@ -36,4 +39,33 @@ struct Push {
             
         }
     }
+    
+    static func handlePushNotification(action: String, state: PushNotificationDataState) {
+        switch action {
+        case "HANDLE_BUSINESS_PUSH":
+            handleBusinessPush(state)
+        case "HANDLE_CLIENT_INVOKE":
+            handleClientInvoke()
+        case "HANDLE_CLIENT_REMOVAL":
+            handleClientRemoval()
+        default:
+            return;
+        }
+    }
+    
+    static func handleBusinessPush(_ state:PushNotificationDataState) {
+        state.refetchClientList = true
+        print("handleBusinessPush()")
+    }
+    
+    static func handleClientInvoke() {
+        //fetch line status
+        print("handleClientInvoke()")
+    }
+    
+    static func handleClientRemoval() {
+        //remove client line status
+        print("handleClientRemoval()")
+    }
+    
 }

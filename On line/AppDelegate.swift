@@ -49,15 +49,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // Receive displayed notifications for iOS 10 or later devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
+        let action = userInfo["action"] as! String ?? ""
         print("Receive notification in the foreground \(userInfo)")
-//        let pref = UserDefaults.init(suiteName: "group.id.gits.notifserviceextension")
-//        pref?.set(userInfo, forKey: "NOTIF_DATA")
-        //        guard let vc = UIApplication.shared.windows.first?.rootViewController as? ViewController else { return }
-        //        vc.handleNotifData()
-        
-//        guard let vc = UIApplication.shared.rootViewController as? ContentView else { return }
-//        vc.processPushPayload()
+        print("action: \(action)")
         pushNotificationData.title = "success"
+        Push.handlePushNotification(action: action, state: pushNotificationData)
+//        let result = try? decoder.decode(ResponsePayload.self, from: data)
         completionHandler([.alert, .badge, .sound])
     }
 }

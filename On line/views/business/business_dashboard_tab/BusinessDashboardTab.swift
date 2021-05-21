@@ -210,17 +210,6 @@ struct BusinessDashboardTab: View {
                             .cornerRadius(22)
                         
                     })
-                    Button(action: {handleCall(peopleToCall: peoplePerTable)}, label: {
-                        Text(pushNotificationData.title)
-                            .font(.system(size: 18))
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
-                            .frame(width: 210, height: 44, alignment: .center)
-                            .background(Color("primary"))
-                            .opacity(peopleInLine == 0 ? 0.5 : 1)
-                            .cornerRadius(22)
-                        
-                    })
                     //                .disabled(peopleInLine == 0 ? true : false)
                     .padding()
                     
@@ -236,7 +225,15 @@ struct BusinessDashboardTab: View {
         }
         .onAppear(){
             handleDataFetch()
-        }
+        }.onChange(of: pushNotificationData.refetchClientList, perform: { value in
+            if(value == true) {
+                let linePlaceApi = LinePlaceApi()
+                linePlaceApi.list(invoked: false) {
+                    linePlacesResponse in if let linePlaces = linePlacesResponse{lineplacesList = linePlaces}
+                }
+                pushNotificationData.refetchClientList = false
+            }
+        })
     }
 }
 

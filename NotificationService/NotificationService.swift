@@ -12,24 +12,24 @@ class NotificationService: UNNotificationServiceExtension {
     var contentHandler: ((UNNotificationContent) -> Void)?
     var bestAttemptContent: UNMutableNotificationContent?
     
-    override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-        self.contentHandler = contentHandler
-        bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
-        
-        if let bestAttemptContent = bestAttemptContent {
-            // Modify the notification content here...
-            bestAttemptContent.title = "\(bestAttemptContent.title) [Modified] \(request.content.userInfo["msg"] as? String ?? "test1")"
-            // Save notification data to UserDefaults
-            let data = bestAttemptContent.userInfo as NSDictionary
-            
-            UserDefaults.standard.set(data, forKey: "NOTIF_DATA")
-            UserDefaults.standard.set(request.content.userInfo["msg"] as? String ?? "test1", forKey: "TEST_1")
-//            UserDefaults.standard.synchronize()
-            contentHandler(bestAttemptContent)
-        } else {
-            contentHandler(request.content)
-        }
-    }
+//    override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+//        self.contentHandler = contentHandler
+//        bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+//        
+//        if let bestAttemptContent = bestAttemptContent {
+//            // Modify the notification content here...
+//            bestAttemptContent.title = "\(bestAttemptContent.title) [Modified] \(request.content.userInfo["msg"] as? String ?? "test1")"
+//            // Save notification data to UserDefaults
+//            let data = bestAttemptContent.userInfo as NSDictionary
+//            
+//            UserDefaults.standard.set(data, forKey: "NOTIF_DATA")
+//            UserDefaults.standard.set(request.content.userInfo["msg"] as? String ?? "test1", forKey: "TEST_1")
+////            UserDefaults.standard.synchronize()
+//            contentHandler(bestAttemptContent)
+//        } else {
+//            contentHandler(request.content)
+//        }
+//    }
     
     
     override func serviceExtensionTimeWillExpire() {

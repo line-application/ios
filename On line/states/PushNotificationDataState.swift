@@ -10,7 +10,7 @@ import Foundation
 
 class PushNotificationDataState:ObservableObject {
     @Published var title: String = "error"
-    
+    @Published var refetchClientList: Bool = false
     // 1
     static let shared = PushNotificationDataState()
     // 2
