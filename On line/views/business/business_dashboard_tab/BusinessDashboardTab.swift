@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BusinessDashboardTab: View {
+    @EnvironmentObject var pushNotificationData: PushNotificationDataState
     @EnvironmentObject var settings: SettingsState
     @State var currentTab = "Off"
     @Namespace var animation
@@ -200,6 +201,17 @@ struct BusinessDashboardTab: View {
                     
                     Button(action: {handleCall(peopleToCall: peoplePerTable)}, label: {
                         Text("CHAMAR O PRÓXIMO")
+                            .font(.system(size: 18))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 210, height: 44, alignment: .center)
+                            .background(Color("primary"))
+                            .opacity(peopleInLine == 0 ? 0.5 : 1)
+                            .cornerRadius(22)
+                        
+                    })
+                    Button(action: {handleCall(peopleToCall: peoplePerTable)}, label: {
+                        Text(pushNotificationData.title)
                             .font(.system(size: 18))
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)

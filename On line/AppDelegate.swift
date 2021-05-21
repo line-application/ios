@@ -11,6 +11,7 @@ import Amplify
 import AmplifyPlugins
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    @StateObject var pushNotificationData = PushNotificationDataState.shared
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         AWS.configure()
@@ -41,6 +42,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("response",response)
     }
@@ -55,7 +57,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
 //        guard let vc = UIApplication.shared.rootViewController as? ContentView else { return }
 //        vc.processPushPayload()
-        
+        pushNotificationData.title = "success"
         completionHandler([.alert, .badge, .sound])
     }
 }

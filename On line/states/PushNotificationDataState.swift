@@ -9,7 +9,12 @@ import Foundation
 
 
 class PushNotificationDataState:ObservableObject {
-    @Published var title: String = ""
+    @Published var title: String = "error"
+    
+    // 1
+    static let shared = PushNotificationDataState()
+    // 2
+    private init() { }
     
     func handleData() {
         
