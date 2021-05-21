@@ -22,6 +22,7 @@ struct Authentication {
             switch result {
             case .success(let success):
                 print(success)
+                
                 handler(true)
             case .failure(let error):
                 print(error)

@@ -44,19 +44,21 @@ struct Api {
     }
     
     func post<RequestPayload: Codable, ResponsePayload: Codable>(url:String, data:RequestPayload, handler: @escaping (ResponsePayload?) -> Void) {
+        let path = "\(API_URL)\(url)"
         Amplify.Auth.fetchAuthSession() { result in
             do {
                 let session = try result.get()
                 if let cognitoTokenProvider = session as? AuthCognitoTokensProvider {
                     let tokens = try cognitoTokenProvider.getCognitoTokens().get()
-                    let request = RestRequest(method: .post, url: API_URL)
+                    let request = RestRequest(method: .post, url: path)
                     request.messageBody = try? JSONEncoder().encode(data)
                     request.headerParameters = ["Authorization":"Bearer \(tokens.idToken)"]
-                    
+                    print(request.headerParameters)
                     request.responseObject { (object:RestResponse<ResponsePayload>) in
                         if let data = object.data {
                             print(data)
                             let result = try? decoder.decode(ResponsePayload.self, from: data)
+                            print("result: \(result)")
                             handler(result)
                         }
                     }
@@ -84,9 +86,9 @@ struct Api {
     }
     
     func patch<RequestPayload: Codable, ResponsePayload: Codable>(url:String, data:RequestPayload ,handler: @escaping (ResponsePayload?) -> Void) {
-      
+        
         let path = "\(API_URL)\(url)"
-    
+        
         Amplify.Auth.fetchAuthSession() { result in
             do {
                 let session = try result.get()
@@ -108,7 +110,7 @@ struct Api {
                 print("Fetch auth session failed with error - \(error)")
             }
         }
-       
+        
     }
     
     func delete<ResponsePayload: Codable>(url:String, handler: @escaping (ResponsePayload?) -> Void) {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BusinessDashboardTab: View {
+    @EnvironmentObject var pushNotificationData: PushNotificationDataState
     @EnvironmentObject var settings: SettingsState
     @State var currentTab = "Off"
     @Namespace var animation
@@ -64,8 +65,8 @@ struct BusinessDashboardTab: View {
     
     func handleOpen(){
         settings.isLoading = true
-        let BusinessApi = BusinessApi()
-        BusinessApi.open(handler: {_ in
+        let businessApi = BusinessApi()
+        businessApi.open(handler: {_ in
             DispatchQueue.main.async {
                 settings.isLoading = false
             }
@@ -74,8 +75,8 @@ struct BusinessDashboardTab: View {
     
     func handleClose(){
         settings.isLoading = true
-        let BusinessApi = BusinessApi()
-        BusinessApi.close(handler: {_ in
+        let businessApi = BusinessApi()
+        businessApi.close(handler: {_ in
             DispatchQueue.main.async {
                 settings.isLoading = false
             }
@@ -224,7 +225,15 @@ struct BusinessDashboardTab: View {
         }
         .onAppear(){
             handleDataFetch()
-        }
+        }.onChange(of: pushNotificationData.refetchClientList, perform: { value in
+            if(value == true) {
+                let linePlaceApi = LinePlaceApi()
+                linePlaceApi.list(invoked: false) {
+                    linePlacesResponse in if let linePlaces = linePlacesResponse{lineplacesList = linePlaces}
+                }
+                pushNotificationData.refetchClientList = false
+            }
+        })
     }
 }
 
