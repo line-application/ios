@@ -16,6 +16,9 @@ struct ClientLineStatusTab: View {
     @State var clientEmail:String = ""
     @State var showAlert:Bool = false
     //var bussinesModel: BusinessModel = BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")
+    @State var hour = Calendar.current.component(.hour, from: Date())
+    @State var minutes = Calendar.current.component(.minute, from: Date())
+    
     func time(timeString:IsoString) -> Date {
         let dateFormatter = DateFormatter()
         
@@ -172,37 +175,62 @@ struct ClientLineStatusTab: View {
                                             .bold()
                                     }
                                 }
-                            }
-                            else {
-                                ZStack{
-                                    Rectangle()
-                                        .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        .cornerRadius(10.0)
-                                        .foregroundColor(Color("greenSelector"))
-                                    HStack {
-                                        Text("VOCÊ FOI CHAMADO")
-                                            .font(.title2)
-                                            .foregroundColor(Color(.white))
-                                            .bold()
+                                .frame(width: UIScreen.main.bounds.width*0.9, alignment: .center)
+                                Text("\n")
+                                HStack {
+                                    Text("Previsão de retorno")
+                                    Spacer()
+                                }
+                                .frame(width: UIScreen.main.bounds.width*0.82, alignment: .center)
+                                if(lineplace?.invoked==false) {
+                                    ZStack{
+                                        Rectangle()
+                                            .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            .cornerRadius(10.0)
+                                            .foregroundColor(Color("grayPeopleInLine"))
+                                        HStack {
+                                            Image("clock")
+                                                .resizable()
+                                                .frame(width: 25.6, height: 27.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                                            Text(" \(time(timeString: (time2?.good)!)) - \(time(timeString: (time2?.bad)!))")
+                                            Text("\(hour):\(minutes)")
+                                                .font(.title2)
+                                                .foregroundColor(Color("primary"))
+                                                .bold()
+                                        }
+                                    }
+                                }
+                                else {
+                                    ZStack{
+                                        Rectangle()
+                                            .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                            .cornerRadius(10.0)
+                                            .foregroundColor(Color("greenSelector"))
+                                        HStack {
+                                            Text("VOCÊ FOI CHAMADO")
+                                                .font(.title2)
+                                                .foregroundColor(Color(.white))
+                                                .bold()
+                                        }
                                     }
                                 }
                             }
                             //Text(name)
-                            Button(action: {
-                                showAlert = true
-                                handleRemoveFromLine()
-                            }, label: {
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 22.0)
-                                        .frame(width: 210, height: 44, alignment: .center)
-                                        .foregroundColor(Color("primary"))
-                                    Text("SAIR DA FILA")
-                                        .foregroundColor(Color.white)
-                                        .bold()
-                                }
-                                .padding(.top,65.0)
-                                
-                            })
+                                Button(action: {
+                                    showAlert = true
+                                    //handleRemoveFromLine()
+                                }, label: {
+                                        ZStack{
+                                            RoundedRectangle(cornerRadius: 22.0)
+                                                .frame(width: 210, height: 44, alignment: .center)
+                                                .foregroundColor(Color("primary"))
+                                            Text("SAIR DA FILA")
+                                                .foregroundColor(Color.white)
+                                                .bold()
+                                        }
+                                        .padding(.top,65.0)
+                                    
+                                })
                             //Text("\n")
                         }
                         //.padding(.top, -323)
@@ -217,8 +245,15 @@ struct ClientLineStatusTab: View {
                 .navigationBarColor(UIColor.white)
                 .alert(isPresented: $showAlert) {
                     Alert(title: Text("Sair da Fila"), message: Text("Você realmente gostaria de sair da fila?"), primaryButton: .default(Text("Sim")){
-                        lineplace?.invoked = true
+                        //lineplace?.invoked = true
+                        handleRemoveFromLine()
+                        currentLine = nil
                     }, secondaryButton: .default(Text("Não")))
+                                        }
+                .onAppear(){
+                    let date1 = Date().addingTimeInterval(TimeInterval(900))
+                    hour = Calendar.current.component(.hour, from: date1)
+                    minutes = Calendar.current.component(.minute, from: date1)
                 }
             }
         }
