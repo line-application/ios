@@ -11,6 +11,11 @@ enum LinePlaceRemoveType {
     case AsClient, AsBusiness
 }
 
+struct CreateLinePlaceRequest:Codable {
+    var businessEmail: String
+    var peopleInLine: Int
+}
+
 struct LinePlaceApi {
     let api = Api()
     
@@ -20,7 +25,7 @@ struct LinePlaceApi {
     }
     
     //client
-    func create(linePlace: LinePlaceModel, handler: @escaping (TimeEstimativeModel?) -> Void) {
+    func create(linePlace: CreateLinePlaceRequest, handler: @escaping (TimeEstimativeModel?) -> Void) {
         api.post(url: "/line-place", data: linePlace, handler: handler)
     }
     

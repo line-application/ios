@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BusinessLine: View {
+    @Binding var lineplacesList: [LinePlaceModel]
     @State var expand = false
     @State var people: Int
     @State var name: String
@@ -21,7 +22,14 @@ struct BusinessLine: View {
     
     func handleCall() {
         let linePlaceApi = LinePlaceApi()
-        linePlaceApi.confirm(clientEmail: clientEmail, handler: {_ in })
+        linePlaceApi.confirm(clientEmail: clientEmail, handler: {_ in linePlaceApi.list(invoked: false) {
+            linePlacesResponse in
+            if let linePlaces = linePlacesResponse{lineplacesList = linePlaces
+                lineplacesList = linePlaces
+            }
+        }})
+        
+        
     }
     
     var body: some View{
@@ -45,7 +53,7 @@ struct BusinessLine: View {
             }
             .padding(.horizontal, 20)
             .onTapGesture {
-    
+                
                 self.expand.toggle()
             }
             if expand {
@@ -53,40 +61,40 @@ struct BusinessLine: View {
                     HStack {
                         Image("7464a45b0a8cb0c7-1")
                             .padding(.leading, 25)
-    
+                        
                         Text("\(people) pessoas")
                             .bold()
                             .foregroundColor(Color("primary"))
                             .padding(.horizontal, 10)
-    
+                        
                         Spacer()
                     }
                     .padding(.top,5)
                     .padding(.horizontal, 15)
-    
+                    
                     HStack{
-    
+                        
                         Image(systemName: "clock")
                             .foregroundColor(Color("primary"))
                             .padding(.leading, 25)
-    
+                        
                         Text("\(time) minutos na fila")
                             .bold()
                             .foregroundColor(Color("primary"))
                             .padding(.horizontal, 10)
-    
+                        
                         Spacer()
-    
+                        
                     }
                     .padding(.horizontal, 17)
-    
+                    
                     HStack(alignment:.center){
-    
+                        
                         ButtonView3(text: "Tirar da fila", action: {
                             handleRemoveFromLine()
                         })
                         .padding(.horizontal, 30)
-    
+                        
                         ButtonView4(text: "CHAMAR", action: {
                             handleCall()
                             print("Entrar")
@@ -94,7 +102,7 @@ struct BusinessLine: View {
                     }
                 }
                 .padding(.horizontal, 0)
-    
+                
             }
             Divider()
         }
@@ -102,10 +110,10 @@ struct BusinessLine: View {
         .background(Color.white)
         .animation(.spring())
     }
-    }
-struct BusinessLine_Previews: PreviewProvider {
-    static var previews: some View {
-        BusinessLine(people: 2, name: "João Gabriel", clientEmail: "", time: 30)
-    }
 }
-
+//struct BusinessLine_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BusinessLine(linePlacesListpeople: 2, name: "João Gabriel", clientEmail: "", time: 30)
+//    }
+//}
+//

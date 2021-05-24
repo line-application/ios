@@ -45,7 +45,7 @@ struct Push {
         case "HANDLE_BUSINESS_PUSH":
             handleBusinessPush(state)
         case "HANDLE_CLIENT_INVOKE":
-            handleClientInvoke()
+            handleClientInvoke(state)
         case "HANDLE_CLIENT_REMOVAL":
             handleClientRemoval()
         default:
@@ -58,8 +58,9 @@ struct Push {
         print("handleBusinessPush()")
     }
     
-    static func handleClientInvoke() {
+    static func handleClientInvoke(_ state:PushNotificationDataState) {
         //fetch line status
+        state.clientExitLine = true
         print("handleClientInvoke()")
     }
     
