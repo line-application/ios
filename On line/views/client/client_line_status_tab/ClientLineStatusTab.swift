@@ -161,19 +161,19 @@ struct ClientLineStatusTab: View {
                                         .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                         .cornerRadius(10.0)
                                         .foregroundColor(Color("grayPeopleInLine"))
-                                    HStack {
-                                        Image("clock")
-                                            .resizable()
-                                            .frame(width: 25.6, height: 27.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        //                                            Text(" \(time(timeString: (time2?.good)!)) - \(time(timeString: (time2?.bad)!))")
-                                        //                                                .font(.title2)
-                                        //                                                .foregroundColor(Color("primary"))
-                                        //                                                .bold()
-                                        Text("12:12")
-                                            .font(.title2)
-                                            .foregroundColor(Color("primary"))
-                                            .bold()
-                                    }
+//                                    HStack {
+//                                        Image("clock")
+//                                            .resizable()
+//                                            .frame(width: 25.6, height: 27.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//                                        //                                            Text(" \(time(timeString: (time2?.good)!)) - \(time(timeString: (time2?.bad)!))")
+//                                        //                                                .font(.title2)
+//                                        //                                                .foregroundColor(Color("primary"))
+//                                        //                                                .bold()
+//                                        Text("12:12")
+//                                            .font(.title2)
+//                                            .foregroundColor(Color("primary"))
+//                                            .bold()
+//                                    }
                                 }
                                 .frame(width: UIScreen.main.bounds.width*0.9, alignment: .center)
                                 Text("\n")

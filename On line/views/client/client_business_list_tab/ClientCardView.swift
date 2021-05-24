@@ -31,10 +31,11 @@ struct ClientCardView: View {
                     Text(bussinesModel.name)
                         .foregroundColor(Color.black)
                         .bold()
-                        .font(.title2)
+                        .font(.system(size: 17))
                     Spacer()
                     Text("Estimativa de espera")
                         .foregroundColor(.black)
+                        .font(.system(size: 14))
                     Spacer()
                     HStack {
                         Image("clock")
@@ -43,10 +44,12 @@ struct ClientCardView: View {
                             .frame(width: 16, height: 17, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         Text("\(Int(bussinesModel.waitTime)) min")
                             .foregroundColor(Color("primary"))
+                            .font(.system(size: 14))
                     }
                     Spacer()
                 }
-                .padding(.leading,5)
+                //.padding(.leading,5)
+                .padding(.horizontal,20)
             }
             .frame(width: UIScreen.main.bounds.width*0.9, height: 107, alignment: .leading)
         }
