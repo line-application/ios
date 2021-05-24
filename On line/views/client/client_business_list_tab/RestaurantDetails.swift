@@ -37,9 +37,7 @@ struct RestaurantDetails: View {
     
     func handleAddToLine() {
         let linePlaceApi = LinePlaceApi()
-        linePlaceApi.create(linePlace: lineplace!, handler: {time in
-            time2 = time
-        })
+        linePlaceApi.create(linePlace: CreateLinePlaceRequest(businessEmail: clientEmail, peopleInLine: peoplePerTable), handler: {line in print(line)})
     }
     
     func handleDataFetch() {
@@ -141,6 +139,7 @@ struct RestaurantDetails: View {
                             HStack {
                                 Spacer()
                                 ButtonView2(text: "ENTRAR NA FILA", action: {
+                                    handleAddToLine()
                                     self.mode.wrappedValue.dismiss()
                                     showAlert = true
                                     currentLine = bussinesModel
@@ -150,6 +149,7 @@ struct RestaurantDetails: View {
                                     iso8601DateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
                                     let string = iso8601DateFormatter.string(from: date)
                                     lineplace = LinePlaceModel(id: "\(Date().timeIntervalSince1970)", enterLine: string, exitLine: "", called: "", invoked: false, success: false, peopleInLine: peoplePerTable, businessEmail: bussinesModel.email, clientEmail: clientEmail, clientName: clientName)
+                                    handleAddToLine()
                                 })
                                 .disabled((currentLine == nil)==false)
                                 .opacity(currentLine == nil ? 1 : 0.5)

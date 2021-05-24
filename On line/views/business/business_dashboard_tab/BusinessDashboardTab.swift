@@ -177,7 +177,10 @@ struct BusinessDashboardTab: View {
                         .padding(.leading)
                     }
                     
-                    Text(peopleInLine == 0 ? "Nenhuma pessoa na fila" : peopleInLine == 1 ? "\(peopleInLine) pessoa na fila" : "\(peopleInLine) pessoas na fila")
+                    //                    Text(peopleInLine == 0 ? "Nenhuma pessoa na fila" : peopleInLine == 1 ? "\(peopleInLine) pessoa na fila" : "\(peopleInLine) pessoas na fila")
+                    //
+                    
+                    Text(currentTab == "Off" ? "Fila fechada.": "\(lineplacesList.count) pessoas na fila")
                         .font(.system(size: 19))
                         .bold()
                         .opacity(peopleInLine == 0 ? 0.5 : 1)
@@ -206,7 +209,7 @@ struct BusinessDashboardTab: View {
                             .multilineTextAlignment(.center)
                             .frame(width: 210, height: 44, alignment: .center)
                             .background(Color("primary"))
-                            .opacity(peopleInLine == 0 ? 0.5 : 1)
+                            .opacity(currentTab == "Off"  ? 0.5 : 1)
                             .cornerRadius(22)
                         
                     })
@@ -225,14 +228,13 @@ struct BusinessDashboardTab: View {
         }
         .onAppear(){
             handleDataFetch()
+            handleListLinePlace()
         }.onChange(of: pushNotificationData.refetchClientList, perform: { value in
-            if(value == true) {
-                let linePlaceApi = LinePlaceApi()
-                linePlaceApi.list(invoked: false) {
-                    linePlacesResponse in if let linePlaces = linePlacesResponse{lineplacesList = linePlaces}
-                }
-                pushNotificationData.refetchClientList = false
+            let linePlaceApi = LinePlaceApi()
+            linePlaceApi.list(invoked: false) {
+                linePlacesResponse in if let linePlaces = linePlacesResponse{lineplacesList = linePlaces}
             }
+            
         })
     }
 }
