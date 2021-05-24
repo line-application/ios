@@ -151,6 +151,8 @@ struct RestaurantDetails: View {
                                     let string = iso8601DateFormatter.string(from: date)
                                     lineplace = LinePlaceModel(id: "\(Date().timeIntervalSince1970)", enterLine: string, exitLine: "", called: "", invoked: false, success: false, peopleInLine: peoplePerTable, businessEmail: bussinesModel.email, clientEmail: clientEmail, clientName: clientName)
                                 })
+                                .disabled((currentLine == nil)==false)
+                                .opacity(currentLine == nil ? 1 : 0.5)
                                 Spacer()
                             }
                             Spacer()
