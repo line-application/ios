@@ -67,27 +67,33 @@ struct ClientBusinessListTab: View {
                         .frame(width: 173, height: 51, alignment: .center)
                     Divider()
                     VStack {
+                        Spacer(minLength: 19)
                         ScrollView {
                             HStack {
                                 Text("Olá, \(clientName)!")
                                     .foregroundColor(Color("primary"))
-                                    .font(.system(size: CGFloat(29)))
-                                Spacer()
+                                    .font(.system(size: CGFloat(19)))
+                                    .bold()
+                                    .padding(.leading,5)
+                                Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
                             }
                             .padding(.leading)
                             HStack {
                                 Text("Onde você quer comer hoje?")
                                     .foregroundColor(Color("primary"))
-                                Spacer()
+                                    .font(.system(size: CGFloat(15)))
+                                    .padding(.leading,5)
+                                Spacer(minLength: 1)
                             }
                             .padding(.leading)
                             Text("")
                             HStack {
                                 Text("Restaurantes com fila")
                                     .foregroundColor(Color("primary"))
-                                    .font(.system(size: CGFloat(25)))
+                                    .font(.system(size: CGFloat(19)))
                                     .bold()
-                                Spacer()
+                                    .padding(.leading,5)
+                                Spacer(minLength: 17)
                             }
                             .padding(.leading)
                             ForEach(list) { business in
