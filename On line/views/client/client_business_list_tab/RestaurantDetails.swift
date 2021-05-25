@@ -75,13 +75,14 @@ struct RestaurantDetails: View {
     var body: some View {
         VStack {
             Divider()
-                .padding(.top,25)
-            ScrollView {
+                //.padding(.top,25)
+            ScrollView (showsIndicators: false){
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.white)
-                        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
+                        .foregroundColor(Color("whiteColor"))
+                        //.frame(width: 400, height: 600)
                         .frame(width: UIScreen.main.bounds.width*0.9, height: 600, alignment: .leading)
+                        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
                         VStack(alignment: .leading){
                             ZStack{
                                 RoundedRectangle(cornerRadius: 20)
@@ -156,7 +157,7 @@ struct RestaurantDetails: View {
                                 Spacer()
                             }
                             Spacer()
-                        }.frame(width: UIScreen.main.bounds.width*0.9, height: 600, alignment: .leading)
+                        }//.frame(width: UIScreen.main.bounds.width*0.9, height: 600, alignment: .leading)
                         .alert(isPresented: $showAlert) {
                                                     Alert(
                                                         title: Text("Você entrou na fila!"),
@@ -165,7 +166,7 @@ struct RestaurantDetails: View {
                                                 }
                 }
             }
-            .navigationTitle(Text("Restaurante"))
+            .navigationTitle(Text("\nRestaurante"))
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarColor(UIColor.white)

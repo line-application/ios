@@ -64,7 +64,7 @@ struct ClientBusinessListTab: View {
                     Image("Logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 173, height: 51, alignment: .center)
+                        .frame(width: 129, height: 38, alignment: .center)
                     Divider()
                     VStack {
                         Spacer(minLength: 19)
