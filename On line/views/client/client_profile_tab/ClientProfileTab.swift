@@ -209,6 +209,16 @@ struct ClientProfileTab: View {
                             )
                         }
                     }
+                    
+                    
+                    ButtonView3(text: "Deletar conta"){
+                        
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Deletar conta"), message: Text("Você realemnte deseja deletar sua conta?"), primaryButton: .destructive(Text("Não")), secondaryButton: .cancel(Text("Não")))
+                    }
+                    
+                    
                 }
                 .onAppear() {
                     handleDataFetch()
