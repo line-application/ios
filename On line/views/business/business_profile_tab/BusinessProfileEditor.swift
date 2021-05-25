@@ -16,6 +16,7 @@ struct BusinessProfileEditor: View {
     @State private var activeAlert: ActiveAlert = .first
     @EnvironmentObject var settings: SettingsState
     @State var showAlert: Bool = false
+    @State var showAlertDelete: Bool = false
     @State var showWarning : Bool = false
     @State var showOldPasswordWarning : Bool = false
     @State var oldPassword : String = ""
@@ -266,6 +267,15 @@ struct BusinessProfileEditor: View {
                                 }
                             }
                             .padding(.top, 35)
+                            
+                            ButtonView3(text: "Deletar conta"){
+                                showAlertDelete.toggle()
+                            }
+                            .padding(.top, 5)
+                            .alert(isPresented: $showAlertDelete) {
+                                Alert(title: Text("Deletar conta"), message: Text("Você realmente deseja deletar sua conta?"), primaryButton: .cancel(Text("Não")), secondaryButton: .destructive(Text("Sim")))
+                            }
+                            
                         }
                     }
                     .padding()
