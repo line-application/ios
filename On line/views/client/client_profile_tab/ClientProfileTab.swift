@@ -215,6 +215,7 @@ struct ClientProfileTab: View {
                     ButtonView3(text: "Deletar conta"){
                         showAlertDelete.toggle()
                     }
+                    .padding(.top, 5)
                     .alert(isPresented: $showAlertDelete) {
                         Alert(title: Text("Deletar conta"), message: Text("Você realmente deseja deletar sua conta?"), primaryButton: .cancel(Text("Não")), secondaryButton: .destructive(Text("Sim")))
                     }
