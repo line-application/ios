@@ -14,6 +14,7 @@ struct ClientProfileTab: View {
     @State private var activeAlert: ActiveAlert = .first
     @State var isWrong = false
     @State var showAlert: Bool = false
+    @State var showAlertDelete: Bool = false
     @State var showWarning : Bool = false
     @State var showOldPasswordWarning : Bool = false
     @State var oldPassword : String = ""
@@ -209,6 +210,17 @@ struct ClientProfileTab: View {
                             )
                         }
                     }
+                    
+                    
+                    ButtonView3(text: "Deletar conta"){
+                        showAlertDelete.toggle()
+                    }
+                    .padding(.top, 5)
+                    .alert(isPresented: $showAlertDelete) {
+                        Alert(title: Text("Deletar conta"), message: Text("Você realmente deseja deletar sua conta?"), primaryButton: .cancel(Text("Não")), secondaryButton: .destructive(Text("Sim")))
+                    }
+                    
+                    
                 }
                 .onAppear() {
                     handleDataFetch()
