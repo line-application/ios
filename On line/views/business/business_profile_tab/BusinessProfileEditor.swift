@@ -134,7 +134,7 @@ struct BusinessProfileEditor: View {
         ZStack {
             LoaderView()
             VStack {
-                Divider() .padding(.top, 10.0)
+                Divider() 
                 ScrollView {
                     VStack {
                         Group {

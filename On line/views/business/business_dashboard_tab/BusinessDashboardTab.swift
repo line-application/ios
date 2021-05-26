@@ -93,7 +93,7 @@ struct BusinessDashboardTab: View {
                     Image("Logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 173, height: 51, alignment: .center)
+                        .frame(width: 129, height: 38, alignment: .center)
                     
                     Divider()
                     HStack() {

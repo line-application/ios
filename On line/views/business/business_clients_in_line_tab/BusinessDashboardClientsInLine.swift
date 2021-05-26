@@ -22,9 +22,9 @@ struct BusinessClientsInLineTab: View {
     
     func time(timeString:IsoString) -> Int {
         let dateFormatter = DateFormatter()
-
+        
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-
+        
         let updatedAtStr = timeString
         let updatedAt = dateFormatter.date(from: updatedAtStr) // "Jun 5, 2016, 4:56 PM"
         var inLinetime:Double = updatedAt?.distance(to: Date()) ?? 0
@@ -36,34 +36,42 @@ struct BusinessClientsInLineTab: View {
         
     }
     var body: some View {
-        VStack{
-            Text("Fila")
-                .font(.system(size: 20))
-                .bold()
-                .foregroundColor(Color("primary"))
-                .padding(.vertical, 10)
-            Divider()
-            HStack{
-                Text("Fila Geral")
-                    .font(.system(size: 17))
-                    .bold()
-                    .foregroundColor(Color("primary"))
-                    .padding(20)
+        NavigationView{
+            VStack{
+                //            Text("Fila")
+                //                .font(.system(size: 19))
+                //                .bold()
+                //                .foregroundColor(Color("primary"))
+                Divider()
+                HStack{
+                    Text("Fila Geral")
+                        .font(.system(size: 17))
+                        .bold()
+                        .foregroundColor(Color("primary"))
+                        .padding(20)
+                    Spacer()
+                }
+                ScrollView{
+                    ForEach(lineplacesList){ lineplace in
+                        //                    BusinessLine(linePlaces: $lineplacesList, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
+                        BusinessLine(lineplacesList: $lineplacesList, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
+                    }
+                    
+                }
                 Spacer()
             }
-            ScrollView{
-                ForEach(lineplacesList){ lineplace in
-//                    BusinessLine(linePlaces: $lineplacesList, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
-                    BusinessLine(lineplacesList: $lineplacesList, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
-                }
-
+            .navigationTitle(Text("Fila"))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarColor(UIColor.white)
+            
+        }
+            
+            
+            .onAppear(){
+                handleListLinePlace()
+                print(lineplacesList.count)
             }
-            Spacer()
-        }
-        .onAppear(){
-            handleListLinePlace()
-            print(lineplacesList.count)
-        }
     }
 }
 struct BusinessClientsInLineTab_Previews: PreviewProvider {
