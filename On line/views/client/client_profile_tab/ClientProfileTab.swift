@@ -203,7 +203,7 @@ struct ClientProfileTab: View {
                                                                     self.mode.wrappedValue.dismiss()}))
                         case .second:
                             return Alert(title: Text("Erro"), message: Text("Houve um problema ao editar sua conta, por favor, tente novamente."))
-                        case .third:
+                        default:
                             return Alert(
                                 title: Text("Erro"),
                                 message: Text("Houve um problema ao recuperar seus dados, por favor, tente novamente")

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @Namespace var animation
+    @State var shouldDismiss: Bool = false
     @State var email: String = ""
     @State var password: String = ""
     @State var isWrong = false
@@ -20,9 +21,13 @@ struct LoginView: View {
     
     func handleSignIn() {
         settings.isLoading = true
-        Authentication.signIn(username: email, password: password,handler: { success in print("logged: \(success)")
+        Authentication.signIn(username: email, password: password,handler: { result in
             DispatchQueue.main.async {
-                if(success) {
+                switch(result) {
+                case .CONFIRM_ACCOUNT:
+                    actionState = 2
+                case .SUCCESS:
+                    print("success")
                     Authentication.fetchAttributes() { attributes in
                         DispatchQueue.main.async {
                             if let unwrappedAttributes = attributes {
@@ -39,8 +44,11 @@ struct LoginView: View {
                             }
                         }
                     }
-                } else {
+                case .ERROR:
+                    print("failed")
                     settings.showAlert = true
+                case .RESET_PASSWORD:
+                    print("please reset your password")
                 }
                 settings.isLoading = false
             }
@@ -105,7 +113,7 @@ struct LoginView: View {
                                 showRegisterAlert.toggle()
                             }
                         NavigationLink(destination: RegisterView(), tag: 1, selection: self.$actionState) {}
-                        
+                        NavigationLink(destination: RegisterConfirmationView( shouldDismiss: $shouldDismiss, email: email), tag: 2, selection: self.$actionState) {}
                     }
                     
                     .padding(3)

@@ -35,6 +35,21 @@ struct RegisterConfirmationView: View {
         }
     }
     
+    func handleCodeResend() {
+        Authentication.resendSignUpCode(email: email) { success in
+            DispatchQueue.main.async {
+                if(success) {
+                    activeAlert = .third
+                    showAlert = true
+                } else {
+                    activeAlert = .fourth
+                    showAlert = true
+                }
+                settings.isLoading = false
+            }
+        }
+    }
+    
     @State private var activeAlert: ActiveAlert = .first
     @EnvironmentObject var settings: SettingsState
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
@@ -99,6 +114,14 @@ struct RegisterConfirmationView: View {
                                 .bold()
                         }
                     })
+                    Text("Deseja reenviar o código?")
+                        .padding()
+                        .font(.system(size: 14))
+                        .foregroundColor(.blue)
+                        .onTapGesture {
+                            handleCodeResend()
+                        }
+                    
                     Spacer()
                     
                 }
@@ -120,6 +143,10 @@ struct RegisterConfirmationView: View {
             switch activeAlert {
             case .second:
                 return Alert(title: Text("Erro"), message: Text("Houve um problema ao validar sua conta, por favor, verifique o código digitado."))
+            case .third:
+                return Alert(title: Text("Código reenviado!"), message: Text("O código de verificação foi reenviado para o e-mail \(email)."))
+            case .fourth:
+                return Alert(title: Text("Erro"), message: Text("Houve um problema ao reenviar o código, por favor, tente novamente."))
             default:
                 return Alert(title: Text("Conta confirmada! 😃"), message: Text("Sua conta foi confirmada! Por favor, faça o login."),
                     dismissButton: .default((Text("OK")), action: {
