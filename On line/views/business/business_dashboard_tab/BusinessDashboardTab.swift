@@ -17,6 +17,7 @@ struct BusinessDashboardTab: View {
     @State var businessName: String = ""
     @State var businessEmail: String = ""
     var peopleInLine: Int = 0
+    @State var minPeoplePerTable: Int = 1000
     @State var lineplacesList:[LinePlaceModel] = []
     
     func handleListLinePlace() {
@@ -50,17 +51,26 @@ struct BusinessDashboardTab: View {
         }
     }
     
-    func handleCall(peopleToCall:Int){
-        let linePlaceApi = LinePlaceApi()
-        handleListLinePlace()
-        var clientEmail2 = ""
-        for n in 0..<lineplacesList.count{
-            if(lineplacesList[n].peopleInLine<=peopleToCall){
-                clientEmail2 = lineplacesList[n].clientEmail
-                break
+        func handleCall(peopleToCall:Int){
+            let linePlaceApi = LinePlaceApi()
+            var clientEmail2 = ""
+            for n in 0..<lineplacesList.count{
+                if(lineplacesList[n].peopleInLine<=peopleToCall){
+                    clientEmail2 = lineplacesList[n].clientEmail
+                    break
+                }
+            }
+            if clientEmail2 != "" {
+                linePlaceApi.confirm(clientEmail: clientEmail2){response in print(response) }
             }
         }
-        linePlaceApi.confirm(clientEmail: clientEmail2){response in print(response) }
+    
+    func handleMinPeoplePerTable(){
+        for n in 0..<lineplacesList.count{
+            if(lineplacesList[n].peopleInLine<minPeoplePerTable){
+                minPeoplePerTable = lineplacesList[n].peopleInLine
+            }
+        }
     }
     
     func handleOpen(){
@@ -180,10 +190,10 @@ struct BusinessDashboardTab: View {
                     //                    Text(peopleInLine == 0 ? "Nenhuma pessoa na fila" : peopleInLine == 1 ? "\(peopleInLine) pessoa na fila" : "\(peopleInLine) pessoas na fila")
                     //
                     
-                    Text(currentTab == "Off" ? "Fila fechada.": "\(lineplacesList.count) pessoas na fila")
+                    Text(currentTab == "Off" ? "Fila fechada": lineplacesList.count == 0 ? "Nenhuma pessoa na fila" : "\(lineplacesList.count) pessoas na fila")
                         .font(.system(size: 19))
                         .bold()
-                        .opacity(peopleInLine == 0 ? 0.5 : 1)
+                        .opacity(currentTab == "Off" || lineplacesList.count == 0 || peoplePerTable > minPeoplePerTable ? 0.5 : 1)
                         .foregroundColor(Color("primary"))
                         .frame(width: 307, height: 72)
                         .background(Color("grayPeopleInLine"))
@@ -213,9 +223,12 @@ struct BusinessDashboardTab: View {
                             .cornerRadius(22)
                         
                     })
-                    //                .disabled(peopleInLine == 0 ? true : false)
+                    .disabled(currentTab == "Off" || lineplacesList.count == 0 || peoplePerTable > minPeoplePerTable ? true : false)
                     .padding()
-                    
+                    Text(currentTab == "On" && peoplePerTable > minPeoplePerTable && peopleInLine != 1 ? "Não há pessoas na fila que desejam no máximo \(peoplePerTable) lugares.\nO número mínimo de lugares desejado por algum cliente\n                                no momento é \(minPeoplePerTable)." : "")
+                        .font(.system(size: 10))
+                        .foregroundColor(.red)
+                        .padding(.top, -15)
                     
                     Spacer()
                     
@@ -234,8 +247,11 @@ struct BusinessDashboardTab: View {
             linePlaceApi.list(invoked: false) {
                 linePlacesResponse in if let linePlaces = linePlacesResponse{lineplacesList = linePlaces}
             }
-            
         })
+        .onChange(of: peoplePerTable, perform: { value in
+            handleMinPeoplePerTable()
+        })
+            
     }
 }
 
