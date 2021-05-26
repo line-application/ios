@@ -72,7 +72,7 @@ struct ClientProfileTabView: View {
                   LoaderView()
                 VStack{
                     Divider()
-                        .padding(.top,10)
+                        //.padding(.top,31)
                     VStack {
                         ScrollView {
                             Group {

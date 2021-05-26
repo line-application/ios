@@ -63,7 +63,7 @@ struct ClientLineStatusTab: View {
             NavigationView {
                 VStack {
                     Divider()
-                        .padding(.top,25)
+                        //.padding(.top,31)
                     VStack {
                         ZStack{
                             Rectangle()

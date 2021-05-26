@@ -36,38 +36,13 @@ struct BusinessClientsInLineTab: View {
         
     }
     var body: some View {
-        VStack{
-            Text("Fila")
-                .font(.system(size: 20))
-                .bold()
-                .foregroundColor(Color("primary"))
-                .padding(.vertical, 10)
-            Divider()
-            if lineplacesList.isEmpty {
-                ZStack{
-                    Rectangle()
-                        .frame(width: 328, height: 141, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .cornerRadius(10.0)
-                        .foregroundColor(Color("grayPeopleInLine"))
-                    VStack {
-                        Text("Não há ninguém na\nfila neste momento!")
-                            .font(.system(size: 18))
-                            .foregroundColor(Color("primary"))
-                            .bold()
-                        Text("Para chamar alguém espere que\nclientes entrem na fila.")
-                            .frame(width: 308, height: 50
-                                   , alignment: .center)
-                            .font(.system(size: 15))
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color("primary"))
-                    }
-                }
-                .frame(width: 368, height: 141,alignment: .center)
-                .padding(39)
-                Spacer()
-                
-            }
-            else {
+        NavigationView{
+            VStack{
+                //            Text("Fila")
+                //                .font(.system(size: 19))
+                //                .bold()
+                //                .foregroundColor(Color("primary"))
+                Divider()
                 HStack{
                     Text("Fila Geral")
                         .font(.system(size: 17))
@@ -85,11 +60,18 @@ struct BusinessClientsInLineTab: View {
                 }
                 Spacer()
             }
+            .navigationTitle(Text("Fila"))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarColor(UIColor.white)
+            
         }
-        .onAppear(){
-            handleListLinePlace()
-            print(lineplacesList.count)
-        }
+            
+            
+            .onAppear(){
+                handleListLinePlace()
+                print(lineplacesList.count)
+            }
     }
 }
 struct BusinessClientsInLineTab_Previews: PreviewProvider {

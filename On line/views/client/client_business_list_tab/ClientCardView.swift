@@ -12,7 +12,7 @@ struct ClientCardView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(.white)
+                .foregroundColor(Color("whiteColor"))
                 .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
                 .frame(width: UIScreen.main.bounds.width*0.9, height: 107, alignment: .leading)
             HStack {
