@@ -44,24 +44,51 @@ struct ClientsCalledSheet: View {
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    Section {
-                        ForEach(clientsCalled) { item in
-                            ClientCalledView(clientName: item.clientName!, numberOfPeople: item.peopleInLine)
+                if clientsCalled.isEmpty {
+                    ZStack{
+                        Rectangle()
+                            .frame(width: 328, height: 141, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .cornerRadius(10.0)
+                            .foregroundColor(Color("grayPeopleInLine"))
+                        VStack {
+                            Text("Não há nenhum cliente\n na lista de chamados!")
+                                .font(.system(size: 18))
+                                .foregroundColor(Color("primary"))
+                                .bold()
+                            Text("Chame clientes da fila.")
+                                .frame(width: 308, height: 50
+                                       , alignment: .center)
+                                .font(.system(size: 15))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color("primary"))
                         }
-                        .onDelete(perform: deleteItems)
                     }
+                    .frame(width: 368, height: 141,alignment: .center)
+                    .padding(39)
+                    Spacer()
+                    
                 }
-                .navigationTitle("Clientes chamados")
-                .navigationBarTitleDisplayMode(.inline)
-                .listStyle(InsetGroupedListStyle())
-                .navigationBarItems(
-                    leading: editButton
-                )
-                .environment(\.editMode, self.$editMode)
+                else {
+                    List {
+                        Section {
+                            ForEach(clientsCalled) { item in
+                                ClientCalledView(clientName: item.clientName!, numberOfPeople: item.peopleInLine)
+                            }
+                            .onDelete(perform: deleteItems)
+                        }
+                    }
+                    .listStyle(InsetGroupedListStyle())
+                    .navigationBarItems(
+                        leading: editButton
+                    )
+                    .environment(\.editMode, self.$editMode)
+                }
             }
+            .navigationTitle("Clientes chamados")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarColor(UIColor.white)
         }
+        
         .onAppear(){
             handleListLinePlace()
         }

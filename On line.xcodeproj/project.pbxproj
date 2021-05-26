@@ -56,6 +56,7 @@
 		554F71E12641D4AC00E4F684 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71E02641D4AC00E4F684 /* Preview Assets.xcassets */; };
 		554F71EC2641D4AD00E4F684 /* On_lineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71EB2641D4AD00E4F684 /* On_lineTests.swift */; };
 		554F71F72641D4AD00E4F684 /* On_lineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71F62641D4AD00E4F684 /* On_lineUITests.swift */; };
+		55D7E33B265ED7E200A49E9F /* ButtonLoginWithAppleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7E33A265ED7E200A49E9F /* ButtonLoginWithAppleView.swift */; };
 		55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835DC264B0665002C4EF7 /* ColoredTextView.swift */; };
 		55D835E0264B167E002C4EF7 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835DF264B167E002C4EF7 /* NavigationBarView.swift */; };
 		55D835E3264B1748002C4EF7 /* ImageButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835E2264B1748002C4EF7 /* ImageButtonView.swift */; };
@@ -169,6 +170,7 @@
 		554F71F22641D4AD00E4F684 /* On lineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On lineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71F62641D4AD00E4F684 /* On_lineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineUITests.swift; sourceTree = "<group>"; };
 		554F71F82641D4AD00E4F684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55D7E33A265ED7E200A49E9F /* ButtonLoginWithAppleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLoginWithAppleView.swift; sourceTree = "<group>"; };
 		55D835DC264B0665002C4EF7 /* ColoredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredTextView.swift; sourceTree = "<group>"; };
 		55D835DF264B167E002C4EF7 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		55D835E2264B1748002C4EF7 /* ImageButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonView.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				F85F7006264DB92800EE68F0 /* ButtonView2.swift */,
 				F8C4897A2654344F00FF465B /* ButtonView3.swift */,
 				F8C4897C2654346300FF465B /* ButtonView4.swift */,
+				55D7E33A265ED7E200A49E9F /* ButtonLoginWithAppleView.swift */,
 			);
 			path = button_view;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				34B54CEE2655AA3500C1E039 /* Push.swift in Sources */,
 				F134F8DF264F17D0002E46C3 /* ClientCalledView.swift in Sources */,
 				34EA28A7264A129A0047E740 /* BusinessDashboardClientsInLine.swift in Sources */,
+				55D7E33B265ED7E200A49E9F /* ButtonLoginWithAppleView.swift in Sources */,
 				349BE1502644CBF800C9D89A /* LinePlaceApi.swift in Sources */,
 				349BE13826447AE500C9D89A /* BusinessApi.swift in Sources */,
 				F8C4897F265439F000FF465B /* BusinessLine.swift in Sources */,

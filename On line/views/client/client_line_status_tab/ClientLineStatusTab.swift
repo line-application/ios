@@ -15,7 +15,6 @@ struct ClientLineStatusTab: View {
     @State var clientName:String = ""
     @State var clientEmail:String = ""
     @State var showAlert:Bool = false
-    //var bussinesModel: BusinessModel = BusinessModel(id: "1" ,email: "abc@gmail.com", name: "Teste", description: "Testeeeeeeeee", phone: "123456789", waitTime: 30.0, address: "Rua Dom Pedro, 888 - Porto Alegre", maxTableCapacity: 5, image: "Restaurante Azul")
     @State var hour = Calendar.current.component(.hour, from: Date())
     @State var minutes = Calendar.current.component(.minute, from: Date())
     
@@ -155,33 +154,6 @@ struct ClientLineStatusTab: View {
                                 Spacer()
                             }
                             .frame(width: UIScreen.main.bounds.width*0.82, alignment: .center)
-                            if(!pushNotificationData.clientExitLine) {
-                                ZStack{
-                                    Rectangle()
-                                        .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                        .cornerRadius(10.0)
-                                        .foregroundColor(Color("grayPeopleInLine"))
-//                                    HStack {
-//                                        Image("clock")
-//                                            .resizable()
-//                                            .frame(width: 25.6, height: 27.2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-//                                        //                                            Text(" \(time(timeString: (time2?.good)!)) - \(time(timeString: (time2?.bad)!))")
-//                                        //                                                .font(.title2)
-//                                        //                                                .foregroundColor(Color("primary"))
-//                                        //                                                .bold()
-//                                        Text("12:12")
-//                                            .font(.title2)
-//                                            .foregroundColor(Color("primary"))
-//                                            .bold()
-//                                    }
-                                }
-                                .frame(width: UIScreen.main.bounds.width*0.9, alignment: .center)
-                                Text("\n")
-                                HStack {
-                                    Text("Previsão de retorno")
-                                    Spacer()
-                                }
-                                .frame(width: UIScreen.main.bounds.width*0.82, alignment: .center)
                                 if(lineplace?.invoked==false) {
                                     ZStack{
                                         Rectangle()
@@ -214,11 +186,8 @@ struct ClientLineStatusTab: View {
                                         }
                                     }
                                 }
-                            }
-                            //Text(name)
                                 Button(action: {
                                     showAlert = true
-                                    //handleRemoveFromLine()
                                 }, label: {
                                         ZStack{
                                             RoundedRectangle(cornerRadius: 22.0)
@@ -231,16 +200,13 @@ struct ClientLineStatusTab: View {
                                         .padding(.top,65.0)
                                     
                                 })
-                            //Text("\n")
                         }
-                        //.padding(.top, -323)
                     }
-                    Spacer()
-                }
-//                .navigationTitle(Text("Status da Fila")
-//                                    .font(.title)
-//                )
+                    }
                 .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(Text("Status da Fila")
+                                //.font(.title)
+                )
                 .navigationBarBackButtonHidden(true)
                 .navigationBarColor(UIColor.white)
                 .alert(isPresented: $showAlert) {
@@ -250,14 +216,17 @@ struct ClientLineStatusTab: View {
                         currentLine = nil
                     }, secondaryButton: .default(Text("Não")))
                                         }
+            }
                 .onAppear(){
+                    if(pushNotificationData.clientExitLine) {
+                        currentLine = nil
+                    }
                     let date1 = Date().addingTimeInterval(TimeInterval(900))
                     hour = Calendar.current.component(.hour, from: date1)
                     minutes = Calendar.current.component(.minute, from: date1)
                 }
             }
         }
-    }
     func imageColor(colorImage:String) -> String {
         switch colorImage {
         case "Restaurante Laranja":
