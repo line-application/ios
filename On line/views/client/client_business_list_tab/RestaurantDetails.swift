@@ -75,108 +75,120 @@ struct RestaurantDetails: View {
     var body: some View {
         VStack {
             Divider()
-                .padding(.top,25)
-            ScrollView {
-                ZStack{
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.white)
-                        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
-                        .frame(width: UIScreen.main.bounds.width*0.9, height: 600, alignment: .leading)
-                        VStack(alignment: .leading){
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
-                                    .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
-                                    .frame(width: UIScreen.main.bounds.width*0.9, height: 107, alignment: .leading)
-                                RoundedRectangle(cornerRadius: 0)
-                                    .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
-                                    .frame(width: UIScreen.main.bounds.width*0.9, height: 87, alignment: .leading)
-                                    .offset(x: 0, y: 10)
-                                Image("\(bussinesModel.image)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 107, height: 107, alignment: .center)
-                                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                                
-                            }
-                            VStack(alignment: .leading){
-                                Text(bussinesModel.name)
-                                    .foregroundColor(Color.black)
-                                    .bold()
-                                    .font(.title2)
-                                    .padding(.vertical, 10)
-                                    .padding(.horizontal, 20)
-                                Text(bussinesModel.description)
-                                    .foregroundColor(Color.black)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                HStack{
-                                    Text("Endereço:")
-                                        .padding(.vertical, 5)
-                                        .padding(.horizontal, 20)
-                                    Text("\(bussinesModel.address)")
-                                        .foregroundColor(Color("primary"))
-                                        .padding(.horizontal, 10)
+                ScrollView (showsIndicators: false){
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 20)
+                          .frame(width: UIScreen.main.bounds.width*0.9, height: 600, alignment: .leading)
+                        
+                            VStack(alignment: .center){
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
+                                        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
+                                        .frame(width: UIScreen.main.bounds.width*0.9, height: 107, alignment: .leading)
+                                    RoundedRectangle(cornerRadius: 0)
+                                        .foregroundColor(Color(imageColor(colorImage: bussinesModel.image)))
+                                        .frame(width: UIScreen.main.bounds.width*0.9, height: 87, alignment: .leading)
+                                        .offset(x: 0, y: 10)
+                                    Image("\(bussinesModel.image)")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 107, height: 107, alignment: .center)
+                                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                                        
+                                    
                                 }
-                            }
-                            HStack {
-                                Text("Estimativa de espera")
-                                    .padding(.horizontal, 20)
-                                Image("clock")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 16, height: 17, alignment: .center)
-                                Text("\(Int(bussinesModel.waitTime)) min")
-                                    .foregroundColor(Color("primary"))
-                                    .padding(10)
-                            }
-                            Text("Mesa para quantas pessoas?")
-                                .padding(.vertical, 5)
-                                .padding(.horizontal, 20)
-                            StepperView(peoplePerTable: $peoplePerTable)
-                                .padding(.top, 10)
-                            Spacer()
-                            HStack {
-                                Spacer()
-                                ButtonView2(text: "ENTRAR NA FILA", action: {
-                                    handleAddToLine()
-                                    self.mode.wrappedValue.dismiss()
-                                    showAlert = true
-                                    currentLine = bussinesModel
-                                    let date = Date()
-
-                                    let iso8601DateFormatter = ISO8601DateFormatter()
-                                    iso8601DateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-                                    let string = iso8601DateFormatter.string(from: date)
-                                    lineplace = LinePlaceModel(id: "\(Date().timeIntervalSince1970)", enterLine: string, exitLine: "", called: "", invoked: false, success: false, peopleInLine: peoplePerTable, businessEmail: bussinesModel.email, clientEmail: clientEmail, clientName: clientName)
-                                    handleAddToLine()
-                                })
-                                .disabled((currentLine == nil)==false)
-                                .opacity(currentLine == nil ? 1 : 0.5)
-                                Spacer()
-                            }
-                            Spacer()
-                        }.frame(width: UIScreen.main.bounds.width*0.9, height: 600, alignment: .leading)
-                        .alert(isPresented: $showAlert) {
-                                                    Alert(
-                                                        title: Text("Você entrou na fila!"),
-                                                        message: Text("Para acompanhar seu progresso na fila acesse o Status da fila.")
-                                                    )
-                                                }
-                }
-            }
-            .navigationTitle(Text("Restaurante"))
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarColor(UIColor.white)
-            .navigationBarItems(leading:
-                                    Button(action : {
-                                        self.mode.wrappedValue.dismiss()
-                                    }){
-                                        Image(systemName: "chevron.backward")
+                                VStack(alignment: .leading){
+                                    Text(bussinesModel.name)
+                                        .foregroundColor(Color.black)
+                                        .bold()
+                                        .font(.title2)
+                                        .padding(.top,10)
+                                        .padding(.horizontal, 20)
+                                    Text(bussinesModel.description)
+                                        .foregroundColor(Color.black)
+                                        .multilineTextAlignment(.leading)
+                                        .padding(.horizontal, 20)
+                                        .padding(.vertical, 10)
+                                    HStack{
+                                        Text("Endereço:")
+                                            .foregroundColor(.black)
+                                            .padding(.leading,20)
+                                            .padding(.vertical, 10)
+                                        Text("\(bussinesModel.address)")
                                             .foregroundColor(Color("primary"))
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 10)
+                                    }
+                                
+                                HStack {
+                                    Text("Estimativa de espera")
+                                        .foregroundColor(.black)
+                                        .padding(.leading,20)
+                                        .padding(.vertical, 10)
+                                    Image("clock")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 16, height: 17, alignment: .center)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 10)
+                                    Text("\(Int(bussinesModel.waitTime)) min")
+                                        .foregroundColor(Color("primary"))
+                                        .padding(.vertical, 10)
+                                }
+                                Text("Mesa para quantas pessoas?")
+                                    .foregroundColor(.black)
+                                    .padding(.vertical, 5)
+                                    .padding(.horizontal, 20)
+                                StepperView(peoplePerTable: $peoplePerTable)
+                                    .frame(width: UIScreen.main.bounds.width*0.89, height: 30, alignment: .center)
+                                    .padding(.top,10)
+                            }
+                                Spacer()
+                                HStack {
+                                    Spacer()
+                                    ButtonView2(text: "ENTRAR NA FILA", action: {
+                                        handleAddToLine()
+                                        self.mode.wrappedValue.dismiss()
+                                        showAlert = true
+                                        currentLine = bussinesModel
+                                        let date = Date()
+
+                                        let iso8601DateFormatter = ISO8601DateFormatter()
+                                        iso8601DateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+                                        let string = iso8601DateFormatter.string(from: date)
+                                        lineplace = LinePlaceModel(id: "\(Date().timeIntervalSince1970)", enterLine: string, exitLine: "", called: "", invoked: false, success: false, peopleInLine: peoplePerTable, businessEmail: bussinesModel.email, clientEmail: clientEmail, clientName: clientName)
+                                        handleAddToLine()
                                     })
-            //.padding(.top, 15)
+                                    .disabled((currentLine == nil)==false)
+                                    .opacity(currentLine == nil ? 1 : 0.5)
+                                    Spacer()
+                                }
+                                Spacer()
+                            }
+                            .alert(isPresented: $showAlert) {
+                                                        Alert(
+                                                            title: Text("Você entrou na fila!"),
+                                                            message: Text("Para acompanhar seu progresso na fila acesse o Status da fila.")
+                                                        )
+                                                    }
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.width*0.9, alignment: .leading)
+                .foregroundColor(Color("whiteColor"))
+                .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.15) ,radius: 5,x: 2, y: 4)
+                .navigationTitle(Text("\nRestaurante"))
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarColor(UIColor.white)
+                .navigationBarItems(leading:
+                                        Button(action : {
+                                            self.mode.wrappedValue.dismiss()
+                                        }){
+                                            Image(systemName: "chevron.backward")
+                                                .foregroundColor(Color("primary"))
+                                    })
+            
         }
         .onAppear(){
             handleDataFetch()

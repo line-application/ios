@@ -79,7 +79,7 @@ struct BusinessProfileTabView: View {
             ZStack {
                 LoaderView()
                 VStack{
-                    Divider() .padding(.top, 10.0)
+                    Divider() 
                     ScrollView {
                         VStack (alignment: .leading) {
                             Group {
