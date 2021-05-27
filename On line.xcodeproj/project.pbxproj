@@ -56,6 +56,7 @@
 		554F71E12641D4AC00E4F684 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554F71E02641D4AC00E4F684 /* Preview Assets.xcassets */; };
 		554F71EC2641D4AD00E4F684 /* On_lineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71EB2641D4AD00E4F684 /* On_lineTests.swift */; };
 		554F71F72641D4AD00E4F684 /* On_lineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F71F62641D4AD00E4F684 /* On_lineUITests.swift */; };
+		55A3992A26600741002E5EF0 /* BusinessConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3992926600741002E5EF0 /* BusinessConfirmationView.swift */; };
 		55D7E33B265ED7E200A49E9F /* ButtonLoginWithAppleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7E33A265ED7E200A49E9F /* ButtonLoginWithAppleView.swift */; };
 		55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835DC264B0665002C4EF7 /* ColoredTextView.swift */; };
 		55D835E0264B167E002C4EF7 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D835DF264B167E002C4EF7 /* NavigationBarView.swift */; };
@@ -172,6 +173,7 @@
 		554F71F22641D4AD00E4F684 /* On lineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On lineUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F71F62641D4AD00E4F684 /* On_lineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_lineUITests.swift; sourceTree = "<group>"; };
 		554F71F82641D4AD00E4F684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55A3992926600741002E5EF0 /* BusinessConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessConfirmationView.swift; sourceTree = "<group>"; };
 		55D7E33A265ED7E200A49E9F /* ButtonLoginWithAppleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLoginWithAppleView.swift; sourceTree = "<group>"; };
 		55D835DC264B0665002C4EF7 /* ColoredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredTextView.swift; sourceTree = "<group>"; };
 		55D835DF264B167E002C4EF7 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		34EA283C2649F5010047E740 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				55A39928266006EB002E5EF0 /* business_confirmation_view */,
 				F16EC1F6265F3D5D00511DEE /* forgot_password_view */,
 				34CD7BD7264DE085005B2048 /* register_view */,
 				34EA286D264A0B8E0047E740 /* login_client_register */,
@@ -601,6 +604,14 @@
 				554F71F82641D4AD00E4F684 /* Info.plist */,
 			);
 			path = "On lineUITests";
+			sourceTree = "<group>";
+		};
+		55A39928266006EB002E5EF0 /* business_confirmation_view */ = {
+			isa = PBXGroup;
+			children = (
+				55A3992926600741002E5EF0 /* BusinessConfirmationView.swift */,
+			);
+			path = business_confirmation_view;
 			sourceTree = "<group>";
 		};
 		55D835DB264B0615002C4EF7 /* colored_text_view */ = {
@@ -921,6 +932,7 @@
 				34E02B1B264B0A700096BBDE /* auth.swift in Sources */,
 				34EA28B1264A13C30047E740 /* ClientProfileTab.swift in Sources */,
 				34EA2859264A09FA0047E740 /* BusinessView.swift in Sources */,
+				55A3992A26600741002E5EF0 /* BusinessConfirmationView.swift in Sources */,
 				554F71DA2641D4AC00E4F684 /* On_lineApp.swift in Sources */,
 				553F7BE0264EB95D00053383 /* ClientProfileTabView.swift in Sources */,
 				55D835DD264B0665002C4EF7 /* ColoredTextView.swift in Sources */,
