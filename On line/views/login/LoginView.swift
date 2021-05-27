@@ -86,6 +86,7 @@ struct LoginView: View {
                             .foregroundColor(.blue)
                             .padding(2)
                             .onTapGesture {
+                                actionState = 3
                             }
                         HStack{
                             Text("Ainda não tem cadastro?")
@@ -117,6 +118,7 @@ struct LoginView: View {
                                 }
                             NavigationLink(destination: RegisterView(), tag: 1, selection: self.$actionState) {}
                             NavigationLink(destination: RegisterConfirmationView( shouldDismiss: $shouldDismiss, email: email), tag: 2, selection: self.$actionState) {}
+                            NavigationLink(destination: ForgotPasswordView(shouldDismiss: $shouldDismiss), tag: 3, selection: self.$actionState) {}
                         }
                         .padding(.top,17)
                         ButtonLoginWithAppleView(backgroundColor: .black, text: "Continue with Apple", textColor: .white, action: {})
