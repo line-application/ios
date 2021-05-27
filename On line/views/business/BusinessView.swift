@@ -19,8 +19,7 @@ struct BusinessView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
            
-            //BusinessDashboardTab()
-            BusinessConfirmationView()
+            BusinessDashboardTab()
                 .tabItem {
                     Image(selectedTab == Tabs.home ? "Icone_Home_bold" : "RelogioBranco")
                     Text(" Zaitty")
