@@ -187,9 +187,6 @@ struct BusinessDashboardTab: View {
                         .padding(.leading)
                     }
                     
-                    //                    Text(peopleInLine == 0 ? "Nenhuma pessoa na fila" : peopleInLine == 1 ? "\(peopleInLine) pessoa na fila" : "\(peopleInLine) pessoas na fila")
-                    //
-                    
                     Text(currentTab == "Off" ? "Fila fechada": lineplacesList.count == 0 ? "Nenhuma pessoa na fila" : "\(lineplacesList.count) pessoas na fila")
                         .font(.system(size: 19))
                         .bold()
@@ -200,16 +197,15 @@ struct BusinessDashboardTab: View {
                         .cornerRadius(10)
                         .padding(35)
                     
-                    Text("Capacidade de pessoas para a mesa seguinte")
+                    Text("Capacidade de pessoas para mesa seguinte")
                         .font(.system(size: 16))
                         .foregroundColor(Color("primary"))
-                        .multilineTextAlignment(.center)
-                        .frame(width: 350, height: 29, alignment: .center)
-                        .padding(.horizontal, 5)
-                        .padding(.bottom, -1)
+                        .frame(width: 354, height: 29)
+                        .padding(.horizontal)
+                        .padding(.bottom, -15)
                         .padding(.top, 10)
                     StepperView(peoplePerTable: $peoplePerTable)
-                        .padding(20)
+                        .padding(35)
                         .padding(.top, -13.0)
                     
                     Button(action: {handleCall(peopleToCall: peoplePerTable)}, label: {
