@@ -175,4 +175,44 @@ struct Authentication {
             }
         }
     }
+    
+    static func resetPassword(username: String, handler: @escaping ((Bool)->Void)) {
+        Amplify.Auth.resetPassword(for: username) { result in
+            do {
+                let resetResult = try result.get()
+                switch resetResult.nextStep {
+                case .confirmResetPasswordWithCode(let deliveryDetails, let info):
+                    print("Confirm reset password with code send to - \(deliveryDetails) \(String(describing: info))")
+                    handler(true)
+                case .done:
+                    print("Reset completed")
+                }
+            } catch {
+                print("Reset password failed with error \(error)")
+                handler(false)
+            }
+        }
+    }
+    
+    static func confirmResetPassword(
+        username: String,
+        newPassword: String,
+        confirmationCode: String,
+        handler: @escaping ((Bool)->Void)
+    ) {
+        Amplify.Auth.confirmResetPassword(
+            for: username,
+            with: newPassword,
+            confirmationCode: confirmationCode
+        ) { result in
+            switch result {
+            case .success:
+                print("Password reset confirmed")
+                handler(true)
+            case .failure(let error):
+                print("Reset password failed with error \(error)")
+                handler(false)
+            }
+        }
+    }
 }
