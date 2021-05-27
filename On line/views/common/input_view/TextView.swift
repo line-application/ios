@@ -50,7 +50,7 @@ struct TextView: View {
                         TextField("", text: binding)
                             .keyboardType(.phonePad)
                     }
-                    else if (label == "E-mail") {
+                    else if (label == "E-mail" || label == "Digite seu e-mail") {
                         TextField("", text: $input)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
