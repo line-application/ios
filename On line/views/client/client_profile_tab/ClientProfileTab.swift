@@ -197,7 +197,7 @@ struct ClientProfileTab: View {
                     .alert(isPresented: $showAlert) {
                         switch activeAlert {
                         case .first:
-                            return Alert(title: Text("Feito! 😃"), message: Text("Dados editados com sucesso!"),
+                            return Alert(title: Text("Dados editados!"), message: Text("Seus dados foram editados com sucesso!"),
                                          dismissButton: .default((Text("OK")), action: {
                                                                     cameBack = true
                                                                     self.mode.wrappedValue.dismiss()}))
