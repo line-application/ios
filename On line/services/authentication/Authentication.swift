@@ -10,23 +10,35 @@ import Amplify
 import AmplifyPlugins
 
 enum SignUpResponseTypes {
-    case ERROR, SUCCESS, CONFIRM_ACCOUNT
+    case ERROR, SUCCESS, CONFIRM_ACCOUNT, ACCOUNT_EXISTS
+}
+
+enum SignInResponseTypes {
+    case ERROR, SUCCESS, CONFIRM_ACCOUNT, RESET_PASSWORD
 }
 
 struct Authentication {
-    static func signIn(username: String, password: String, handler:@escaping (Bool)->Void) {
+    static func signIn(username: String, password: String, handler:@escaping (SignInResponseTypes)->Void) {
         print("username: \(username)")
         print("password: \(password)")
         
         Amplify.Auth.signIn(username: username, password: password) { result in
             switch result {
             case .success(let success):
+                print("Imprimi antes!")
+                switch (success.nextStep) {
+                case .confirmSignUp(nil):
+                    handler(SignInResponseTypes.CONFIRM_ACCOUNT)
+                case .resetPassword(nil):
+                    handler(SignInResponseTypes.RESET_PASSWORD)
+                default:
+                    handler(SignInResponseTypes.SUCCESS)
+                }
                 print(success)
-                
-                handler(true)
             case .failure(let error):
+                handler(SignInResponseTypes.ERROR)
                 print(error)
-                handler(false)
+                
             }
         }
         
@@ -60,7 +72,12 @@ struct Authentication {
                 }
             case .failure(let error):
                 print("An error occurred while registering a user \(error)")
-                handler(SignUpResponseTypes.ERROR)
+                if error.errorDescription == "An account with the given email already exists." {
+                    handler(SignUpResponseTypes.ACCOUNT_EXISTS)
+                }
+                else {
+                    handler(SignUpResponseTypes.ERROR)
+                }
             }
         }
     }
@@ -141,6 +158,19 @@ struct Authentication {
                 handler(true)
             case .failure(let error):
                 print("An error occurred while confirming sign up \(error)")
+                handler(false)
+            }
+        }
+    }
+    
+    static func resendSignUpCode(email: String, handler: @escaping ((Bool)->Void)) {
+        Amplify.Auth.resendSignUpCode(for: email) { result in
+            switch result {
+            case .success:
+                print("Successfully resended the code")
+                handler(true)
+            case .failure(let error):
+                print("Resend failed with error \(error)")
                 handler(false)
             }
         }

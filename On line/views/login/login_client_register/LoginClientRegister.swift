@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginClientRegister: View {
     @EnvironmentObject var settings: SettingsState
+    @State private var activeAlert: ActiveAlert = .first
     @State private var actionState: Int? = 0
     @State var showAlert : Bool = false
     @State var showWarning : Bool = false
@@ -29,10 +30,15 @@ struct LoginClientRegister: View {
                 switch(business) {
                 case .CONFIRM_ACCOUNT:
                     print("confirm your account")
+                    actionState = 1
                 case .SUCCESS:
                     print("success")
                 case .ERROR:
                     print("failed")
+                    activeAlert = .first
+                    showAlert = true
+                case .ACCOUNT_EXISTS:
+                    activeAlert = .second
                     showAlert = true
                 }
                 DispatchQueue.main.async {
@@ -92,7 +98,6 @@ struct LoginClientRegister: View {
                                 phone = phone.replacingOccurrences(of: "-", with: "", options: NSString.CompareOptions.literal, range: nil)
                                 print("\(phone)")
                                 handleSingUp()
-                                actionState = 1
                             }
                         }
                         NavigationLink(destination: RegisterConfirmationView(shouldDismiss: $shouldDismiss, email: email), tag: 1, selection: self.$actionState) {}
@@ -101,10 +106,18 @@ struct LoginClientRegister: View {
                     .padding()
                 }
                 .alert(isPresented: $showAlert) {
-                    Alert(
-                        title: Text("Erro"),
-                        message: Text("Houve um problema ao registrar sua conta, tente novamente.")
-                    )
+                    switch activeAlert {
+                    case .first:
+                        return Alert(
+                            title: Text("Erro"),
+                            message: Text("Houve um problema ao registrar sua conta, tente novamente.")
+                        )
+                    default:
+                        return Alert(
+                            title: Text("Erro"),
+                            message: Text("Já existe uma conta registrada com esse e-mail. Por favor, faça o login ou recupere sua senha.")
+                        )
+                    }
                 }
             }
             
