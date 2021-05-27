@@ -67,6 +67,8 @@
 		F13A311E26561FD900DCEF5D /* RegisterConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13A311D26561FD900DCEF5D /* RegisterConfirmationView.swift */; };
 		F13A31212656F93000DCEF5D /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13A31202656F93000DCEF5D /* SplashScreenView.swift */; };
 		F162C61B265307CE00C74D75 /* BusinessProfileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F162C61A265307CE00C74D75 /* BusinessProfileEditor.swift */; };
+		F16EC1F8265F3DD300511DEE /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16EC1F7265F3DD300511DEE /* ForgotPasswordView.swift */; };
+		F16EC1FA265F516200511DEE /* ForgotPasswordConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16EC1F9265F516200511DEE /* ForgotPasswordConfirmView.swift */; };
 		F85F7005264DA9BC00EE68F0 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */; };
 		F85F7007264DB92800EE68F0 /* ButtonView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F7006264DB92800EE68F0 /* ButtonView2.swift */; };
 		F8C4897B2654344F00FF465B /* ButtonView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4897A2654344F00FF465B /* ButtonView3.swift */; };
@@ -184,6 +186,8 @@
 		F13A311D26561FD900DCEF5D /* RegisterConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterConfirmationView.swift; sourceTree = "<group>"; };
 		F13A31202656F93000DCEF5D /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		F162C61A265307CE00C74D75 /* BusinessProfileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessProfileEditor.swift; sourceTree = "<group>"; };
+		F16EC1F7265F3DD300511DEE /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		F16EC1F9265F516200511DEE /* ForgotPasswordConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordConfirmView.swift; sourceTree = "<group>"; };
 		F85F7004264DA9BC00EE68F0 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		F85F7006264DB92800EE68F0 /* ButtonView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView2.swift; sourceTree = "<group>"; };
 		F8C4897A2654344F00FF465B /* ButtonView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView3.swift; sourceTree = "<group>"; };
@@ -394,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				55A39928266006EB002E5EF0 /* business_confirmation_view */,
+				F16EC1F6265F3D5D00511DEE /* forgot_password_view */,
 				34CD7BD7264DE085005B2048 /* register_view */,
 				34EA286D264A0B8E0047E740 /* login_client_register */,
 				34EA286C264A0B760047E740 /* login_business_register */,
@@ -658,6 +663,15 @@
 			path = "splash-screen";
 			sourceTree = "<group>";
 		};
+		F16EC1F6265F3D5D00511DEE /* forgot_password_view */ = {
+			isa = PBXGroup;
+			children = (
+				F16EC1F7265F3DD300511DEE /* ForgotPasswordView.swift */,
+				F16EC1F9265F516200511DEE /* ForgotPasswordConfirmView.swift */,
+			);
+			path = forgot_password_view;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -911,6 +925,8 @@
 				34E02B21264B0BA10096BBDE /* AWS.swift in Sources */,
 				34EA28A2264A12600047E740 /* BusinessDashboardTab.swift in Sources */,
 				34B54CF62655FF9300C1E039 /* PushNotificationTokenApi.swift in Sources */,
+				F16EC1F8265F3DD300511DEE /* ForgotPasswordView.swift in Sources */,
+				F16EC1FA265F516200511DEE /* ForgotPasswordConfirmView.swift in Sources */,
 				34EA2890264A0EEC0047E740 /* ApplicationView.swift in Sources */,
 				34EA284E264A09CA0047E740 /* LoginView.swift in Sources */,
 				34E02B1B264B0A700096BBDE /* auth.swift in Sources */,
