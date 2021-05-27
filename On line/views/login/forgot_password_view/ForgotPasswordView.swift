@@ -10,7 +10,7 @@ import SwiftUI
 struct ForgotPasswordView: View {
     
     func handleCodeSending() {
-        settings.isLoading = true
+        // settings.isLoading = true
         Authentication.resetPassword(username: email) { success in
             print("result: \(success)")
             DispatchQueue.main.async {
@@ -19,7 +19,7 @@ struct ForgotPasswordView: View {
                 } else {
                     showAlert = true
                 }
-                settings.isLoading = false
+               // settings.isLoading = false
             }
         }
     }
