@@ -19,7 +19,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         //        Amplify.Auth.signOut()
         UNUserNotificationCenter.current().delegate = self
 
-//        Amplify.Auth.signOut()
+//       Amplify.Auth.signOut()
         let notificationPayload = UserDefaults.standard.string(forKey: "TEST_1")
         print(notificationPayload ?? "jhgj")
         return false

@@ -16,8 +16,17 @@ struct CreateLinePlaceRequest:Codable {
     var peopleInLine: Int
 }
 
+struct FindLinePlaceResponse:Codable {
+    var linePlace: LinePlaceModel?
+    var business: BusinessModel?
+}
+
 struct LinePlaceApi {
     let api = Api()
+    
+    func find(handler:@escaping (FindLinePlaceResponse?) -> Void) {
+        api.get(url:"/line-place-status", handler: handler)
+    }
     
     func list(invoked: Bool,handler:@escaping ([LinePlaceModel]?) -> Void){
         let url = "/line-place?invoked=\(invoked ? "true": "false")"
