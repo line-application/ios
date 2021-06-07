@@ -48,6 +48,8 @@ struct Push {
             handleClientInvoke(state)
         case "HANDLE_CLIENT_REMOVAL":
             handleClientRemoval()
+        case "HANDLE_CLIENT_EXIT":
+            handleClientExit()
         default:
             return;
         }
@@ -67,6 +69,12 @@ struct Push {
     static func handleClientRemoval() {
         //remove client line status
         print("handleClientRemoval()")
+    }
+    
+    static func handleClientExit() {
+        // client exited line
+        // make request
+        print("handleClientExit()")
     }
     
 }
