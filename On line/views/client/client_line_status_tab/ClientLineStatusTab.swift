@@ -28,6 +28,14 @@ struct ClientLineStatusTab: View {
         return  updatedAt!
     }
     
+    func findLinePlace(){
+        let linePlaceApi = LinePlaceApi()
+        linePlaceApi.find(handler: {findLinePlace in
+            currentLine =  findLinePlace?.business
+            lineplace = findLinePlace?.linePlace
+        })
+    }
+    
     func handleDataFetch() {
         //settings.isLoading = true
         Authentication.fetchAttributes() { attributes in
@@ -50,6 +58,7 @@ struct ClientLineStatusTab: View {
                 }
             }
         }
+        findLinePlace()
     }
     
     func handleRemoveFromLine() {
@@ -92,6 +101,9 @@ struct ClientLineStatusTab: View {
                             .navigationBarColor(UIColor.white)
                     }
                 }
+            }
+            .onAppear(){
+                handleDataFetch()
             }
         }
         else {
@@ -154,7 +166,7 @@ struct ClientLineStatusTab: View {
                                 Spacer()
                             }
                             .frame(width: UIScreen.main.bounds.width*0.82, alignment: .center)
-                                if(lineplace?.invoked==false) {
+                                if(lineplace?.invoked==nil) {
                                     ZStack{
                                         Rectangle()
                                             .frame(width: 328, height: 67, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -221,6 +233,7 @@ struct ClientLineStatusTab: View {
                     if(pushNotificationData.clientExitLine) {
                         currentLine = nil
                     }
+                    handleDataFetch()
                     let date1 = Date().addingTimeInterval(TimeInterval(900))
                     hour = Calendar.current.component(.hour, from: date1)
                     minutes = Calendar.current.component(.minute, from: date1)

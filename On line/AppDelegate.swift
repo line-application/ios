@@ -16,7 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         AWS.configure()
         Push.registerForPushNotifications()
-        //        Amplify.Auth.signOut()
+        //Amplify.Auth.signOut()
         UNUserNotificationCenter.current().delegate = self
 
 //       Amplify.Auth.signOut()

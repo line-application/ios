@@ -88,7 +88,7 @@ struct Api {
     func patch<RequestPayload: Codable, ResponsePayload: Codable>(url:String, data:RequestPayload ,handler: @escaping (ResponsePayload?) -> Void) {
         
         let path = "\(API_URL)\(url)"
-        
+        print(path)
         Amplify.Auth.fetchAuthSession() { result in
             do {
                 let session = try result.get()

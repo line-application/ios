@@ -26,9 +26,10 @@ struct BusinessClientsInLineTab: View {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
         
         let updatedAtStr = timeString
+        print(timeString)
         let updatedAt = dateFormatter.date(from: updatedAtStr) // "Jun 5, 2016, 4:56 PM"
         var inLinetime:Double = updatedAt?.distance(to: Date()) ?? 0
-        inLinetime = inLinetime/60000
+        inLinetime = inLinetime/60000.0
         return Int(inLinetime)
     }
     
