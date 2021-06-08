@@ -121,7 +121,7 @@ struct LoginView: View {
                             NavigationLink(destination: ForgotPasswordView(shouldDismiss: $shouldDismiss), tag: 3, selection: self.$actionState) {}
                         }
                         .padding(.top,17)
-                        ButtonLoginWithAppleView(backgroundColor: .black, text: "Continue with Apple", textColor: .white, action: {})
+                        ButtonLoginWithAppleView(backgroundColor: .black, text: "Continuar com a Apple", textColor: .white, action: {})
                             .padding(.top,17)
                         Text("Política de privacidade")
                             .font(.system(size: 14))
