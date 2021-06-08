@@ -38,6 +38,8 @@ struct BusinessDashboardTab: View {
                             businessName = attribute.value
                         case .email:
                             businessEmail = attribute.value
+                        case .custom("isOpen"):
+                            currentTab = attribute.value == "true" ? "On" : "Off"
                         default:
                             return
                         }

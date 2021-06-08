@@ -24,12 +24,11 @@ struct ButtonLoginWithAppleView: View {
             Button(action: action, label: {
                 HStack {
                     Image(image)
-                        //.font(.body)
                         .resizable()
                         .scaledToFit()
                         .frame(height: height-2, alignment: .leading)
                     Text(text)
-                        .font(.system(size: 17))
+                        .font(.system(size: 15))
                 }
                 .offset(x:-10,y:0)
                 
