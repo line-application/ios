@@ -124,8 +124,6 @@ struct BusinessDashboardTab: View {
                                 .frame(width: 24, height: 20, alignment: .center)
                                 .padding(.leading, 33)
                         })
-                        
-                        
                     }
                     HStack {
                         Text("Você quer abrir a fila?")
