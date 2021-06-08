@@ -19,6 +19,7 @@ struct RestaurantDetails: View {
     var bussinesModel: BusinessModel
     @State var clientName:String = ""
     @State var clientEmail:String = ""
+    @State var bussinessEmail:String = ""
     
     func imageColor(colorImage:String) -> String {
         switch colorImage {
@@ -37,7 +38,7 @@ struct RestaurantDetails: View {
     
     func handleAddToLine() {
         let linePlaceApi = LinePlaceApi()
-        linePlaceApi.create(linePlace: CreateLinePlaceRequest(businessEmail: clientEmail, peopleInLine: peoplePerTable), handler: {line in print(line)})
+        linePlaceApi.create(linePlace: CreateLinePlaceRequest(businessEmail: bussinessEmail, peopleInLine: peoplePerTable), handler: {line in print(line)})
     }
     
     func handleDataFetch() {
@@ -148,6 +149,7 @@ struct RestaurantDetails: View {
                                 HStack {
                                     Spacer()
                                     ButtonView2(text: "ENTRAR NA FILA", action: {
+                                        bussinessEmail = bussinesModel.email
                                         handleAddToLine()
                                         self.mode.wrappedValue.dismiss()
                                         showAlert = true
@@ -158,7 +160,7 @@ struct RestaurantDetails: View {
                                         iso8601DateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
                                         let string = iso8601DateFormatter.string(from: date)
                                         lineplace = LinePlaceModel(id: "\(Date().timeIntervalSince1970)", enterLine: string, exitLine: "", called: "", invoked: false, success: false, peopleInLine: peoplePerTable, businessEmail: bussinesModel.email, clientEmail: clientEmail, clientName: clientName)
-                                        handleAddToLine()
+                                        //handleAddToLine()
                                     })
                                     .disabled((currentLine == nil)==false)
                                     .opacity(currentLine == nil ? 1 : 0.5)

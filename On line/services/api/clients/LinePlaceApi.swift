@@ -54,7 +54,7 @@ struct LinePlaceApi {
         struct RemoveLinePlaceRequest: Codable {
             let email: Email
         }
-        api.patch(url: "/line-place", data: RemoveLinePlaceRequest(email: email), handler: handler)
+        api.patch(url: "/line-place?action=remove&entity=client", data: RemoveLinePlaceRequest(email: email), handler: handler)
     }
     
     //business
