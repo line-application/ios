@@ -189,7 +189,7 @@ struct BusinessDashboardTab: View {
                         .padding(.leading)
                     }
                     
-                    Text(currentTab == "Off" ? "Fila fechada": lineplacesList.count == 0 ? "Nenhuma pessoa na fila" : "\(lineplacesList.count) pessoas na fila")
+                    Text(currentTab == "Off" ? "Fila fechada": lineplacesList.count == 0 ? "Nenhuma pessoa na fila" : lineplacesList.count == 1 ? "\(lineplacesList.count) pessoa na fila" : "\(lineplacesList.count) pessoas na fila")
                         .font(.system(size: 19))
                         .bold()
                         .opacity(currentTab == "Off" || lineplacesList.count == 0 || peoplePerTable > minPeoplePerTable ? 0.5 : 1)
