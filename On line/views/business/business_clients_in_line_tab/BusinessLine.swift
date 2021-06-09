@@ -9,11 +9,13 @@ import SwiftUI
 
 struct BusinessLine: View {
     @Binding var lineplacesList: [LinePlaceModel]
+    @Binding var intTime: Int
     @State var expand = false
     @State var people: Int
     @State var name: String
     @State var clientEmail: String
-    @State var time: Int
+    @State var time: Date
+
     
     func handleRemoveFromLine() {
         let linePlaceApi = LinePlaceApi()
@@ -28,9 +30,14 @@ struct BusinessLine: View {
                 lineplacesList = linePlaces
             }
         }})
-        
-        
     }
+    
+    let timer = Timer.publish(
+            every: 60, // second
+            on: .main,
+            in: .common
+        ).autoconnect()
+
     
     var body: some View{
         VStack(alignment: .leading){
@@ -78,11 +85,14 @@ struct BusinessLine: View {
                             .foregroundColor(Color("primary"))
                             .padding(.leading, 25)
                         
-                        Text("\(time) minutos na fila")
+                        Text("\(intTime) minutos na fila")
                             .bold()
                             .foregroundColor(Color("primary"))
                             .padding(.horizontal, 10)
-                        
+                            .onReceive(timer) { (_) in
+                                            let now = Date()
+                                            intTime = Int(now.timeIntervalSince(time)/60)
+                                        }
                         Spacer()
                         
                     }

@@ -63,7 +63,7 @@ struct BusinessDashboardTab: View {
                 }
             }
             if clientEmail2 != "" {
-                linePlaceApi.confirm(clientEmail: clientEmail2){response in print(response) }
+                linePlaceApi.confirm(clientEmail: clientEmail2){response in print(response!) }
             }
         }
     

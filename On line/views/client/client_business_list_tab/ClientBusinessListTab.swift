@@ -55,66 +55,86 @@ struct ClientBusinessListTab: View {
     }
     
     var body: some View {
-//        if(currentView){
-//            RestaurantDetails(currentView: $currentView, bussinesModel: $currentBusinessModel )
-//        }
-//        else {
         NavigationView {
             VStack {
-                    Image("Logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 129, height: 38, alignment: .center)
-                    Divider()
-                    VStack {
-                        Spacer(minLength: 19)
-                        ScrollView {
-                            HStack {
-                                Text("Olá, \(clientName)!")
-                                    .foregroundColor(Color("primary"))
-                                    .font(.system(size: CGFloat(19)))
-                                    .bold()
-                                    .padding(.leading,5)
-                                Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
+                Image("Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 129, height: 38, alignment: .center)
+                Divider()
+                VStack {
+                    Spacer(minLength: 19)
+                    ScrollView {
+                        HStack {
+                            Text("Olá, \(clientName)!")
+                                .foregroundColor(Color("primary"))
+                                .font(.system(size: CGFloat(19)))
+                                .bold()
+                                .padding(.leading,5)
+                            Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
+                        }
+                        .padding(.leading)
+                        HStack {
+                            Text("Onde você quer comer hoje?")
+                                .foregroundColor(Color("primary"))
+                                .font(.system(size: CGFloat(15)))
+                                .padding(.leading,5)
+                            Spacer(minLength: 1)
+                        }
+                        .padding(.leading)
+                        Text("")
+                        HStack {
+                            Text("Restaurantes com fila")
+                                .foregroundColor(Color("primary"))
+                                .font(.system(size: CGFloat(19)))
+                                .bold()
+                                .padding(.leading,5)
+                            Spacer(minLength: 17)
+                        }
+                        .padding(.leading)
+                        if (list.isEmpty) {
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 328, height: 141, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                    .cornerRadius(10.0)
+                                    .foregroundColor(Color("grayPeopleInLine"))
+                                VStack {
+                                    Text("Ops!")
+                                        .font(.system(size: 18))
+                                        .foregroundColor(Color("primary"))
+                                        .bold()
+                                    Text("No momento não há restaurantes com fila aberta")
+                                        .frame(width: 308, height: 50
+                                               , alignment: .center)
+                                        .font(.system(size: 15))
+                                        .multilineTextAlignment(.center)
+                                        .foregroundColor(Color("primary"))
+                                }
+                                .frame(width: 368, height: 141,alignment: .center)
                             }
-                            .padding(.leading)
-                            HStack {
-                                Text("Onde você quer comer hoje?")
-                                    .foregroundColor(Color("primary"))
-                                    .font(.system(size: CGFloat(15)))
-                                    .padding(.leading,5)
-                                Spacer(minLength: 1)
-                            }
-                            .padding(.leading)
-                            Text("")
-                            HStack {
-                                Text("Restaurantes com fila")
-                                    .foregroundColor(Color("primary"))
-                                    .font(.system(size: CGFloat(19)))
-                                    .bold()
-                                    .padding(.leading,5)
-                                Spacer(minLength: 17)
-                            }
-                            .padding(.leading)
+                            .padding(.top)
+                        }
+                        else {
                             ForEach(list) { business in
-    //                            Button(action: {
-    //                                currentView = true
-    //                                currentBusinessModel = business
-    //                            }, label: {
-    //                                ClientCardView(bussinesModel: business)
-    //                            })
+                                //                            Button(action: {
+                                //                                currentView = true
+                                //                                currentBusinessModel = business
+                                //                            }, label: {
+                                //                                ClientCardView(bussinesModel: business)
+                                //                            })
                                 NavigationLink(
                                     destination: RestaurantDetails(currentLine: $currentLine, lineplace: $lineplace,time2: $time , bussinesModel: business),
                                     label: {
                                         ClientCardView(bussinesModel: business)
                                     })
                             }
-                        }//.padding(.bottom,83)
-                    }
+                        }
+                    }//.padding(.bottom,83)
                 }
-                .padding(.top)
-                .onAppear(){
-                    fetchBusiness()
+            }
+            .padding(.top)
+            .onAppear(){
+                fetchBusiness()
             }
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
@@ -122,7 +142,7 @@ struct ClientBusinessListTab: View {
         .onAppear(){
             handleDataFetch()
         }
-        }
+    }
     //}
 }
 
