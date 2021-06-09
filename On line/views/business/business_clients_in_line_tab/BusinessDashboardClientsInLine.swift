@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BusinessClientsInLineTab: View {
     @State var lineplacesList:[LinePlaceModel] = []
+    @State var intTime : Int = 0
     
     func handleListLinePlace() {
         let linePlaceApi = LinePlaceApi()
@@ -20,16 +21,19 @@ struct BusinessClientsInLineTab: View {
         }
     }
     
-    func time(timeString:IsoString) -> Int {
-        let dateFormatter = DateFormatter()
+    func time(timeString:IsoString) -> Date {
+        let isoDateFormatter = ISO8601DateFormatter()
+        isoDateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        isoDateFormatter.formatOptions = [
+            .withFullDate,
+            .withFullTime,
+            .withDashSeparatorInDate,
+            .withFractionalSeconds]
         
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-        
-        let updatedAtStr = timeString
-        let updatedAt = dateFormatter.date(from: updatedAtStr) // "Jun 5, 2016, 4:56 PM"
-        var inLinetime:Double = updatedAt?.distance(to: Date()) ?? 0
-        inLinetime = inLinetime/60000
-        return Int(inLinetime)
+        let realDate = isoDateFormatter.date(from: timeString)!
+        let now = Date()
+        intTime = Int(now.timeIntervalSince(realDate)/60)
+        return realDate
     }
     
     init() {
@@ -38,10 +42,6 @@ struct BusinessClientsInLineTab: View {
     var body: some View {
         NavigationView{
             VStack{
-                //            Text("Fila")
-                //                .font(.system(size: 19))
-                //                .bold()
-                //                .foregroundColor(Color("primary"))
                 Divider()
                 HStack{
                     Text("Fila Geral")
@@ -53,8 +53,7 @@ struct BusinessClientsInLineTab: View {
                 }
                 ScrollView{
                     ForEach(lineplacesList){ lineplace in
-                        //                    BusinessLine(linePlaces: $lineplacesList, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
-                        BusinessLine(lineplacesList: $lineplacesList, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
+                        BusinessLine(lineplacesList: $lineplacesList, intTime: $intTime, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
                     }
                     
                 }
