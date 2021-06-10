@@ -19,6 +19,14 @@ struct ClientView: View {
     @State var selectedTab:Tabs = .home
     @State var time:TimeEstimativeModel? = nil
     
+    func findLinePlace(){
+        let linePlaceApi = LinePlaceApi()
+        linePlaceApi.find(handler: {findLinePlace in
+            currentLine =  findLinePlace?.business
+            currentLinePlace = findLinePlace?.linePlace
+        })
+    }
+    
     init() {
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
         UITabBar.appearance().barTintColor = UIColor(named: "primary")
@@ -45,6 +53,9 @@ struct ClientView: View {
                     Text("Perfil")
                 }
                 .tag(Tabs.profile)
+        }
+        .onAppear(){
+            findLinePlace()
         }
         .accentColor(Color.white)
 
