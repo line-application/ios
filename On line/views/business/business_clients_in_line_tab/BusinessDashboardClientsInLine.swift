@@ -9,7 +9,6 @@ import SwiftUI
 
 struct BusinessClientsInLineTab: View {
     @State var lineplacesList:[LinePlaceModel] = []
-    @State var intTime : Int = 0
     
     func handleListLinePlace() {
         let linePlaceApi = LinePlaceApi()
@@ -29,10 +28,7 @@ struct BusinessClientsInLineTab: View {
             .withFullTime,
             .withDashSeparatorInDate,
             .withFractionalSeconds]
-        
         let realDate = isoDateFormatter.date(from: timeString)!
-        let now = Date()
-        intTime = Int(now.timeIntervalSince(realDate)/60)
         return realDate
     }
     
@@ -53,7 +49,7 @@ struct BusinessClientsInLineTab: View {
                 }
                 ScrollView{
                     ForEach(lineplacesList){ lineplace in
-                        BusinessLine(lineplacesList: $lineplacesList, intTime: $intTime, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
+                        BusinessLine(lineplacesList: $lineplacesList, people: lineplace.peopleInLine, name: lineplace.clientName!, clientEmail: lineplace.clientEmail, time: time(timeString: lineplace.enterLine))
                     }
                     
                 }

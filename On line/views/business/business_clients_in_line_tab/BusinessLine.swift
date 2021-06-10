@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BusinessLine: View {
     @Binding var lineplacesList: [LinePlaceModel]
-    @Binding var intTime: Int
+    @State var intTime: Int = 0
     @State var expand = false
     @State var people: Int
     @State var name: String
@@ -119,6 +119,10 @@ struct BusinessLine: View {
         .padding(10)
         .background(Color.white)
         .animation(.spring())
+        .onAppear() {
+            let now = Date()
+            intTime = Int(now.timeIntervalSince(time)/60)
+        }
     }
 }
 //struct BusinessLine_Previews: PreviewProvider {
